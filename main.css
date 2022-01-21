@@ -143,7 +143,7 @@ p2 {
 #swipe {
     height: 48px;
     width: 48px;
-    background-image: url(assets/images/4ff37b43972366e86f06e96597502850.png);
+    background-image: url(assets/images/swipe.png);
     background-size: 48px;
     text-align: center;
     margin: 32px auto 8px auto;
@@ -182,23 +182,23 @@ p2 {
 }
 
 #syng-img {
-    background-image: url(assets/images/633441123f1dcb3a156bb69fe7daab20.jpg);
+    background-image: url(assets/images/syng.jpg);
 }
 
 #rubiks-img {
-    background-image: url(assets/images/04c1e2f449ef3386380b9e446a0ef66c.jpg);
+    background-image: url(assets/images/rubiks.jpg);
 }
 
 #seismic-img {
-    background-image: url(assets/images/63b00bc49af051020f18729a463a66d7.jpg);
+    background-image: url(assets/images/seismic.jpg);
 }
 
 #fabric-img {
-    background-image: url(assets/images/c9252790bcda9419b3217d6dd04fd0d2.jpg);
+    background-image: url(assets/images/fabric.jpg);
 }
 
 #tyfa-img {
-    background-image: url(assets/images/c30f6b576abf0963c84566c1b37f9f87.jpg);
+    background-image: url(assets/images/tyfa.jpg);
 }
 
 .thumbnail{
@@ -273,7 +273,7 @@ button:active {
 }
 
 #syng-header {
-    background-image: url(assets/images/85a14e8013f82b29b8b876e86c9e863c.jpg);
+    background-image: url(assets/images/syng-header.jpg);
 }
 
 .modal-content-wrapper {
@@ -294,7 +294,7 @@ button:active {
 
 .close {
     position: fixed;
-    background-image: url(assets/images/735cc185507150f225f38b1b62e7c895.png);
+    background-image: url(assets/images/close.png);
     background-size: 48px;
     width: 48px;
     min-width: 48px;
