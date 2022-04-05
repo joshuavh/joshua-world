@@ -2,13 +2,9 @@
 {
     margin: 0;
     padding: 0;
-}
-
-html,
-body
-{
     overflow: hidden;
-    font-family: 'Rubik', sans-serif;}
+    font-family: 'Rubik', sans-serif;
+}
 
 .webgl
 {
@@ -20,8 +16,8 @@ body
 
 h1{
     font-size: 48px;
-    font-weight: 700;
-    line-height: 140%;
+    font-weight: 600;
+    line-height: 120%;
 }
 
 h2{
@@ -48,6 +44,14 @@ p2 {
     font-weight: 400;
 }
 
+.helptext{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c810b9;;
+}
+
 .sign {
     position: fixed;
     width: 90%;
@@ -56,7 +60,7 @@ p2 {
     left: 50%;
     transform: translateX(-50%);
     color: #481575;
-    background-color: rgba(255, 228, 239, 0.9);
+    background-color: rgba(255, 228, 239, 1);
     border-radius: 16px;
     box-sizing: border-box;
     padding: 24px;
@@ -192,6 +196,7 @@ button:active {
     top: 50%;
     transform: translateY(-50%);
     font-size: 64px;
+    font-weight: 600;
     max-width: 800px;
     margin: auto;
 }
@@ -251,18 +256,18 @@ button:active {
     }
 
     h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     p2 {
         font-size: 18px;
     }
 
-    #helptext span {
+    .helptext span {
         display: none;
       }
-    #helptext:after {
-        content:'Explore by swiping to the left';
+    .helptext:after {
+        content:'Explore by swiping left';
     }
 
     .project {
