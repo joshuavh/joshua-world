@@ -21,25 +21,18 @@ fetch(URL)
   .then(({ result }) => {
     let projecttitles = document.getElementsByClassName("projecttitle");
     let subtitles = document.getElementsByClassName("subtitle");
-    let thumbnail = document.getElementsByClassName("thumbnail");
-    let syngtitle = document.getElementsByClassName("syng");
+    let firstTextfield = document.getElementById("firstTextfield");
+    let meta = document.getElementById("meta");
 
-    //console.log(result);
+    for (let i = 0; i < projecttitles.length; i++) {
+        projecttitles[i].textContent = result[i].title;
+        subtitles[i].textContent = result[i].subtitle;
+        firstTextfield.textContent = result[4].firsttextfield;
+        meta.textContent = result[4].metainfo;
+    }
 
-    projecttitles[0].textContent = result[3].title;
-    subtitles[0].textContent = result[3].subtitle;
-    projecttitles[1].textContent = result[0].title;
-    subtitles[1].textContent = result[0].subtitle;
-    projecttitles[2].textContent = result[2].title;
-    subtitles[2].textContent = result[2].subtitle;
-    projecttitles[3].textContent = result[4].title;
-    subtitles[3].textContent = result[4].subtitle;
-    projecttitles[4].textContent = result[1].title;
-    subtitles[4].textContent = result[1].subtitle;
-    // for (let i = 0; i < projecttitles.length; i++) {
-    //     projecttitles[i].textContent = result[i].title;
-    //     subtitles[i].textContent = result[i].subtitle;
-    // }
+    console.log(firstTextfield);
+
   })
   .catch((err) => console.error(err));
 
