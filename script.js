@@ -1,9 +1,9 @@
 //import './loader.css'
 //import './style.css'
-import * as THREE from 'three';
-import { OrbitControls } from 'https://unpkg.com/three@0.139.2/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.139.2/examples/jsm/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'https://unpkg.com/three@0.139.2/examples/jsm/loaders/DRACOLoader.js';
+import * as THREE from 'https://cdn.skypack.dev/three@0.136.0';
+import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls.js';
+import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/DRACOLoader.js';
 //import * as dat from 'dat.gui'
 //import Stats from 'stats.js'
 
