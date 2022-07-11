@@ -24,7 +24,7 @@ fetch(URL)
     let thumbnail = document.getElementsByClassName("thumbnail");
     let syngtitle = document.getElementsByClassName("syng");
 
-    console.log(result);
+    //console.log(result);
 
     projecttitles[0].textContent = result[3].title;
     subtitles[0].textContent = result[3].subtitle;
