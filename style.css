@@ -109,26 +109,6 @@ p2 {
     display: block;
 }
 
-#syng-img {
-    background-image: url("/img/preview/syng.jpg");
-}
-
-#rubiks-img {
-    background-image: url("/img/preview/rubiks.jpg");
-}
-
-#seismic-img {
-    background-image: url("/img/preview/seismic.jpg");
-}
-
-#fabric-img {
-    background-image: url("/img/preview/fabric.jpg");
-}
-
-#tyfa-img {
-    background-image: url("/img/preview/tyfa.jpg");
-}
-
 .thumbnail{
     display: flex;
     width: 80px;

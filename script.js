@@ -8,6 +8,42 @@ import { DRACOLoader } from 'https://unpkg.com/three@0.139.2/examples/jsm/loader
 //import Stats from 'stats.js'
 
 
+//Sanity
+let PROJECT_ID = "jidqpryp";
+let DATASET = "production";
+let QUERY = encodeURIComponent('*[_type == "project"]');
+
+let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
+
+// fetch the content
+fetch(URL)
+  .then((res) => res.json())
+  .then(({ result }) => {
+    let projecttitles = document.getElementsByClassName("projecttitle");
+    let subtitles = document.getElementsByClassName("subtitle");
+    let thumbnail = document.getElementsByClassName("thumbnail");
+    let syngtitle = document.getElementsByClassName("syng");
+
+    console.log(result);
+
+    projecttitles[0].textContent = result[3].title;
+    subtitles[0].textContent = result[3].subtitle;
+    projecttitles[1].textContent = result[0].title;
+    subtitles[1].textContent = result[0].subtitle;
+    projecttitles[2].textContent = result[2].title;
+    subtitles[2].textContent = result[2].subtitle;
+    projecttitles[3].textContent = result[4].title;
+    subtitles[3].textContent = result[4].subtitle;
+    projecttitles[4].textContent = result[1].title;
+    subtitles[4].textContent = result[1].subtitle;
+    // for (let i = 0; i < projecttitles.length; i++) {
+    //     projecttitles[i].textContent = result[i].title;
+    //     subtitles[i].textContent = result[i].subtitle;
+    // }
+  })
+  .catch((err) => console.error(err));
+
+  
 /**
  * Debug
  */
