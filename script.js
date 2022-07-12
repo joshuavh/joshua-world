@@ -65,7 +65,6 @@ const loadingManager = new THREE.LoadingManager();
 loadingManager.onLoad = function(url, loaded, total){
     var loader = document.getElementById("loader-wrapper");
     loader.style.display = "none";
-    console.log("Loaded!");
 }
 
 // Texture loader
@@ -73,8 +72,7 @@ const textureLoader = new THREE.TextureLoader()
 
 // Draco loader
 const dracoLoader = new DRACOLoader()
-//dracoLoader.setDecoderPath('draco/')
-dracoLoader.setDecoderPath('https://unpkg.com/three@0.139.2/examples/js/libs/draco/');
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
 
 // GLTF loader
 const gltfLoader = new GLTFLoader(loadingManager)
