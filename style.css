@@ -134,6 +134,20 @@ button{
     border-radius: 8px;    
 }
 
+.button{
+    width: 90%;
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    background-color: #fecfeb;
+    color: #481575;
+    border-radius: 8px; 
+    text-align: center;
+}
+
 button:hover {
     cursor: pointer;
     color: #FFC6EA; 
