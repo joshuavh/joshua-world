@@ -4,72 +4,43 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: black;
+    background-color: #1c0024;
     display:flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
   }
-  
-  
-  .loader {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    border: 4px solid #Fff;
-    animation: loader 2s infinite ease;
+
+  progress {
+    margin: 0;
+    position: absolute;               
+    top: 50%;                       
+    transform: translate(0, -50%);
+    color: #c810b9;
   }
   
-  .loader-inner {
-    vertical-align: top;
-    display: inline-block;
-    width: 100%;
-    background-color: #fff;
-    animation: loader-inner 2s infinite ease-in;
+  progress[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+
+    width: 240px;
+    height: 8px;
+
+    /* For IE10 */
+    color: white; 
   }
-  
-  @keyframes loader {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    25% {
-      transform: rotate(180deg);
-    }
-  
-    50% {
-      transform: rotate(180deg);
-    }
-  
-    75% {
-      transform: rotate(360deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
+
+  progress::-webkit-progress-value {
+    background: #c810b9;
+    border-radius: 8px;
+
   }
-  
-  @keyframes loader-inner {
-    0% {
-      height: 0%;
-    }
-  
-    25% {
-      height: 0%;
-    }
-  
-    50% {
-      height: 100%;
-    }
-  
-    75% {
-      height: 100%;
-    }
-  
-    100% {
-      height: 0%;
-    }
+
+  progress[value]::-webkit-progress-bar {
+    background-color: rgba(255, 228, 239, 1);
+    border-radius: 8px;
+
   }
-  
