@@ -74,7 +74,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button class="modal-button" href="#myModal4">View projectl</button>
+        <button class="modal-button" href="#myModal4">View project</button>
     </div>
 
     <div class="project" id="syng">
@@ -85,7 +85,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button id="modal-button" href="#myModal5">View project</button>
+        <button class="modal-button" href="#myModal5">View project</button>
 
     </div>
 
@@ -170,8 +170,7 @@
     var btn = document.querySelectorAll("button.modal-button");
     var start_btn = document.getElementsByClassName("button.modal-button");
     var modals = document.querySelectorAll('.modal');
-    var X = document.querySelectorAll("close");
-    var start_button = document.getElementById("cta-button");
+    var X = document.getElementsByClassName("close");
 
     // When the user clicks the button, open the modal
 for (var i = 0; i < btn.length; i++) {
