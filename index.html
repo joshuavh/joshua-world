@@ -14,14 +14,6 @@
     <div id="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
         </div>
-        
-    <script>
-        var loader = document.getElementById("loader-wrapper");
-        window.onload = function() {
-             loader.style.display = "none";
-        }
-    </script>
-
 
     <canvas class="webgl"></canvas>
 
@@ -46,9 +38,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <form action="rubiks.html" class="button">
-            <input type="submit" value="View project" />
-        </form>
+        <button class="modal-button" href="#myModal1">View project</button>
     </div>
 
     <div class="project" id="seismic">
@@ -59,7 +49,8 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button>View project</button>
+        <button class="modal-button" href="#myModal2">View project</button>
+
     </div>
 
     <div class="project" id="fabric">
@@ -70,7 +61,8 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button>View project</button>
+        <button class="modal-button" href="#myModal3">View project</button>
+
     </div>
 
     <div class="project" id="tyfa">
@@ -81,7 +73,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button>View project</button>
+        <button class="modal-button" href="#myModal4">View projectl</button>
     </div>
 
     <div class="project" id="syng">
@@ -92,57 +84,117 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button id ="syng-btn">View project</button>
+        <button class="modal-button" href="#myModal5">View project</button>
+
     </div>
 
 
-<div class="modal" id="syng-modal">
+<div class="modal" id="myModal1">
     <div class="header" id="syng-header">
-        <div class="header-wrapper">SYNG Karaoke</div>
+        <div class="header-wrapper">Project 1</div>
         <div class ="close" id="syng-close"></div>
     </div>
     <div class="modal-content-wrapper" id="content-syng">
-        <h1>A new karaoke system for the Norwegian franchise.</h1>
-        <div>
-            <h3>Challenge</h3>
-            <br>
-            <p2 id="firstTextfield"></p2>
-        </div>
-        <img class="project-img" src="/img/syng/3.jpg">
-        <div>
-            <h3>Result</h3>
-            <br>
-            <p2>
-                The new system covers all touch points necessary for a great karaoke experience.
-                A back-end solution for admins to add new songs the music library, a booking system for SYNG’s staff and lastly, a new and improved interface for the customers to find and play their favorite songs.
-            </p2>
-        </div>
-        <img class="project-img" src="/img/syng/2.jpg">
+        <h1 class="subtitle"></h1>
+        <p2 class="firstTextfield"></p2>
         <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
-        <img class="project-img" src="/img/syng/4.jpg">
-        <p2>
-            All touch points feature the bold and whacky look that makes SYNG so charming. The new touch screens enable customers not only to search for songs, but also explore categories and curated playlists. The system features audio-reactive animations and the increased button sizes also allow tipsy singers to find a song.
-        </p2>
-        <img class="project-img" src="/img/syng/5.jpg">
-        <img class="project-img" src="/img/syng/6.jpg">
-        <p id="meta">2020</p>
-
+        <p2 class="secondTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p class="metainfo"></p>
     </div>
 </div>
 
+<div class="modal" id="myModal2">
+    <div class="header" id="syng-header">
+        <div class="header-wrapper">Project 2</div>
+        <div class ="close" id="syng-close"></div>
+    </div>
+    <div class="modal-content-wrapper" id="content-syng">
+        <h1 class="subtitle"></h1>
+        <p2 class="firstTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p2 class="secondTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p class="metainfo"></p>
+    </div>
+</div>
+
+<div class="modal" id="myModal3">
+    <div class="header" id="syng-header">
+        <div class="header-wrapper">Project 3</div>
+        <div class ="close" id="syng-close"></div>
+    </div>
+    <div class="modal-content-wrapper" id="content-syng">
+        <h1 class="subtitle"></h1>
+        <p2 class="firstTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p2 class="secondTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p class="metainfo"></p>
+    </div>
+</div>
+
+<div class="modal" id="myModal4">
+    <div class="header" id="syng-header">
+        <div class="header-wrapper">Project 4</div>
+        <div class ="close" id="syng-close"></div>
+    </div>
+    <div class="modal-content-wrapper" id="content-syng">
+        <h1 class="subtitle"></h1>
+        <p2 class="firstTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p2 class="secondTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p class="metainfo"></p>
+    </div>
+</div>
+
+<div class="modal" id="myModal5">
+    <div class="header" id="syng-header">
+        <div class="header-wrapper">Project 5</div>
+        <div class ="close" id="syng-close"></div>
+    </div>
+    <div class="modal-content-wrapper" id="content-syng">
+        <h1 class="subtitle"></h1>
+        <p2 class="firstTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p2 class="secondTextfield"></p2>
+        <img class="project-img" src="https://cdn.sanity.io/images/jidqpryp/production/60fa3f89ae2f16e22f8ba504974f2c05220038ea-1080x1080.jpg">
+        <p class="metainfo"></p>
+    </div>
+</div>
+
+
 <script>
-    const syng_modal = document.getElementById("syng-modal");
-    const btn = document.getElementById("syng-btn");
-    const syng_close = document.getElementById("syng-close");
-    
-    btn.onclick = function() {
-        syng_modal.style.display = "block";
+    var btn = document.querySelectorAll("button.modal-button");
+    var modals = document.querySelectorAll('.modal');
+    var X = document.getElementsByClassName("close");
+
+    // When the user clicks the button, open the modal
+for (var i = 0; i < btn.length; i++) {
+ btn[i].onclick = function(e) {
+    e.preventDefault();
+    modal = document.querySelector(e.target.getAttribute("href"));
+    modal.style.display = "block";
+ }
+}
+
+// When the user clicks on(x), close the modal
+for (var i = 0; i < X.length; i++) {
+    X[i].onclick = function() {
+    for (var index in modals) {
+      if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
     }
-    
-    // When the user clicks on <span> (x), close the modal
-    syng_close.onclick = function() {
-        syng_modal.style.display = "none";
-    }
+ }
+}
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//     if (event.target.classList.contains('modal')) {
+//      for (var index in modals) {
+//       if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+//      }
+//     }
+// }
 </script>
 
 <script type="module" src="script.js"></script>

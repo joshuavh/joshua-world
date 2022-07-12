@@ -21,21 +21,21 @@ fetch(URL)
   .then(({ result }) => {
     let projecttitles = document.getElementsByClassName("projecttitle");
     let subtitles = document.getElementsByClassName("subtitle");
-    let firstTextfield = document.getElementById("firstTextfield");
-    let meta = document.getElementById("meta");
+    let firstTextfield = document.getElementsByClassName("firstTextfield");
+    let secondTextfield = document.getElementsByClassName("secondTextfield");
+    let meta = document.getElementsByClassName("metainfo");
+
+    console.log(result);
 
     for (let i = 0; i < projecttitles.length; i++) {
         projecttitles[i].textContent = result[i].title;
         subtitles[i].textContent = result[i].subtitle;
-        firstTextfield.textContent = result[4].firsttextfield;
-        meta.textContent = result[4].metainfo;
+        firstTextfield[i].textContent = result[i].firsttextfield;
+        secondTextfield[i].textContent = result[i].secondtextfield;
+        meta[i].textContent = result[i].metainfo;
     }
-
-    console.log(firstTextfield);
-
   })
   .catch((err) => console.error(err));
-
   
 /**
  * Debug
@@ -61,6 +61,13 @@ const scene = new THREE.Scene()
 /**
  * Loaders
  */
+const loadingManager = new THREE.LoadingManager();
+loadingManager.onLoad = function(url, loaded, total){
+    var loader = document.getElementById("loader-wrapper");
+    loader.style.display = "none";
+    console.log("Loaded!");
+}
+
 // Texture loader
 const textureLoader = new THREE.TextureLoader()
 
@@ -70,7 +77,7 @@ const dracoLoader = new DRACOLoader()
 dracoLoader.setDecoderPath('https://unpkg.com/three@0.139.2/examples/js/libs/draco/');
 
 // GLTF loader
-const gltfLoader = new GLTFLoader()
+const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
 
 

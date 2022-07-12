@@ -120,7 +120,7 @@ p2 {
     background-position: center;
 }
 
-button{
+.modal-button{
     width: 100%;
     padding: 16px;
     font-size: 14px;
@@ -133,26 +133,12 @@ button{
     border-radius: 8px;    
 }
 
-.button{
-    width: 90%;
-    padding: 16px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    border: none;
-    background-color: #fecfeb;
-    color: #481575;
-    border-radius: 8px; 
-    text-align: center;
-}
-
-button:hover {
+modal-button:hover {
     cursor: pointer;
     color: #FFC6EA; 
     background-color: #6a0061;
 }
-button:active { 
+modal-button:active { 
     cursor: pointer;
     color: #FFC6EA; 
     background-color: #6a0061;
@@ -166,6 +152,7 @@ button:active {
     color: white;
     position: fixed; 
     z-index: 999; 
+    display: none;
 }
 
 #syng-modal{
@@ -195,7 +182,7 @@ button:active {
 }
 
 #syng-header {
-    background-image: url("/img/syng/syng-header.jpg");
+    background-image: url("https://cdn.sanity.io/images/jidqpryp/production/bcc390f627aded6a086cf5e8ebc27429b60af1df-1200x480.jpg");
 }
 
 .modal-content-wrapper {
