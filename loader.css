@@ -12,6 +12,8 @@
 
   #loader-wrapper{
     position: absolute;
+    width: 90%;
+    max-width: 540px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
