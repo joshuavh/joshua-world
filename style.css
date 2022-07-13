@@ -208,11 +208,11 @@ p2 {
     background-image: url("/img/icons/close.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgba(28,0,36, 0.8);
+    background-color: #fecfeb;
     background-size: 32px;
     width: 32px;
     height: 32px;
-    padding: 8px;
+    padding: 12px;
     border-radius: 50%;
     top: 24px;
     right: 24px;
@@ -221,6 +221,7 @@ p2 {
 
 .close:hover {
     cursor: pointer;
+    background-color: #ff9bd7;
 }
 
 @media only screen and (max-width: 1200px) {
