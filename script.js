@@ -7,7 +7,6 @@ import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/
 //import * as dat from 'dat.gui'
 //import Stats from 'stats.js'
 
-
 //Sanity
 let PROJECT_ID = "jidqpryp";
 let DATASET = "production";
@@ -21,22 +20,24 @@ fetch(URL)
   .then(({ result }) => {
     let projecttitles = document.getElementsByClassName("projecttitle");
     let subtitles = document.getElementsByClassName("subtitle");
+    let headline = document.getElementsByClassName("projectheadline");
     let firstTextfield = document.getElementsByClassName("firstTextfield");
     let secondTextfield = document.getElementsByClassName("secondTextfield");
     let meta = document.getElementsByClassName("metainfo");
 
-    console.log(result);
+    console.log(result[4].title);
 
-    for (let i = 0; i < projecttitles.length; i++) {
+    for (let i = 0; i < result.length; i++) {
         projecttitles[i].textContent = result[i].title;
         subtitles[i].textContent = result[i].subtitle;
+        headline[i].textContent = result[i].title;
         firstTextfield[i].textContent = result[i].firsttextfield;
         secondTextfield[i].textContent = result[i].secondtextfield;
         meta[i].textContent = result[i].metainfo;
     }
   })
 
-  .catch((err) => console.error(err));
+.catch((err) => console.error(err));
   
 /**
  * Debug
@@ -534,11 +535,11 @@ let g = 0.8;
 let h = 0.5;
 const start = document.getElementById("start");
 const sausage = document.getElementById("sausage");
-const syng = document.getElementById("syng");
-const rubiks = document.getElementById("rubiks");
-const tyfa = document.getElementById("tyfa");
-const seismic = document.getElementById("seismic");
-const fabric = document.getElementById("fabric");
+const project1 = document.getElementById("project1");
+const project2 = document.getElementById("project2");
+const project3 = document.getElementById("project3");
+const project4 = document.getElementById("project4");
+const project5 = document.getElementById("project5");
 let counttx = 0, countup = true;
 const clock = new THREE.Clock(); 
 
@@ -600,31 +601,30 @@ const tick = () =>
       }
       else { sausage.style.display = "none";}
 
-
-    if (azimuthalAngle >= -0.8 && azimuthalAngle < -0.4) {
-        syng.style.display = "block";
-      }
-      else { syng.style.display = "none";}
-
     if (azimuthalAngle >= 1.35 && azimuthalAngle < 1.75) {
-        rubiks.style.display = "block";
+        project1.style.display = "block";
       }
-      else { rubiks.style.display = "none";}
+      else { project1.style.display = "none";}
 
     if (azimuthalAngle >= -1.4 && azimuthalAngle < -1) {
-        tyfa.style.display = "block";
+        project4.style.display = "block";
       }
-    else { tyfa.style.display = "none";}
+    else { project4.style.display = "none";}
 
     if (azimuthalAngle >= 2.8 && azimuthalAngle < 3.14) {
-        seismic.style.display = "block";
+        project2.style.display = "block";
       }
-    else { seismic.style.display = "none";}
+    else { project2.style.display = "none";}
 
     if (azimuthalAngle >= -2.2 && azimuthalAngle < -1.8) {
-        fabric.style.display = "block";
+        project3.style.display = "block";
       }
-    else { fabric.style.display = "none";}
+    else { project3.style.display = "none";}
+
+    if (azimuthalAngle >= -0.8 && azimuthalAngle < -0.4) {
+        project5.style.display = "block";
+      }
+      else { project5.style.display = "none";}
 
 
     // Animation Mixer

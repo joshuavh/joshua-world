@@ -165,10 +165,6 @@ p2 {
     display: none;
 }
 
-#syng-modal{
-    display: none;
-}
-
 #start {
     display: block;
 }
@@ -189,10 +185,6 @@ p2 {
     font-weight: 600;
     max-width: 800px;
     margin: auto;
-}
-
-#syng-header {
-    background-image: url("https://cdn.sanity.io/images/jidqpryp/production/bcc390f627aded6a086cf5e8ebc27429b60af1df-1200x480.jpg");
 }
 
 .modal-content-wrapper {
