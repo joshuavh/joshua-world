@@ -29,5 +29,6 @@ for (var index in modals) {
 // }
 document.getElementById("start-button").onclick = function() {myFunction()};
 function myFunction() {
-document.getElementById("loadingscreen").style.display = "none";
+document.getElementById("loadingscreen").classList.add("hidden");
 }
+

@@ -65,7 +65,6 @@ p2 {
     box-sizing: border-box;
     padding: 24px;
     z-index: 999;
-    display: none;
     text-align: center;
   }
 
@@ -91,8 +90,7 @@ p2 {
     background-color: rgba(255, 228, 239, 0.9);
     border-radius: 16px;
     z-index: 999;
-    display: none;
-    overflow: hidden;
+
     box-sizing: border-box;
   }
 
@@ -131,7 +129,7 @@ p2 {
     border: none;
     background-color: #fecfeb;
     color: #481575;
-    border-radius: 16px;
+    border-radius: 12px;
 }
 
 .button:hover {
@@ -207,7 +205,7 @@ p2 {
     background-size: 32px;
     width: 32px;
     height: 32px;
-    padding: 12px;
+    padding: 8px;
     border-radius: 50%;
     top: 24px;
     right: 24px;
@@ -218,6 +216,20 @@ p2 {
     cursor: pointer;
     background-color: #ff9bd7;
 }
+
+/* Fade-In Effect */
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s linear;
+}
+/* Fade-Out Effect */
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.2s, opacity 0.2s linear;
+}
+
 
 @media only screen and (max-width: 1200px) {
     .modal-content-wrapper {
@@ -249,7 +261,7 @@ p2 {
         display: none;
       }
     .helptext:after {
-        content:'Explore by swiping left';
+        content:'Swipe left to explore';
     }
 
     .project {

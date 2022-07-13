@@ -591,43 +591,63 @@ const tick = () =>
         cyclist.rotation.y = azimuthalAngle ;
     }
 
-    if (azimuthalAngle >= -0.1 && azimuthalAngle < 0.1) {
-        start.style.display = "block";
+    if (azimuthalAngle >= 0.1 || azimuthalAngle < -0.1) {
+        start.classList.add("hidden");
       }
-    else {
-        start.style.display = "none";
-    }
-
 
     if (azimuthalAngle >= 0.45 && azimuthalAngle < 0.85) {
-        sausage.style.display = "block";
+        sausage.classList.remove("hidden");
+        sausage.classList.add("visible");
       }
-      else { sausage.style.display = "none";}
+      else {  
+        sausage.classList.add("hidden");
+        sausage.classList.remove("visible");
+    }
 
     if (azimuthalAngle >= 1.35 && azimuthalAngle < 1.75) {
-        project1.style.display = "block";
+        project1.classList.remove("hidden");
+        project1.classList.add("visible");
       }
-      else { project1.style.display = "none";}
-
-    if (azimuthalAngle >= -1.4 && azimuthalAngle < -1) {
-        project4.style.display = "block";
-      }
-    else { project4.style.display = "none";}
+      else {  
+        project1.classList.add("hidden");
+        project1.classList.remove("visible");
+    }
 
     if (azimuthalAngle >= 2.8 && azimuthalAngle < 3.14) {
-        project2.style.display = "block";
+        project2.classList.remove("hidden");
+        project2.classList.add("visible");
       }
-    else { project2.style.display = "none";}
+      else {  
+        project2.classList.add("hidden");
+        project2.classList.remove("visible");
+    }
 
     if (azimuthalAngle >= -2.2 && azimuthalAngle < -1.8) {
-        project3.style.display = "block";
+        project3.classList.remove("hidden");
+        project3.classList.add("visible");
       }
-    else { project3.style.display = "none";}
+      else {  
+        project3.classList.add("hidden");
+        project3.classList.remove("visible");
+    }
+
+    if (azimuthalAngle >= -1.4 && azimuthalAngle < -1) {
+        project4.classList.remove("hidden");
+        project4.classList.add("visible");
+      }
+      else {  
+        project4.classList.add("hidden");
+        project4.classList.remove("visible");
+    }
 
     if (azimuthalAngle >= -0.8 && azimuthalAngle < -0.4) {
-        project5.style.display = "block";
+        project5.classList.remove("hidden");
+        project5.classList.add("visible");
       }
-      else { project5.style.display = "none";}
+      else {  
+        project5.classList.add("hidden");
+        project5.classList.remove("visible");
+    }
 
 
     // Animation Mixer
