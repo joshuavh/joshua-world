@@ -26,8 +26,6 @@ fetch(URL)
     let secondTextfield = document.getElementsByClassName("secondTextfield");
     let meta = document.getElementsByClassName("metainfo");
 
-    console.log(result[4]);
-
     for (let i = 0; i < result.length; i++) {
         projecttitles[i].textContent = result[i].title;
         subtitles[i].textContent = result[i].subtitle;
@@ -67,12 +65,15 @@ const scene = new THREE.Scene()
  */
 const loadingManager = new THREE.LoadingManager();
 
+const progressContainer = document.getElementById("progress");
 const progressBar = document.getElementById("progress-bar");
+
 loadingManager.onProgress = function(url, loaded, total) {
-    progressBar.value = (loaded / total) * 100;
+    progressBar.style.width = (loaded / total) * 100 + "%";
+    console.log(progressBar.width);
 }
 loadingManager.onLoad = function(url, loaded, total){
-    progressBar.style.display = "none";
+    progressContainer.style.display = "none";
     document.getElementById("start-button").style.display = "block";
     
 }
