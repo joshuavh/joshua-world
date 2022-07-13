@@ -31,8 +31,8 @@
     appearance: none;
     border: none;
 
-    width: 240px;
-    height: 50px;
+    width: 280px;
+    height: 56px;
     margin-top: 48px;
 
     /* For IE10 */
@@ -41,12 +41,12 @@
 
   progress::-webkit-progress-value {
     background: #FFE4EF;
-    border-radius: 8px;
+    border-radius: 16px;
 
   }
 
   progress[value]::-webkit-progress-bar {
     background-color: #c810b9;
-    border-radius: 8px;
+    border-radius: 16px;
 
   }

@@ -115,7 +115,7 @@ p2 {
     min-width: 80px;
     height: 80px;
     margin-right: 16px;
-    border-radius: 8px;
+    border-radius: 12px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -131,7 +131,7 @@ p2 {
     border: none;
     background-color: #fecfeb;
     color: #481575;
-    border-radius: 8px;    
+    border-radius: 16px;
 }
 
 .button:hover {
@@ -146,11 +146,11 @@ p2 {
 }
 
 .cta {       
-    width: 240px;
-    height: 50px;
+    font-size: 16px;
+    width: 280px;
+    height: 56px;
     margin: auto;
-    margin-top: 48px;
-    
+    margin-top: 48px;    
     cursor: pointer;
 }
 

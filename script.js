@@ -11,7 +11,7 @@ import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/
 //Sanity
 let PROJECT_ID = "jidqpryp";
 let DATASET = "production";
-let QUERY = encodeURIComponent('*[_type == "project"]');
+let QUERY = encodeURIComponent('*[_type == "project"] | order(order asc)');
 
 let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
@@ -25,6 +25,8 @@ fetch(URL)
     let secondTextfield = document.getElementsByClassName("secondTextfield");
     let meta = document.getElementsByClassName("metainfo");
 
+    console.log(result);
+
     for (let i = 0; i < projecttitles.length; i++) {
         projecttitles[i].textContent = result[i].title;
         subtitles[i].textContent = result[i].subtitle;
@@ -33,6 +35,7 @@ fetch(URL)
         meta[i].textContent = result[i].metainfo;
     }
   })
+
   .catch((err) => console.error(err));
   
 /**
