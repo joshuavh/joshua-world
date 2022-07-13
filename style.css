@@ -156,8 +156,8 @@ p2 {
 
 .modal {
     height: 100%;
-    width: 100vw;
-    overflow-y: auto;
+    width: 100%;
+    overflow-y: scroll;
     background-color: #1c0024;
     color: white;
     position: fixed; 
@@ -165,13 +165,9 @@ p2 {
     display: none;
 }
 
-#start {
-    display: block;
-}
-
 .header {
     height: 520px;
-    width: 100vw;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -195,7 +191,6 @@ p2 {
     row-gap: 96px;
     justify-content: space-between;
     padding-bottom: 48px;
-
 }
 
 .project-img{
@@ -263,6 +258,7 @@ p2 {
 
     .modal-content-wrapper {
         margin: 20px;
+        margin-bottom: 48px;
         row-gap: 56px;
     }
 
