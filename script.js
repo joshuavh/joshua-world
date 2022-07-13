@@ -70,7 +70,6 @@ const progressBar = document.getElementById("progress-bar");
 
 loadingManager.onProgress = function(url, loaded, total) {
     progressBar.style.width = (loaded / total) * 100 + "%";
-    console.log(progressBar.width);
 }
 loadingManager.onLoad = function(url, loaded, total){
     progressContainer.style.display = "none";
@@ -223,7 +222,7 @@ for ( let i = 0; i < 8; i ++ ) {
     gltfLoader.load(
     '/models/man.glb', function(gltf){
         var man = gltf.scene;
-        man.scale.set(.48,.48,.48);
+        man.scale.set(.49,.49,.49);
         man.position.set(9.5 + Math.random()*1.5-.75, 0, 0 + Math.random()*4-2);
         man.rotation.y = Math.random()*36;
         gltf.scene.traverse( function( node ) {
@@ -306,7 +305,7 @@ var action;
 gltfLoader.load(
     '/models/girl.glb', function(gltf){
         girl = gltf.scene;
-        girl.scale.set(.06,.06,.06);
+        girl.scale.set(.065,.065,.065);
 
         //Playing Animation
         mixer = new THREE.AnimationMixer( girl );
@@ -570,7 +569,7 @@ const tick = () =>
         bird.position.x = Math.sin(g * Math.PI * 1) * 8;
         bird.position.z = Math.cos(g * Math.PI * 1) * 8;
         bird.rotation.y = g * Math.PI - Math.PI/2;
-        g -= 0.0008;
+        g -= 0.001;
     }
 
     // Robot Animation
