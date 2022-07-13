@@ -21,16 +21,18 @@ fetch(URL)
     let projecttitles = document.getElementsByClassName("projecttitle");
     let subtitles = document.getElementsByClassName("subtitle");
     let headline = document.getElementsByClassName("projectheadline");
+    let modal_subtitles = document.getElementsByClassName("modal-subtitle");
     let firstTextfield = document.getElementsByClassName("firstTextfield");
     let secondTextfield = document.getElementsByClassName("secondTextfield");
     let meta = document.getElementsByClassName("metainfo");
 
-    console.log(result[4].title);
+    console.log(result[4]);
 
     for (let i = 0; i < result.length; i++) {
         projecttitles[i].textContent = result[i].title;
         subtitles[i].textContent = result[i].subtitle;
         headline[i].textContent = result[i].title;
+        modal_subtitles[i].textContent = result[i].subtitle;
         firstTextfield[i].textContent = result[i].firsttextfield;
         secondTextfield[i].textContent = result[i].secondtextfield;
         meta[i].textContent = result[i].metainfo;

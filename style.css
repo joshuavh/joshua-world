@@ -170,7 +170,7 @@ p2 {
 }
 
 .header {
-    height: 480px;
+    height: 520px;
     width: 100vw;
     background-size: cover;
     background-repeat: no-repeat;
@@ -206,10 +206,14 @@ p2 {
 .close {
     position: fixed;
     background-image: url("/img/icons/close.png");
-    background-size: 48px;
-    width: 48px;
-    min-width: 48px;
-    height: 48px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(28,0,36, 0.8);
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border-radius: 50%;
     top: 24px;
     right: 24px;
     z-index: 999;
@@ -267,6 +271,7 @@ p2 {
 
     .header-wrapper {
         margin: auto 20px auto 20px;
+        font-size: 48px;
     }
 
   }
