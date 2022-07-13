@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joshua's World</title>
-
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -13,12 +14,12 @@
 
     <div id="loadingscreen">  
         <div id="loader-wrapper">   
-            <h1>Hi there!</h1>
+            <h1>Hallo / Hello / Hei!</h1>
             <br>
-            <p2>I am a designer who likes to create digital experiences. But let me tell you a little more about myself...</p2>
+            <h1 span style="font-weight: 300;">I am a designer who likes to create digital experiences. But let me tell you a little more about myself...</h1>
             <br>
             <progress id="progress-bar" value="0" max="100"></progress>
-            <button id="cta-button" href="#start" style="display: none;">Explore my world</button>
+            <button class="button cta" id="start-button" href="#start" style="display: none;">Explore my world</button>
         </div>
     </div>
 
@@ -39,7 +40,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button class="modal-button" href="#myModal1">View project</button>
+        <button class="button primary" href="#myModal1">View project</button>
     </div>
 
     <div class="project" id="seismic">
@@ -50,7 +51,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button class="modal-button" href="#myModal2">View project</button>
+        <button class="button primary" href="#myModal2">View project</button>
 
     </div>
 
@@ -62,7 +63,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button class="modal-button" href="#myModal3">View project</button>
+        <button class="button primary" href="#myModal3">View project</button>
 
     </div>
 
@@ -74,7 +75,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button class="modal-button" href="#myModal4">View project</button>
+        <button class="button primary" href="#myModal4">View project</button>
     </div>
 
     <div class="project" id="syng">
@@ -85,7 +86,7 @@
                 <p class="subtitle"></p>
             </div>
         </div>
-        <button class="modal-button" href="#myModal5">View project</button>
+        <button class="button primary" href="#myModal5">View project</button>
 
     </div>
 
@@ -167,8 +168,7 @@
 
 
 <script>
-    var btn = document.querySelectorAll("button.modal-button");
-    var start_btn = document.getElementsByClassName("button.modal-button");
+    var btn = document.querySelectorAll(".primary");
     var modals = document.querySelectorAll('.modal');
     var X = document.getElementsByClassName("close");
 
@@ -180,6 +180,8 @@ for (var i = 0; i < btn.length; i++) {
     modal.style.display = "block";
  }
 }
+
+console.log(btn);
 
 // When the user clicks on(x), close the modal
 for (var i = 0; i < X.length; i++) {
@@ -197,14 +199,12 @@ for (var i = 0; i < X.length; i++) {
 //      }
 //     }
 // }
-document.getElementById("cta-button").onclick = function() {myFunction()};
+document.getElementById("start-button").onclick = function() {myFunction()};
 function myFunction() {
   document.getElementById("loadingscreen").style.display = "none";
 }
 </script>
 
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="loader.css">
 <script type="module" src="script.js"></script>
 
 

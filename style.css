@@ -121,7 +121,7 @@ p2 {
     background-position: center;
 }
 
-.modal-button{
+.button{
     width: 100%;
     padding: 16px;
     font-size: 14px;
@@ -134,15 +134,24 @@ p2 {
     border-radius: 8px;    
 }
 
-.modal-button:hover {
+.button:hover {
     cursor: pointer;
     color: #FFC6EA; 
     background-color: #6a0061;
 }
-.modal-button:active { 
+.button:active { 
     cursor: pointer;
     color: #FFC6EA; 
     background-color: #6a0061;
+}
+
+.cta {       
+    width: 240px;
+    height: 50px;
+    margin: auto;
+    margin-top: 48px;
+    
+    cursor: pointer;
 }
 
 .modal {

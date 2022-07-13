@@ -67,7 +67,7 @@ loadingManager.onProgress = function(url, loaded, total) {
 }
 loadingManager.onLoad = function(url, loaded, total){
     progressBar.style.display = "none";
-    document.getElementById("cta-button").style.display = "block";
+    document.getElementById("start-button").style.display = "block";
     
 }
 

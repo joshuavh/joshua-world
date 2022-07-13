@@ -13,7 +13,7 @@
   #loader-wrapper{
     position: absolute;
     width: 90%;
-    max-width: 540px;
+    max-width: 960px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -49,24 +49,4 @@
     background-color: #c810b9;
     border-radius: 8px;
 
-  }
-
-  #cta-button {
-    padding: 16px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    border: none;
-    background-color: #fecfeb;
-    color: #481575;
-    border-radius: 8px;    
-    
-    width: 240px;
-    height: 50px;
-    text-align: center;
-    margin: auto;
-    margin-top: 48px;
-
-    cursor: pointer;
   }
