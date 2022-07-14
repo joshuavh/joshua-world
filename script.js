@@ -12,12 +12,16 @@ let PROJECT_ID = "jidqpryp";
 let DATASET = "production";
 let QUERY = encodeURIComponent('*[_type == "project"] | order(order asc)');
 
-let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
+
+let URL = `https://${PROJECT_ID}.api.sanity.io/v2022-07-11/data/query/${DATASET}?query=${QUERY}`;
+
 
 // fetch the content
 fetch(URL)
   .then((res) => res.json())
   .then(({ result }) => {
+    let thumbnail = document.getElementsByClassName("thumbnail");
+    let header = document.getElementsByClassName("header");
     let projecttitles = document.getElementsByClassName("projecttitle");
     let subtitles = document.getElementsByClassName("subtitle");
     let headline = document.getElementsByClassName("projectheadline");
@@ -25,8 +29,13 @@ fetch(URL)
     let firstTextfield = document.getElementsByClassName("firstTextfield");
     let secondTextfield = document.getElementsByClassName("secondTextfield");
     let meta = document.getElementsByClassName("metainfo");
+    let projectImage = document.getElementsByClassName("project-img");
+
+    console.log(header[0].style.backgroundImage);
 
     for (let i = 0; i < result.length; i++) {
+        thumbnail[i].src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].thumbnail.asset._ref.substring(6, result[i].thumbnail.asset._ref.length-4) + ".jpg";
+        header[i].style.backgroundImage = 'linear-gradient(to bottom, rgba(0,0,0, 0.25), rgba(28,0,36, 0.75)), url(https://cdn.sanity.io/images/jidqpryp/production/' + result[i].herobanner.asset._ref.substring(6, result[i].herobanner.asset._ref.length-4) + '.jpg)';
         projecttitles[i].textContent = result[i].title;
         subtitles[i].textContent = result[i].subtitle;
         headline[i].textContent = result[i].title;
@@ -34,6 +43,7 @@ fetch(URL)
         firstTextfield[i].textContent = result[i].firsttextfield;
         secondTextfield[i].textContent = result[i].secondtextfield;
         meta[i].textContent = result[i].metainfo;
+        projectImage[i].src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].productimage.asset._ref.substring(6, result[i].productimage.asset._ref.length-4) + ".jpg";
     }
   })
 
