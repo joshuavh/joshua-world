@@ -217,6 +217,27 @@ p2 {
     background-color: #ff9bd7;
 }
 
+.embed-container {
+    --video--width: 960;
+    --video--height: 540;
+  
+    position: relative;
+    padding-bottom: calc(var(--video--height) / var(--video--width) * 100%); /* 41.66666667% */
+    overflow: hidden;
+    max-width: 100%;
+    background: black;
+  }
+  
+  .embed-container iframe,
+  .embed-container object,
+  .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
 /* Fade-In Effect */
 .visible {
     visibility: visible;

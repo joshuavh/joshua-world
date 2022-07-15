@@ -572,7 +572,7 @@ const tick = () =>
         girl.position.x = Math.sin(f * Math.PI * 1) * 10.8;
         girl.position.z = Math.cos(f * Math.PI * 1) * 10.8;
         girl.rotation.y = f * Math.PI + Math.PI/2;
-        f += 0.0002;
+        f += 0.0001;
     }
 
     if ( bird ) {
