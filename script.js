@@ -27,7 +27,6 @@ fetch(URL)
     let subtitles = document.getElementsByClassName("subtitle");
     let headline = document.getElementsByClassName("projectheadline");
     let modal_subtitles = document.getElementsByClassName("modal-subtitle");
-    let array = document.getElementsByClassName("array");
 
     console.log(result);
 
@@ -38,24 +37,25 @@ fetch(URL)
         subtitles[i].textContent = result[i].subtitle;
         headline[i].textContent = result[i].title;
         modal_subtitles[i].textContent = result[i].subtitle;
-        for (let a = 0; a < result[i].credits.length; a++ ){
-            let newCredit = document.createElement('p');
-            newCredit.classList.add('credit');
-            newCredit.textContent = result[i].credits[a];
-            modal[i].appendChild(newCredit);
-        }
         for (let b = 0; b < result[i].sections.length; b++ ){
             if (result[i].sections[b]._type == 'text-field'){
-                array[i].innerHTML += '<p2>' + result[i].sections[b].input + '</p2><br><br>';
+                modal[i].innerHTML += '<p2>' + result[i].sections[b].input + '</p2>';
             }
             if (result[i].sections[b]._type == "product-image"){
                 let newImg = document.createElement('img');
                 newImg.classList.add('project-img');
                 newImg.src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].sections[b].asset._ref.substring(6, result[i].sections[b].asset._ref.length-4) + ".jpg";
-                array[i].appendChild(newImg);
-            }
-            else{
-            }        
+                modal[i].appendChild(newImg);
+            }  
+        }
+        let credits = document.createElement('div');
+        credits.classList.add('credits');
+        modal[i].appendChild(credits);
+        for (let a = 0; a < result[i].credits.length; a++ ){
+            let newCredit = document.createElement('p');
+            newCredit.classList.add('credit');
+            newCredit.textContent = result[i].credits[a];
+            credits.appendChild(newCredit);
         }
     }
 

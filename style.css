@@ -183,22 +183,22 @@ p2 {
 
 .modal-content-wrapper {
     max-width: 800px;
-    margin: 48px auto 48px auto;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
     display: flex;
-    flex-direction: column;
-    /*row-gap: 96px;*/
+    flex-direction: column;s
+    row-gap: 80px;
     justify-content: space-between;
-    padding-bottom: 48px;
-}
-
-.modal-subtitle {
-    margin-bottom: 48px;
 }
 
 .project-img{
     width:100%;
     height:auto;
-    padding: 32px 0 32px 0;
+}
+
+.credits {
+    text-align: center;
 }
 
 .close {
@@ -259,7 +259,8 @@ p2 {
 
 @media only screen and (max-width: 1200px) {
     .modal-content-wrapper {
-        margin: 48px;
+        margin: 48px 48px 48px 48px;
+        row-gap: 64px;
     }
 
     .header-wrapper {
@@ -295,9 +296,8 @@ p2 {
     }
 
     .modal-content-wrapper {
-        margin: 20px;
-        margin-bottom: 48px;
-        /*row-gap: 56px;*/
+        margin: 32px 20px 48px 20px;
+        row-gap: 40px;
     }
 
     .header {
