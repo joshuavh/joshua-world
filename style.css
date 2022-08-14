@@ -194,6 +194,7 @@ p2 {
 .project-img{
     width:100%;
     height:auto;
+    padding: 32px 0 32px 0;
 }
 
 .close {
