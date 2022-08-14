@@ -20,14 +20,16 @@ let URL = `https://${PROJECT_ID}.api.sanity.io/v2022-07-11/data/query/${DATASET}
 fetch(URL)
   .then((res) => res.json())
   .then(({ result }) => {
+    let modal = document.getElementsByClassName("modal-content-wrapper"); 
     let thumbnail = document.getElementsByClassName("thumbnail");
     let header = document.getElementsByClassName("header");
     let projecttitles = document.getElementsByClassName("projecttitle");
     let subtitles = document.getElementsByClassName("subtitle");
     let headline = document.getElementsByClassName("projectheadline");
     let modal_subtitles = document.getElementsByClassName("modal-subtitle");
-    let meta = document.getElementsByClassName("metainfo");
     let array = document.getElementsByClassName("array");
+
+    console.log(result);
 
     for (let i = 0; i < result.length; i++) {
         thumbnail[i].src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].thumbnail.asset._ref.substring(6, result[i].thumbnail.asset._ref.length-4) + ".jpg";
@@ -36,15 +38,20 @@ fetch(URL)
         subtitles[i].textContent = result[i].subtitle;
         headline[i].textContent = result[i].title;
         modal_subtitles[i].textContent = result[i].subtitle;
-        meta[i].textContent = result[i].metainfo;
-        for (let a = 0; a < result[i].sections.length; a++ ){
-            if (result[i].sections[a]._type == 'text-field'){
-                array[i].innerHTML += '<p2>' + result[i].sections[a].input + '</p2><br><br>';
+        for (let a = 0; a < result[i].credits.length; a++ ){
+            let newCredit = document.createElement('p');
+            newCredit.classList.add('credit');
+            newCredit.textContent = result[i].credits[a];
+            modal[i].appendChild(newCredit);
+        }
+        for (let b = 0; b < result[i].sections.length; b++ ){
+            if (result[i].sections[b]._type == 'text-field'){
+                array[i].innerHTML += '<p2>' + result[i].sections[b].input + '</p2><br><br>';
             }
-            if (result[i].sections[a]._type == "product-image"){
+            if (result[i].sections[b]._type == "product-image"){
                 let newImg = document.createElement('img');
                 newImg.classList.add('project-img');
-                newImg.src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].sections[a].asset._ref.substring(6, result[i].sections[a].asset._ref.length-4) + ".jpg";
+                newImg.src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].sections[b].asset._ref.substring(6, result[i].sections[b].asset._ref.length-4) + ".jpg";
                 array[i].appendChild(newImg);
             }
             else{

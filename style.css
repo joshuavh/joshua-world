@@ -186,9 +186,13 @@ p2 {
     margin: 48px auto 48px auto;
     display: flex;
     flex-direction: column;
-    row-gap: 96px;
+    /*row-gap: 96px;*/
     justify-content: space-between;
     padding-bottom: 48px;
+}
+
+.modal-subtitle {
+    margin-bottom: 48px;
 }
 
 .project-img{
@@ -293,7 +297,7 @@ p2 {
     .modal-content-wrapper {
         margin: 20px;
         margin-bottom: 48px;
-        row-gap: 56px;
+        /*row-gap: 56px;*/
     }
 
     .header {
