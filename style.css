@@ -44,6 +44,10 @@ p2 {
     font-weight: 400;
 }
 
+a{
+   color: #A02EE2;
+}
+
 .helptext{
     font-size: 16px;
     font-weight: 600;
@@ -187,7 +191,7 @@ p2 {
     margin-top: 80px;
     margin-bottom: 80px;
     display: flex;
-    flex-direction: column;s
+    flex-direction: column;
     row-gap: 80px;
     justify-content: space-between;
 }

@@ -46,6 +46,9 @@ fetch(URL)
                 newImg.classList.add('project-img');
                 newImg.src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].sections[b].asset._ref.substring(6, result[i].sections[b].asset._ref.length-4) + ".jpg";
                 modal[i].appendChild(newImg);
+            }
+            else {
+                console.log("Mux video here");  
             }  
         }
         let credits = document.createElement('div');
@@ -133,7 +136,7 @@ street.position.y = 0.001;
 const dummyMatrix = new THREE.Matrix4();
 
 gltfLoader.load(
-    '/models/city2.glb', 
+    '/models/city3.glb', 
     function(gltf){
         var city = gltf.scene;
         gltf.scene.traverse( function( node ) {
@@ -163,6 +166,22 @@ gltfLoader.load(
         portal.position.x = -8.5;
         portal.position.z = -4;
         portal.rotation.y = 1.1;
+});
+
+gltfLoader.load(
+    '/models/house.glb', 
+    function(gltf){
+        var house = gltf.scene;
+        gltf.scene.traverse( function( node ) {
+            if ( node.isMesh ) { 
+                node.castShadow = true;
+                node.receiveShadow = true;
+            }
+        } );
+        scene.add(house)
+        house.scale.set(.5,.5,.5);
+        house.position.set(-5,0,8);
+        house.rotation.y = -0.55;
 });
 
 var car;
@@ -200,7 +219,7 @@ gltfLoader.load(
         } );
         scene.add(joshua);
         joshua.scale.set(.48,.48,.48);
-        joshua.position.set(0,0,10.5);
+        joshua.position.set(-1.5,0,10.4);
         joshua.rotation.y = 0;
 });
 
@@ -352,7 +371,7 @@ var action2;
 gltfLoader.load(
     '/models/cyclist.glb', function(gltf){
         cyclist = gltf.scene;
-        cyclist.scale.set(.3,.3,.3);
+        cyclist.scale.set(.32,.32,.32);
 
         //Playing Animation
         mixer2 = new THREE.AnimationMixer( cyclist );
@@ -397,7 +416,6 @@ var robot;
 gltfLoader.load(
     '/models/robot.glb', function(gltf){
         robot = gltf.scene;
-        
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
                 node.castShadow = true;
@@ -408,6 +426,23 @@ gltfLoader.load(
         robot.scale.set(.5,.5,.5);
         robot.position.set(-9.2,.75,4);
         robot.rotation.y = -Math.PI/2;
+});
+
+var mailbox;
+gltfLoader.load(
+    '/models/mailbox.glb', function(gltf){
+        mailbox = gltf.scene;
+        gltf.scene.traverse( function( node ) {
+            if ( node.isMesh ) { 
+                node.material.metalness = 0;
+                node.castShadow = true;
+                node.receiveShadow = true;
+            }
+        } );
+        scene.add(mailbox);
+        mailbox.scale.set(.32,.32,.32);
+        mailbox.position.set(-1.8,0,10.3);
+        mailbox.rotation.y = -0.3;
 });
 
 var rocks;
@@ -670,6 +705,15 @@ const tick = () =>
       else {  
         project5.classList.add("hidden");
         project5.classList.remove("visible");
+    }
+
+    if (azimuthalAngle >= -0.25 && azimuthalAngle < -0.1) {
+        contact.classList.remove("hidden");
+        contact.classList.add("visible");
+      }
+      else {  
+        contact.classList.add("hidden");
+        contact.classList.remove("visible");
     }
 
 
