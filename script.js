@@ -533,8 +533,8 @@ composer.addPass(renderPass);
 
 const bokehPass = new BokehPass(scene, camera, {
   focus: 5,
-  aperture: 0.0008,
-  maxblur: 0.005,
+  aperture: 0.008,
+  maxblur: 0.01,
   width: window.innerWidth,
   height: window.innerHeight
 });
