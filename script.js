@@ -37,8 +37,6 @@ fetch(URL)
     let headline = document.getElementsByClassName("projectheadline");
     let modal_subtitles = document.getElementsByClassName("modal-subtitle");
 
-    console.log(result);
-
     for (let i = 0; i < result.length; i++) {
         thumbnail[i].src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].thumbnail.asset._ref.substring(6, result[i].thumbnail.asset._ref.length-4) + ".jpg";
         header[i].style.backgroundImage = 'linear-gradient(to bottom, rgba(0,0,0, 0.25), rgba(28,0,36, 0.75)), url(https://cdn.sanity.io/images/jidqpryp/production/' + result[i].herobanner.asset._ref.substring(6, result[i].herobanner.asset._ref.length-4) + '.jpg)';
@@ -520,7 +518,6 @@ window.addEventListener('resize', () =>
 
     // Update renderer
     renderer.setSize(sizes.width, sizes.height);
-    pixelRatio = Math.min(window.devicePixelRatio, 2);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Update renderer
