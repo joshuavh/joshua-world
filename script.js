@@ -4,6 +4,15 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.136.0';
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls.js';
 import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/DRACOLoader.js';
+import { EffectComposer } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/ShaderPass.js';
+import { GammaCorrectionShader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/shaders/GammaCorrectionShader.js';
+import { FXAAShader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/shaders/FXAAShader.js';
+import { BokehPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/BokehPass.js';
+
+
+
 //import * as dat from 'dat.gui'
 //import Stats from 'stats.js'
 
@@ -464,7 +473,7 @@ gltfLoader.load(
 
 
 // Camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 1, 60);
 camera.position.set(0,4,15);
 scene.add(camera);
 
@@ -489,12 +498,12 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.setClearColor( 0xffd4e5, 1 );
+const pixelRatio = Math.min(window.devicePixelRatio, 2);
+renderer.setPixelRatio(pixelRatio);
+renderer.setClearColor( 0xffb8d4, 1 );
 //scene.background = null;
 
 renderer.outputEncoding = THREE.sRGBEncoding;
-
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -512,7 +521,33 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    // Update renderer
+    bokehPass.setSize(sizes.width, sizes.height)
 })
+
+// Bokeh
+const composer = new EffectComposer(renderer);
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+
+const bokehPass = new BokehPass(scene, camera, {
+  focus: 5,
+  aperture: 0.0005,
+  maxblur: 0.005,
+  width: window.innerWidth,
+  height: window.innerHeight
+});
+bokehPass.needsSwap = true;
+composer.addPass(bokehPass);
+
+const gammaCorrectionPass = new ShaderPass( GammaCorrectionShader );
+composer.addPass( gammaCorrectionPass );
+
+const effectFXAA = new ShaderPass( FXAAShader );
+effectFXAA.uniforms[ 'resolution' ].value.x = 1 / ( window.innerWidth * pixelRatio );
+effectFXAA.uniforms[ 'resolution' ].value.y = 1 / ( window.innerHeight * pixelRatio);
+composer.addPass( effectFXAA );  
 
 
 // Lights
@@ -611,22 +646,22 @@ const tick = () =>
     controls.update()
 
     if ( car ) {
-        car.position.x = -Math.sin(i * Math.PI * 1) * 11.8;
-        car.position.z = -Math.cos(i * Math.PI * 1) * 11.8;
+        car.position.x = -Math.sin(i * Math.PI) * 11.8;
+        car.position.z = -Math.cos(i * Math.PI) * 11.8;
         car.rotation.y = i * Math.PI + Math.PI/2;
         i -= 0.002;
     }
 
     if ( girl ) {
-        girl.position.x = Math.sin(f * Math.PI * 1) * 10.8;
-        girl.position.z = Math.cos(f * Math.PI * 1) * 10.8;
+        girl.position.x = Math.sin(f * Math.PI) * 10.8;
+        girl.position.z = Math.cos(f * Math.PI) * 10.8;
         girl.rotation.y = f * Math.PI + Math.PI/2;
         f += 0.0001;
     }
 
     if ( bird ) {
-        bird.position.x = Math.sin(g * Math.PI * 1) * 8;
-        bird.position.z = Math.cos(g * Math.PI * 1) * 8;
+        bird.position.x = Math.sin(g * Math.PI) * 8;
+        bird.position.z = Math.cos(g * Math.PI) * 8;
         bird.rotation.y = g * Math.PI - Math.PI/2;
         g -= 0.001;
     }
@@ -730,7 +765,10 @@ const tick = () =>
 
      // Render
      //stats.begin()
-     renderer.render(scene, camera)
+
+     //renderer.render(scene, camera)
+     composer.render()
+
      //stats.end()
  
      // Call tick again on the next frame
