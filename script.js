@@ -316,9 +316,9 @@ gltfLoader.load(
                 instancedTree.receiveShadow = true;
                 scene.add( instancedTree );
 
-                instancedTree.position.x = Math.sin(i/18 * Math.PI) * 13.2 + Math.random()*2-1;
+                instancedTree.position.x = Math.sin(i/18 * Math.PI) * 13.5 + Math.random()*2-1;
                 instancedTree.position.y = 0;
-                instancedTree.position.z = Math.cos(i/18 * Math.PI) * 13.2 + Math.random()*2-1;
+                instancedTree.position.z = Math.cos(i/18 * Math.PI) * 13.5 + Math.random()*2-1;
                 instancedTree.rotation.x = Math.PI/2;
                 instancedTree.rotation.z = Math.random() * Math.PI;
                 
@@ -498,7 +498,7 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
-const pixelRatio = Math.min(window.devicePixelRatio, 2);
+let pixelRatio = Math.min(window.devicePixelRatio, 2);
 renderer.setPixelRatio(pixelRatio);
 renderer.setClearColor( 0xffb8d4, 1 );
 //scene.background = null;
@@ -511,16 +511,17 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 window.addEventListener('resize', () =>
 {
     // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+    sizes.width = window.innerWidth;
+    sizes.height = window.innerHeight;
 
     // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
+    camera.aspect = sizes.width / sizes.height;
+    camera.updateProjectionMatrix();
 
     // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setSize(sizes.width, sizes.height);
+    pixelRatio = Math.min(window.devicePixelRatio, 2);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Update renderer
     bokehPass.setSize(sizes.width, sizes.height)
