@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon.png" sizes="16x16">
-    Order
 </head>
 <body>
 
@@ -27,12 +26,17 @@
             <button class="button cta" id="start-button" href="#start" style="display: none;">Explore my world →</button>
         </div>
     </div>
-
-    <ul class ="menu">
-        <li a href="about.html">About</li>
-        <li a href="impressum.html">Impressum</li>
-        <li a href="contact.html">Contact</li>
-    </ul>
+    
+    <div id="menu-icon"></div>
+    <div id="menu" class="menu hidden">
+        <div id="overlay"></div>
+        <ul id ="menu-items">
+            <li><p2 style="color:#996ab8">Joshua's World</p2></li>
+            <li><a class="menu-item" href="about.html">About</a></li>
+            <li><a class="menu-item" href="impressum.html">Impressum</a></li>
+            <li><a class="menu-item" href="contact.html">Contact</a></li>
+        </ul>
+    </div>
 
     <canvas class="webgl"></canvas>
 
