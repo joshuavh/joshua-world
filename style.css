@@ -56,6 +56,12 @@ a{
     color: #481575;
 }
 
+#intro {
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 120%; 
+}
+
 .sign {
     position: fixed;
     width: 90%;
@@ -287,6 +293,11 @@ a{
     p2 {
         font-size: 18px;
     }
+
+    #intro {
+        font-size: 24px;
+    }
+    
 
     .helptext span {
         display: none;
