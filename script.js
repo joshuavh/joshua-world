@@ -480,8 +480,8 @@ const controls = new OrbitControls(camera, canvas);
 controls.target.set(0,0,0);
 controls.enableZoom = false;
 controls.enablePan = false;
-controls.maxPolarAngle = Math.PI/2.3;
-controls.minPolarAngle = Math.PI/2.3;
+controls.maxPolarAngle = Math.PI/2.25;
+controls.minPolarAngle = Math.PI/2.25;
 controls.enableDamping = true;
 controls.rotateSpeed = 0.25;
 
@@ -531,7 +531,7 @@ composer.addPass(renderPass);
 
 const bokehPass = new BokehPass(scene, camera, {
   focus: 5,
-  aperture: 0.0008,
+  aperture: 0.0005,
   maxblur: 0.005,
   width: window.innerWidth,
   height: window.innerHeight
@@ -543,7 +543,7 @@ const gammaCorrectionPass = new ShaderPass( GammaCorrectionShader );
 composer.addPass( gammaCorrectionPass );
 
 const effectFXAA = new ShaderPass( FXAAShader );
-effectFXAA.uniforms[ 'resolution' ].value.x = 1 / ( window.innerWidth * pixelRatio );
+effectFXAA.uniforms[ 'resolution' ].value.x = 1 / ( window.innerWidth * pixelRatio);
 effectFXAA.uniforms[ 'resolution' ].value.y = 1 / ( window.innerHeight * pixelRatio);
 composer.addPass( effectFXAA );  
 
