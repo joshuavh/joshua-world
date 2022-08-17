@@ -4,10 +4,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to bottom, rgb(62, 0, 71), rgba(28,0,36, 1));
-    background-position: center;
+    background-color: #1c0024;
     z-index: 1000;
-    text-align: center;
     color: white;
 }
 
@@ -21,9 +19,8 @@
 }
 
 #progress {
-    width: 280px;
-    height: 56px;
-    margin: auto;
+    width: 300px;
+    height: 64px;
     margin-top: 48px;
     background-color: #c810b9;
     border-radius: 12px;
@@ -38,8 +35,8 @@
 }
 
 #loading {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;  
   color: #481575;
@@ -48,4 +45,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.cta {       
+  width: 300px;
+  height: 64px;
+  font-size: 18px;
+  margin-top: 48px; 
+  cursor: pointer;
 }

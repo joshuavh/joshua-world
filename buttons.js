@@ -30,6 +30,7 @@ for (var index in modals) {
 //      }
 //     }
 // }
+
 document.getElementById("start-button").onclick = function() {
 document.getElementById("loadingscreen").classList.add("hidden");
 }
