@@ -45,7 +45,12 @@ p2 {
 }
 
 a{
-   color: #A02EE2;
+   color: #C43DC8;
+   text-decoration: none;
+}
+
+a:hover {
+    font-style: italic;
 }
 
 .helptext{
@@ -65,17 +70,18 @@ a{
 .sign {
     position: fixed;
     width: 90%;
-    max-width: 480px;
+    max-width: 400px;
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
     color: #481575;
-    background-color: rgba(255, 228, 239, 1);
+    background-color: #ffe5f1;
     border-radius: 16px;
     box-sizing: border-box;
     padding: 24px;
     z-index: 888;
     text-align: center;
+    filter: drop-shadow(0px 32px 64px rgba(160, 0, 109, 0.2));
   }
 
 #swipe {
@@ -91,13 +97,14 @@ a{
 .project {
     position: fixed;
     width: 90%;
-    max-width: 480px;
+    max-width: 400px;
     top: 10%;
     left: 50%;
     padding: 24px;
     transform: translateX(-50%);
     color: #481575;
-    background-color: rgba(255, 228, 239, 0.9);
+    background-color: #ffe5f1;
+    filter: drop-shadow(0px 32px 64px rgba(160, 0, 109, 0.2));
     border-radius: 16px;
     z-index: 888;
 
@@ -238,6 +245,17 @@ a{
     background-color: rgba(28,0,36, 0.5);
 }
 
+#logo{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+    color: #F57CC0;
+    font-weight: 700;
+    line-height: 90%;
+    z-index: 999;
+}
+
 #menu-icon{
     position: fixed;
     background-image: url("/img/icons/menu.png");
@@ -361,7 +379,7 @@ a{
     .modal-content-wrapper {
         margin: 32px 20px 48px 20px;
         row-gap: 40px;
-    }👆🏻
+    }
 
     .header {
         height: 360px;

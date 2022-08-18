@@ -54,3 +54,12 @@
   margin-top: 48px; 
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+.cta {
+  width: 100%;
+}
+#progress {
+  width: 100%;
+}
+}
