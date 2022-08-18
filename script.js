@@ -10,17 +10,13 @@ import { ShaderPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/p
 import { GammaCorrectionShader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/shaders/GammaCorrectionShader.js';
 import { FXAAShader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/shaders/FXAAShader.js';
 import { BokehPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/BokehPass.js';
+import Stats from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/libs/stats.module';
 
-
-
-//import * as dat from 'dat.gui'
-//import Stats from 'stats.js'
 
 //Sanity
 let PROJECT_ID = "jidqpryp";
 let DATASET = "production";
 let QUERY = encodeURIComponent('*[_type == "project"] | order(order asc)');
-
 
 let URL = `https://${PROJECT_ID}.api.sanity.io/v2022-07-11/data/query/${DATASET}?query=${QUERY}`;
 
@@ -77,11 +73,10 @@ fetch(URL)
  * Debug
  */
 //const gui = new dat.GUI()
-/*
+
 const stats = new Stats()
 stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-*/
-//npdocument.body.appendChild(stats.dom)
+document.body.appendChild(stats.dom)
 
 const canvas = document.querySelector('canvas.webgl')
 
@@ -762,12 +757,12 @@ const tick = () =>
     scrollSpeed();
 
      // Render
-     //stats.begin()
+     stats.begin()
 
      //renderer.render(scene, camera)
      composer.render()
 
-     //stats.end()
+    stats.end()
  
      // Call tick again on the next frame
      window.requestAnimationFrame(tick)
