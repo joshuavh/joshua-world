@@ -22,7 +22,7 @@ h1{
 
 h2{
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 140%;
 }
 
@@ -75,13 +75,13 @@ a:hover {
     left: 50%;
     transform: translateX(-50%);
     color: #481575;
-    background-color: #ffe5f1;
+    background-color: #ffe9f3;
     border-radius: 16px;
     box-sizing: border-box;
     padding: 24px;
     z-index: 888;
     text-align: center;
-    filter: drop-shadow(0px 32px 64px rgba(160, 0, 109, 0.2));
+    filter: drop-shadow(0px 40px 80px rgba(160, 0, 109, 0.2));
   }
 
 #swipe {
@@ -104,7 +104,7 @@ a:hover {
     transform: translateX(-50%);
     color: #481575;
     background-color: #ffe5f1;
-    filter: drop-shadow(0px 32px 64px rgba(160, 0, 109, 0.2));
+    filter: drop-shadow(0px 40px 80px rgba(160, 0, 109, 0.2));
     border-radius: 16px;
     z-index: 888;
 
@@ -252,7 +252,7 @@ a:hover {
     font-size: 16px;
     color: #F57CC0;
     font-weight: 700;
-    line-height: 90%;
+    line-height: 100%;
     z-index: 999;
 }
 
