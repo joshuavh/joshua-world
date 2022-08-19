@@ -622,7 +622,6 @@ let i = 0;
 let f = -0.1;
 let g = 0.8;
 let h = 0.5;
-const start = document.getElementById("start");
 const sausage = document.getElementById("sausage");
 const project1 = document.getElementById("project1");
 const project2 = document.getElementById("project2");
@@ -678,7 +677,7 @@ const tick = () =>
     }
 
     if (azimuthalAngle >= 0.1 || azimuthalAngle < -0.1) {
-        start.classList.add("hidden");
+        document.getElementById("instructions").classList.add("hidden");
       }
 
     if (azimuthalAngle >= 0.45 && azimuthalAngle < 0.85) {
