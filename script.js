@@ -4,13 +4,9 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.136.0';
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls.js';
 import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/DRACOLoader.js';
-import { EffectComposer } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/ShaderPass.js';
-import { GammaCorrectionShader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/shaders/GammaCorrectionShader.js';
-import { FXAAShader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/shaders/FXAAShader.js';
-import { BokehPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/BokehPass.js';
 import Stats from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/libs/stats.module';
+import { MeshSurfaceSampler } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/math/MeshSurfaceSampler.js';
+
 
 
 //Sanity
@@ -51,7 +47,6 @@ fetch(URL)
                 modal[i].appendChild(newImg);
             }
             else {
-                console.log("Mux video here");  
             }  
         }
         let credits = document.createElement('div');
@@ -117,28 +112,10 @@ dracoLoader.setDecoderPath('https://unpkg.com/three@0.136.0/examples/js/libs/dra
 const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
 
-
-//Materials
-const streetMaterial = new THREE.MeshLambertMaterial( { color: 0xff80ab } );
-streetMaterial.color.convertSRGBToLinear();
-
-//Objects 
-
-const dummyMesh = new THREE.Object3D;
-
-const ringGeometry = new THREE.RingGeometry( 11, 12.2, 60 );
-const street = new THREE.Mesh( ringGeometry, streetMaterial );
-street.receiveShadow = true;
-scene.add( street );
-street.rotation.x = -Math.PI/2;
-street.position.y = 0.001;
-
 // Models
 
-const dummyMatrix = new THREE.Matrix4();
-
 gltfLoader.load(
-    '/models/city3.glb', 
+    '/models/island.glb', 
     function(gltf){
         var city = gltf.scene;
         gltf.scene.traverse( function( node ) {
@@ -148,10 +125,49 @@ gltfLoader.load(
             }
         } );
         scene.add(city)
-        city.scale.set(.5,.5,.5);
-        city.rotation.y = -0.55;
-
 });
+
+var surface;
+var sampler;
+gltfLoader.load(
+    '/models/treeline.glb', 
+    function(gltf){
+        surface = gltf.scene.children[0];
+        sampler = new MeshSurfaceSampler(surface).build();
+        /* Sample the coordinates */
+        const tempPosition = new THREE.Vector3();
+        const tempObject = new THREE.Object3D();
+
+var instancedTree;
+gltfLoader.load(
+    '/models/tree.glb', 
+    function(gltf){
+        for ( let i = 0; i < 80; i ++ ) {
+        gltf.scene.traverse( function( node ) {
+            if ( node.isMesh ) {
+                sampler.sample(tempPosition);
+                tempObject.position.set(tempPosition.x, tempPosition.y, tempPosition.z);
+                tempObject.rotation.x = Math.PI/2;
+                tempObject.rotation.z = Math.random() * Math.PI;
+                tempObject.scale.setScalar(Math.random() * 0.03 + 0.06);
+                tempObject.updateMatrix();
+                
+                instancedTree = new THREE.InstancedMesh( node.geometry, node.material, 1 );
+                //instancedTree.setMatrixAt( 0, dummyMatrix);
+                instancedTree.setMatrixAt(0, tempObject.matrix);
+
+                instancedTree.castShadow = true;
+                instancedTree.receiveShadow = true;
+                scene.add( instancedTree );
+            }
+        } );
+        }
+});
+});
+
+
+
+
 
 gltfLoader.load(
     '/models/portal.glb', 
@@ -292,35 +308,6 @@ for ( let i = 0; i < 8; i ++ ) {
         scene.add(man);
     });
     }
-
-gltfLoader.load(
-    '/models/tree.glb', function(gltf){
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) {
-                //node.material.color.convertSRGBToLinear();
-            }
-        } );
-        for ( let i = 0; i < 100; i ++ ) {
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) {
-                const instancedTree = new THREE.InstancedMesh( node.geometry, node.material, 1 );
-                instancedTree.setMatrixAt( 0, dummyMatrix);
-                instancedTree.castShadow = true;
-                instancedTree.receiveShadow = true;
-                scene.add( instancedTree );
-
-                instancedTree.position.x = Math.sin(i/18 * Math.PI) * 13.5 + Math.random()*2-1;
-                instancedTree.position.y = 0;
-                instancedTree.position.z = Math.cos(i/18 * Math.PI) * 13.5 + Math.random()*2-1;
-                instancedTree.rotation.x = Math.PI/2;
-                instancedTree.rotation.z = Math.random() * Math.PI;
-                
-                let size = Math.random()*0.01 + 0.05;
-                instancedTree.scale.set(size,size,size);
-            }
-        } );
-        }
-});
 
 for ( let i = 0; i < 64; i ++ ) {
 gltfLoader.load(
@@ -493,7 +480,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 let pixelRatio = Math.min(window.devicePixelRatio, 2);
 renderer.setPixelRatio(pixelRatio);
-renderer.setClearColor( 0xffb8d4, 1 );
+renderer.setClearColor( 0xFFDBE7, 1 );
 //scene.background = null;
 
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -514,34 +501,7 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Update renderer
-    bokehPass.setSize(sizes.width, sizes.height)
 })
-
-// Bokeh
-const composer = new EffectComposer(renderer);
-const renderPass = new RenderPass(scene, camera);
-composer.addPass(renderPass);
-
-const bokehPass = new BokehPass(scene, camera, {
-  focus: 5,
-  aperture: 0.0005,
-  maxblur: 0.005,
-  width: window.innerWidth,
-  height: window.innerHeight
-});
-bokehPass.needsSwap = true;
-composer.addPass(bokehPass);
-
-const gammaCorrectionPass = new ShaderPass( GammaCorrectionShader );
-composer.addPass( gammaCorrectionPass );
-
-const effectFXAA = new ShaderPass( FXAAShader );
-effectFXAA.uniforms[ 'resolution' ].value.x = 1 / ( window.innerWidth * pixelRatio);
-effectFXAA.uniforms[ 'resolution' ].value.y = 1 / ( window.innerHeight * pixelRatio);
-composer.addPass( effectFXAA );  
-
 
 // Lights
 const hemiLight = new THREE.HemisphereLight( 0xffd4e5, 0xffd4e5, 0.75 );
@@ -755,12 +715,9 @@ const tick = () =>
 
     scrollSpeed();
 
-     // Render
-     stats.begin()
-
-     //renderer.render(scene, camera)
-     composer.render()
-
+    // Render
+    stats.begin()
+    renderer.render(scene, camera)
     stats.end()
  
      // Call tick again on the next frame
