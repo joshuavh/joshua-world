@@ -68,46 +68,95 @@ gltfLoader.load(
         scene.add(city)
 });
 
-var surface;
-var sampler;
 gltfLoader.load(
-    '/models/treeline.glb', 
+    '/models/flowerPlacement.glb', 
     function(gltf){
-        surface = gltf.scene.children[0];
-        sampler = new MeshSurfaceSampler(surface).build();
+        var surface = gltf.scene.children[0];
+        var sampler = new MeshSurfaceSampler(surface).build();
         /* Sample the coordinates */
         const tempPosition = new THREE.Vector3();
         const tempObject = new THREE.Object3D();
 
-var instancedTree;
+gltfLoader.load(
+    '/models/tulip.glb', 
+    function(gltf){
+
+    var blossom = gltf.scene.getObjectByName( 'Blossom');
+    var stem = gltf.scene.getObjectByName( 'Stem');
+
+    let blossomMaterial = new THREE.MeshLambertMaterial();
+    const color = new THREE.Color();
+    const blossomPalette = [ 0xFFC2DD, 0xFFDBE7, 0xFFFFFF ];
+
+        for ( let i = 0; i < 500; i ++ ) {
+
+                sampler.sample(tempPosition);
+                tempObject.position.set(tempPosition.x, tempPosition.y + 0.1, tempPosition.z);
+                tempObject.rotation.x = Math.PI/2;
+                tempObject.rotation.z = -Math.random() * Math.PI;
+                tempObject.scale.setScalar(Math.random() * 0.6 + 0.6);
+                tempObject.updateMatrix();
+
+                color.setHex( blossomPalette[ Math.floor( Math.random() * blossomPalette.length ) ] );
+                
+                var instancedBlossom = new THREE.InstancedMesh( blossom.geometry, blossomMaterial, 1 );
+                var instancedStem = new THREE.InstancedMesh( stem.geometry, stem.material, 1 );
+
+                instancedBlossom.setMatrixAt(0, tempObject.matrix);
+                instancedStem.setMatrixAt(0, tempObject.matrix);
+                instancedBlossom.setColorAt(0, color.convertSRGBToLinear());
+
+                instancedBlossom.castShadow = true;
+                instancedStem.castShadow = true;
+                instancedBlossom.receiveShadow = true;
+                scene.add( instancedBlossom );
+                scene.add( instancedStem );
+
+    }
+});
+});
+
+
+gltfLoader.load(
+    '/models/treeline.glb', 
+    function(gltf){
+        var surface = gltf.scene.children[0];
+        var sampler = new MeshSurfaceSampler(surface).build();
+        /* Sample the coordinates */
+        const tempPosition = new THREE.Vector3();
+        const tempObject = new THREE.Object3D();
+
 gltfLoader.load(
     '/models/tree.glb', 
     function(gltf){
-        for ( let i = 0; i < 80; i ++ ) {
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) {
+
+    var tree = gltf.scene.getObjectByName( 'tree');
+    let treeMaterial = new THREE.MeshLambertMaterial();
+    const color = new THREE.Color();
+    const treePalette = [ 0x3E1886, 0x571DA4, 0x7523C5 ];
+
+        for ( let i = 0; i < 100; i ++ ) {
                 sampler.sample(tempPosition);
                 tempObject.position.set(tempPosition.x, tempPosition.y, tempPosition.z);
                 tempObject.rotation.x = Math.PI/2;
                 tempObject.rotation.z = Math.random() * Math.PI;
-                tempObject.scale.setScalar(Math.random() * 0.03 + 0.06);
+                tempObject.scale.setScalar(Math.random() * .04 + .04);
                 tempObject.updateMatrix();
+
+                color.setHex( treePalette[ Math.floor( Math.random() * treePalette.length ) ] );
+
                 
-                instancedTree = new THREE.InstancedMesh( node.geometry, node.material, 1 );
-                //instancedTree.setMatrixAt( 0, dummyMatrix);
+                var instancedTree = new THREE.InstancedMesh( tree.geometry, treeMaterial, 1 );
                 instancedTree.setMatrixAt(0, tempObject.matrix);
+                instancedTree.setColorAt(0, color.convertSRGBToLinear());
 
                 instancedTree.castShadow = true;
                 instancedTree.receiveShadow = true;
                 scene.add( instancedTree );
-            }
-        } );
-        }
+
+    }
 });
 });
-
-
-
 
 
 gltfLoader.load(
@@ -200,21 +249,21 @@ gltfLoader.load(
         truck.rotation.y = 0.66;
 });
 
-gltfLoader.load(
-    '/models/stage.glb', 
-    function(gltf){
-        var stage = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        scene.add(stage);
-        stage.scale.set(.45,.45,.45);
-        stage.position.x = 7.5;
-        stage.rotation.y = Math.PI/2;
-});
+// gltfLoader.load(
+//     '/models/stage.glb', 
+//     function(gltf){
+//         var stage = gltf.scene;
+//         gltf.scene.traverse( function( node ) {
+//             if ( node.isMesh ) { 
+//                 node.castShadow = true;
+//                 node.receiveShadow = true;
+//             }
+//         } );
+//         scene.add(stage);
+//         stage.scale.set(.40,.40,.40);
+//         stage.position.x = 7.5;
+//         stage.rotation.y = Math.PI/2;
+// });
 
 const shirtColor = new THREE.Color();
 const shirtPalette = [ 0xEB50AD, 0xffffff, 0xA02EE2 ];
@@ -249,27 +298,6 @@ for ( let i = 0; i < 8; i ++ ) {
         scene.add(man);
     });
     }
-
-for ( let i = 0; i < 64; i ++ ) {
-gltfLoader.load(
-    '/models/flower.glb', function(gltf){
-        var flower = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-            flower.position.x = Math.sin(i/9.5 * Math.PI) * 9.5 + Math.random()*2-1;
-            flower.position.y = 0;
-            flower.position.z = Math.cos(i/9.5 * Math.PI) * 9.5 + Math.random()*2-1;
-            flower.rotation.y = Math.random() * 360;
-            let size = Math.random()*0.2 + 0.2;
-            flower.scale.set(size,size,size);
-        } );
-
-        scene.add(flower);
-    });
-}
 
 
 var girl;
