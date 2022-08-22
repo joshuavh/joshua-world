@@ -91,7 +91,7 @@ gltfLoader.load(
         for ( let i = 0; i < 500; i ++ ) {
 
                 sampler.sample(tempPosition);
-                tempObject.position.set(tempPosition.x, tempPosition.y + 0.1, tempPosition.z);
+                tempObject.position.set(tempPosition.x, tempPosition.y + 0.05, tempPosition.z);
                 tempObject.rotation.x = Math.PI/2;
                 tempObject.rotation.z = -Math.random() * Math.PI;
                 tempObject.scale.setScalar(Math.random() * 0.6 + 0.6);
@@ -449,12 +449,14 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 let pixelRatio = Math.min(window.devicePixelRatio, 2);
 renderer.setPixelRatio(pixelRatio);
-renderer.setClearColor( 0xFFDBE7, 1 );
+//renderer.setClearColor( 0xFFDBE7, 1 );
 //scene.background = null;
+renderer.setClearColor(0x000000, 0);
+scene.background = null;
 
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = THREE.VSMShadowMap;
 
 
 window.addEventListener('resize', () =>
@@ -481,22 +483,22 @@ scene.add( hemiLight );
 
 
 const light = new THREE.DirectionalLight(0xffd4e5, 0.5, 100);
-light.position.set(3,8,3);
+light.position.set(2,6.5,2);
 light.castShadow = true;
 light.shadow.mapSize.width = 2048;
 light.shadow.mapSize.height = 2048;
-light.shadow.camera.near = 1; 
-light.shadow.camera.far = 16;
-light.shadow.camera.top = 12;
-light.shadow.camera.bottom = -12;
-light.shadow.camera.left = -12;
-light.shadow.camera.right = 12;
+light.shadow.camera.near = 0.5; 
+light.shadow.camera.far = 14;
+light.shadow.camera.top = 15;
+light.shadow.camera.bottom = -15;
+light.shadow.camera.left = -15;
+light.shadow.camera.right = 15;
 light.shadow.normalBias = 0.02;
 scene.add(light);
 scene.add( light.target );
 
-//const helper = new THREE.CameraHelper( light.shadow.camera );
-//scene.add( helper );
+// const helper = new THREE.CameraHelper( light.shadow.camera );
+// scene.add( helper );
 
 // Cursor
 const cursor = {
@@ -570,7 +572,7 @@ const tick = () =>
         car.position.x = -Math.sin(i * Math.PI) * 11.8;
         car.position.z = -Math.cos(i * Math.PI) * 11.8;
         car.rotation.y = i * Math.PI + Math.PI/2;
-        i -= 0.002;
+        i -= 0.001;
     }
 
     if ( girl ) {

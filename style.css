@@ -11,6 +11,7 @@
     top: 0;
     left: 0;
     outline: none;
+    background: linear-gradient(0deg, rgba(255,209,248,1) 40%, rgba(209,214,255,1) 70%, rgba(169,170,255,1) 100%);
 }
 
 
@@ -75,13 +76,13 @@ a:hover {
     left: 50%;
     transform: translateX(-50%);
     color: #481575;
-    background-color: #ffe9f3;
+    background-color: #fde9fd;
     border-radius: 16px;
     box-sizing: border-box;
     padding: 24px;
     z-index: 888;
     text-align: center;
-    filter: drop-shadow(0px 40px 80px rgba(160, 0, 109, 0.2));
+    filter: drop-shadow(0px 40px 80px rgba(131, 0, 160, 0.2));
 }
 
 #animation {
@@ -101,8 +102,8 @@ a:hover {
     padding: 24px;
     transform: translateX(-50%);
     color: #481575;
-    background-color: #ffe5f1;
-    filter: drop-shadow(0px 40px 80px rgba(160, 0, 109, 0.2));
+    background-color: #fde9fd;
+    filter: drop-shadow(0px 40px 80px rgba(131, 0, 160, 0.2));
     border-radius: 16px;
     z-index: 888;
 
@@ -143,26 +144,26 @@ a:hover {
     text-transform: uppercase;
     border: none;
     background-color: #fecfeb;
-    color: #481575;
+    color: #3D0059;
     border-radius: 12px;
 }
 
 .button:hover {
     cursor: pointer;
-    color: #FFC6EA; 
-    background-color: #6a0061;
+    color: #fecfeb; 
+    background-color: #3D0059;
 }
 .button:active { 
     cursor: pointer;
-    color: #FFC6EA; 
-    background-color: #6a0061;
+    color: #fecfeb; 
+    background-color: #3D0059;
 }
 
 .modal {
     height: 100%;
     width: 100%;
     overflow-y: scroll;
-    background-color: #1c0024;
+    background-color: #1e0126;
     color: white;
     position: fixed; 
     z-index: 999; 
