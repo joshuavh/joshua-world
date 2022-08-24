@@ -89,7 +89,7 @@ a:hover {
     left: 50%;
     transform: translateX(-50%);
     color: #481575;
-    background-color: #fde9fd;
+    background-color: white;
     border-radius: 16px;
     box-sizing: border-box;
     padding: 24px;
@@ -115,7 +115,7 @@ a:hover {
     padding: 24px;
     transform: translateX(-50%);
     color: #481575;
-    background-color: #fde9fd;
+    background-color: white;
     filter: drop-shadow(0px 40px 80px rgba(131, 0, 160, 0.2));
     border-radius: 16px;
     z-index: 777;
