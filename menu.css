@@ -21,7 +21,7 @@
 
 #menuToggle a:hover
 {
-  color: tomato;
+  color: #EC50AD;
 }
 
 
@@ -49,7 +49,7 @@
 {
   display: block;
   width: 33px;
-  height: 4px;
+  height: 3px;
   margin-bottom: 5px;
   position: relative;
   
@@ -82,7 +82,7 @@
 #menuToggle input:checked ~ span
 {
   opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
+  transform: rotate(45deg) translate(-4px, -2px);
   background: white;
 }
 
@@ -116,7 +116,7 @@
   padding: 50px;
   padding-top: 125px;
   
-  background: #3D0059;
+  background: #1C0024;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
