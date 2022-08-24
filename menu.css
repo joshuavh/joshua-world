@@ -2,7 +2,7 @@
 {
   display: block;
   position: fixed;
-  top: 20px;
+  top: 24px;
   right: 20px;
   
   z-index: 888;
@@ -48,9 +48,9 @@
 #menuToggle span
 {
   display: block;
-  width: 33px;
+  width: 28px;
   height: 3px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   position: relative;
   
   background: #3D0059;
@@ -58,7 +58,7 @@
   
   z-index: 888;
   
-  transform-origin: 4px 0px;
+  transform-origin: -4px 0px;
   
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
@@ -82,7 +82,7 @@
 #menuToggle input:checked ~ span
 {
   opacity: 1;
-  transform: rotate(45deg) translate(-4px, -2px);
+  transform: rotate(45deg) translate(-2px, -4px);
   background: white;
 }
 
