@@ -6,6 +6,7 @@
     <title>Joshua's World</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="menu.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -32,19 +33,23 @@
     </div>
 
     <div id="logo"><a href="index.html" style="color: #3D0059;">JOSHUAS<br>WORLD</a></div>
-    <div id="menu-icon"></div>
-    <div id="menu" class="menu hidden">
-        <div id="overlay"></div>
-        <div id ="menu-items">
-            <p2 class="menu-item" style="color:#C43DC8">Joshua's World</p2>
-            <h1>
-            <a class="menu-item" href="about.html">About</a>
-            <a class="menu-item" href="credits.html">Credits</a>
-            <a class="menu-item" href="disclaimer.html">Disclaimer</a>
-            <a class="menu-item" href="contact.html">Contact</a>
-            </h1>
+
+    <nav role="navigation">
+        <div id="menuToggle">
+
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+
+          <ul id="menu">
+            <a href="index.html"><li>Joshua's World</li></a>
+            <a href="about.html"><li>About</li></a>
+            <a href="disclaimer.html"><li>Legal</li></a>
+            <a href="contact.html"><li>Contact</li></a>
+          </ul>
         </div>
-    </div>
+      </nav>
 
     <canvas class="webgl"></canvas>
 

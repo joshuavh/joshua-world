@@ -34,14 +34,3 @@ for (var index in modals) {
 document.getElementById("start-button").onclick = function() {
 document.getElementById("loadingscreen").classList.add("hidden");
 }
-
-document.getElementById("menu-icon").onclick = function() {
-menu.classList.remove("hidden");
-menu.classList.add("visible");
-
-
-}
-document.getElementById("overlay").onclick = function() {
-menu.classList.add("hidden");
-menu.classList.remove("visible");
-}
