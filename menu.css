@@ -21,7 +21,7 @@
 
 #menuToggle a:hover
 {
-  color: #EC50AD;
+  color: #C43DC8;
 }
 
 
@@ -110,9 +110,9 @@
 #menu
 {
   position: absolute;
-  width: 200px;
+  width: 240px;
   height: 100vh;
-  margin: -100px 0 0 -200px;
+  margin: -100px 0 0 -240px;
   padding: 50px;
   padding-top: 125px;
   
@@ -130,7 +130,11 @@
 #menu li
 {
   padding: 10px 0;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.active{
+    color: #C43DC8;
 }
 
 /*

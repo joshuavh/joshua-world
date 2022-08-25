@@ -158,40 +158,6 @@ gltfLoader.load(
 });
 });
 
-
-gltfLoader.load(
-    '/models/portal.glb', 
-    function(gltf){
-        var portal = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        scene.add(portal)
-        portal.scale.set(.3,.3,.3);
-        portal.position.x = -8.5;
-        portal.position.z = -4;
-        portal.rotation.y = 1.1;
-});
-
-gltfLoader.load(
-    '/models/house.glb', 
-    function(gltf){
-        var house = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        scene.add(house)
-        house.scale.set(.5,.5,.5);
-        house.position.set(-5,0,8);
-        house.rotation.y = -0.55;
-});
-
 var car;
 gltfLoader.load(
     '/models/car.glb', function(gltf){
@@ -227,26 +193,8 @@ gltfLoader.load(
         } );
         scene.add(joshua);
         joshua.scale.set(.48,.48,.48);
-        joshua.position.set(-1.5,0,10.4);
+        joshua.position.set(-3.8,0,10);
         joshua.rotation.y = 0;
-});
-
-
-gltfLoader.load(
-    '/models/truck.glb', 
-    function(gltf){
-        var truck = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        scene.add(truck);
-        truck.scale.set(.85,.85,.85);
-        truck.position.x = 6;
-        truck.position.z = 7.7;
-        truck.rotation.y = 0.66;
 });
 
 // gltfLoader.load(
@@ -382,42 +330,8 @@ gltfLoader.load(
         } );
         scene.add(robot);
         robot.scale.set(.5,.5,.5);
-        robot.position.set(-9.2,.75,4);
+        robot.position.set(4,.75,-9);
         robot.rotation.y = -Math.PI/2;
-});
-
-var mailbox;
-gltfLoader.load(
-    '/models/mailbox.glb', function(gltf){
-        mailbox = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.material.metalness = 0;
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        scene.add(mailbox);
-        mailbox.scale.set(.32,.32,.32);
-        mailbox.position.set(-1.8,0,10.3);
-        mailbox.rotation.y = -0.3;
-});
-
-var rocks;
-gltfLoader.load(
-    '/models/rocks.glb', function(gltf){
-        rocks = gltf.scene;
-        
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        scene.add(rocks);
-        rocks.scale.set(1.5,1.5,1.5);
-        rocks.position.set(1,.72,-9);
-        rocks.rotation.y = Math.PI;
 });
 
 
@@ -553,7 +467,9 @@ let i = 0;
 let f = -0.1;
 let g = 0.8;
 let h = 0.5;
-const sausage = document.getElementById("sausage");
+const sign1 = document.getElementById("sign1");
+const sign2 = document.getElementById("sign2");
+const sign3 = document.getElementById("sign3");
 const project1 = document.getElementById("project1");
 const project2 = document.getElementById("project2");
 const project3 = document.getElementById("project3");
@@ -608,16 +524,16 @@ const tick = () =>
         document.getElementById("instructions").classList.add("hidden");
       }
 
-    if (azimuthalAngle >= 0.45 && azimuthalAngle < 0.85) {
-        sausage.classList.remove("hidden");
-        sausage.classList.add("visible");
+    if (azimuthalAngle >= 0.3 && azimuthalAngle < 0.7) {
+        sign1.classList.remove("hidden");
+        sign1.classList.add("visible");
       }
       else {  
-        sausage.classList.add("hidden");
-        sausage.classList.remove("visible");
+        sign1.classList.add("hidden");
+        sign1.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= 1.35 && azimuthalAngle < 1.75) {
+    if (azimuthalAngle >= 1 && azimuthalAngle < 1.4) {
         project1.classList.remove("hidden");
         project1.classList.add("visible");
       }
@@ -626,13 +542,31 @@ const tick = () =>
         project1.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= 2.8 && azimuthalAngle < 3.14) {
+    if (azimuthalAngle >= 1.8 && azimuthalAngle < 2.2) {
+        sign2.classList.remove("hidden");
+        sign2.classList.add("visible");
+      }
+      else {  
+        sign2.classList.add("hidden");
+        sign2.classList.remove("visible");
+    }
+
+    if (azimuthalAngle >= 2.5 && azimuthalAngle < 2.9) {
         project2.classList.remove("hidden");
         project2.classList.add("visible");
       }
       else {  
         project2.classList.add("hidden");
         project2.classList.remove("visible");
+    }
+
+    if (azimuthalAngle >= -2.95 && azimuthalAngle < -2.55) {
+        sign3.classList.remove("hidden");
+        sign3.classList.add("visible");
+      }
+      else {  
+        sign3.classList.add("hidden");
+        sign3.classList.remove("visible");
     }
 
     if (azimuthalAngle >= -2.2 && azimuthalAngle < -1.8) {
@@ -653,16 +587,7 @@ const tick = () =>
         project4.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= -0.8 && azimuthalAngle < -0.4) {
-        project5.classList.remove("hidden");
-        project5.classList.add("visible");
-      }
-      else {  
-        project5.classList.add("hidden");
-        project5.classList.remove("visible");
-    }
-
-    if (azimuthalAngle >= -0.25 && azimuthalAngle < -0.1) {
+    if (azimuthalAngle >= -0.45 && azimuthalAngle < -0.3) {
         contact.classList.remove("hidden");
         contact.classList.add("visible");
       }
