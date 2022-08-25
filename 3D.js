@@ -193,7 +193,7 @@ gltfLoader.load(
         } );
         scene.add(joshua);
         joshua.scale.set(.48,.48,.48);
-        joshua.position.set(-3.8,0,10);
+        joshua.position.set(-3.5,0,10);
         joshua.rotation.y = 0;
 });
 
@@ -330,7 +330,7 @@ gltfLoader.load(
         } );
         scene.add(robot);
         robot.scale.set(.5,.5,.5);
-        robot.position.set(4,.75,-9);
+        robot.position.set(0,.75,-9.5);
         robot.rotation.y = -Math.PI/2;
 });
 
@@ -470,6 +470,7 @@ let h = 0.5;
 const sign1 = document.getElementById("sign1");
 const sign2 = document.getElementById("sign2");
 const sign3 = document.getElementById("sign3");
+const sign4 = document.getElementById("sign4");
 const project1 = document.getElementById("project1");
 const project2 = document.getElementById("project2");
 const project3 = document.getElementById("project3");
@@ -524,7 +525,7 @@ const tick = () =>
         document.getElementById("instructions").classList.add("hidden");
       }
 
-    if (azimuthalAngle >= 0.3 && azimuthalAngle < 0.7) {
+    if (azimuthalAngle >= 0.2 && azimuthalAngle < 0.6) {
         sign1.classList.remove("hidden");
         sign1.classList.add("visible");
       }
@@ -533,7 +534,7 @@ const tick = () =>
         sign1.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= 1 && azimuthalAngle < 1.4) {
+    if (azimuthalAngle >= 0.8 && azimuthalAngle < 1.2) {
         project1.classList.remove("hidden");
         project1.classList.add("visible");
       }
@@ -542,7 +543,7 @@ const tick = () =>
         project1.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= 1.8 && azimuthalAngle < 2.2) {
+    if (azimuthalAngle >= 1.6 && azimuthalAngle < 2) {
         sign2.classList.remove("hidden");
         sign2.classList.add("visible");
       }
@@ -551,16 +552,7 @@ const tick = () =>
         sign2.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= 2.5 && azimuthalAngle < 2.9) {
-        project2.classList.remove("hidden");
-        project2.classList.add("visible");
-      }
-      else {  
-        project2.classList.add("hidden");
-        project2.classList.remove("visible");
-    }
-
-    if (azimuthalAngle >= -2.95 && azimuthalAngle < -2.55) {
+    if (azimuthalAngle >= 2.4 && azimuthalAngle < 2.8) {
         sign3.classList.remove("hidden");
         sign3.classList.add("visible");
       }
@@ -569,7 +561,25 @@ const tick = () =>
         sign3.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= -2.2 && azimuthalAngle < -1.8) {
+    if (azimuthalAngle >= 3 && azimuthalAngle < 3.2) {
+        project2.classList.remove("hidden");
+        project2.classList.add("visible");
+      }
+      else {  
+        project2.classList.add("hidden");
+        project2.classList.remove("visible");
+    }
+
+    if (azimuthalAngle >= -2.8 && azimuthalAngle < -2.4) {
+        sign4.classList.remove("hidden");
+        sign4.classList.add("visible");
+      }
+      else {  
+        sign4.classList.add("hidden");
+        sign4.classList.remove("visible");
+    }
+
+    if (azimuthalAngle >= -2 && azimuthalAngle < -1.6) {
         project3.classList.remove("hidden");
         project3.classList.add("visible");
       }
