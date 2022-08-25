@@ -55,7 +55,7 @@ p {
 p2 {
     font-size: 22px;
     line-height: 140%;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 a{
@@ -184,7 +184,7 @@ a:hover {
 }
 
 .header {
-    height: 520px;
+    height: 50vh;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
