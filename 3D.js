@@ -543,7 +543,7 @@ const tick = () =>
         project1.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= 1.6 && azimuthalAngle < 2) {
+    if (azimuthalAngle >= 1.5 && azimuthalAngle < 1.9) {
         sign2.classList.remove("hidden");
         sign2.classList.add("visible");
       }
@@ -552,7 +552,7 @@ const tick = () =>
         sign2.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= 2.4 && azimuthalAngle < 2.8) {
+    if (azimuthalAngle >= 2.2 && azimuthalAngle < 2.6) {
         sign3.classList.remove("hidden");
         sign3.classList.add("visible");
       }
@@ -570,7 +570,7 @@ const tick = () =>
         project2.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= -2.8 && azimuthalAngle < -2.4) {
+    if (azimuthalAngle >= -2.7 && azimuthalAngle < -2.3) {
         sign4.classList.remove("hidden");
         sign4.classList.add("visible");
       }
@@ -597,7 +597,7 @@ const tick = () =>
         project4.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= -0.45 && azimuthalAngle < -0.3) {
+    if (azimuthalAngle >= -0.5 && azimuthalAngle < -0.2) {
         contact.classList.remove("hidden");
         contact.classList.add("visible");
       }
