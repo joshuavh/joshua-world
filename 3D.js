@@ -543,7 +543,7 @@ const tick = () =>
         project1.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= 1.5 && azimuthalAngle < 1.9) {
+    if (azimuthalAngle >= 1.6 && azimuthalAngle < 1.9) {
         sign2.classList.remove("hidden");
         sign2.classList.add("visible");
       }
@@ -570,7 +570,7 @@ const tick = () =>
         project2.classList.remove("visible");
     }
 
-    if (azimuthalAngle >= -2.7 && azimuthalAngle < -2.3) {
+    if (azimuthalAngle >= -2.6 && azimuthalAngle < -2.3) {
         sign4.classList.remove("hidden");
         sign4.classList.add("visible");
       }
