@@ -69,7 +69,7 @@ gltfLoader.load(
 });
 
 gltfLoader.load(
-    '/models/flowerPlacement.glb', 
+    '/models/treeline.glb', 
     function(gltf){
         var surface = gltf.scene.children[0];
         var sampler = new MeshSurfaceSampler(surface).build();
@@ -88,7 +88,7 @@ gltfLoader.load(
     const color = new THREE.Color();
     const blossomPalette = [ 0xFFC2DD, 0xFFDBE7, 0xFFFFFF ];
 
-        for ( let i = 0; i < 500; i ++ ) {
+        for ( let i = 0; i < 600; i ++ ) {
 
                 sampler.sample(tempPosition);
                 tempObject.position.set(tempPosition.x, tempPosition.y + 0.05, tempPosition.z);
@@ -222,7 +222,7 @@ for ( let i = 0; i < 8; i ++ ) {
     '/models/man.glb', function(gltf){
         var man = gltf.scene;
         man.scale.set(.49,.49,.49);
-        man.position.set(9.5 + Math.random()*1.5-.75, 0, 0 + Math.random()*4-2);
+        man.position.set(-8.5+ Math.random()*2-1, 0, 4.5 + Math.random()*2-1);
         man.rotation.y = Math.random()*36;
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
@@ -248,18 +248,20 @@ for ( let i = 0; i < 8; i ++ ) {
     }
 
 
-var girl;
+var moose;
 var mixer;
 var action;
 gltfLoader.load(
-    '/models/girl.glb', function(gltf){
-        girl = gltf.scene;
-        girl.scale.set(.065,.065,.065);
+    '/models/moose.glb', function(gltf){
+        moose = gltf.scene;
+        moose.scale.set(.8,.8,.8);
+        moose.position.set(6,0,-7.5);
+        moose.rotation.y = Math.PI/2;
 
         //Playing Animation
-        mixer = new THREE.AnimationMixer( girl );
-        action = mixer.clipAction( gltf.animations[ 0 ] );
-        action.timeScale = 1.5;
+        mixer = new THREE.AnimationMixer( moose );
+        action = mixer.clipAction( gltf.animations[ 20 ] );
+        action.timeScale = 1;
         action.play();
         
         gltf.scene.traverse( function( node ) {
@@ -268,7 +270,7 @@ gltfLoader.load(
                 node.receiveShadow = true;
             }
         } );
-        scene.add(girl);
+        scene.add(moose);
 });
 
 var cyclist;
@@ -490,13 +492,6 @@ const tick = () =>
         car.position.z = -Math.cos(i * Math.PI) * 11.8;
         car.rotation.y = i * Math.PI + Math.PI/2;
         i -= 0.001;
-    }
-
-    if ( girl ) {
-        girl.position.x = Math.sin(f * Math.PI) * 10.8;
-        girl.position.z = Math.cos(f * Math.PI) * 10.8;
-        girl.rotation.y = f * Math.PI + Math.PI/2;
-        f += 0.00015;
     }
 
     if ( bird ) {
