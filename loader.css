@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #1e0126;
+    background-color: black;
     z-index: 1000;
     color: white;
 }
@@ -22,7 +22,7 @@
     width: 300px;
     height: 64px;
     margin-top: 48px;
-    background-color: #B933BC;
+    background-color: #9c0ffa;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
@@ -39,7 +39,7 @@
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;  
-  color: #3D0059;
+  color: #282828;
   
   position: absolute;
   top: 50%;

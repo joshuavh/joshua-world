@@ -21,7 +21,7 @@
 
 #menuToggle a:hover
 {
-  color: #C43DC8;
+  color: #9c0ffa;
 }
 
 
@@ -116,7 +116,7 @@
   padding: 50px;
   padding-top: 125px;
   
-  background: #1C0024;
+  background: black;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -134,7 +134,7 @@
 }
 
 .active{
-    color: #C43DC8;
+    color: #9c0ffa;
 }
 
 /*

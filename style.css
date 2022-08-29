@@ -2,9 +2,7 @@
 {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
-
-
+    font-family: 'Caudex', serif;
 }
 
 .webgl
@@ -30,26 +28,27 @@
 
 h1{
     font-size: 48px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 120%;
 }
 
 h2{
     font-size: 24px;
-    font-weight: 600;
-    line-height: 140%;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 h3{
     font-size: 20px;
-    font-weight: 500;
-    line-height: 140%;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 p {
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 p2 {
@@ -59,8 +58,9 @@ p2 {
 }
 
 a{
-   color: #C43DC8;
+   color: #9c0ffa;
    text-decoration: none;
+   font-family: 'Space Grotesk', sans-serif;
 }
 
 a:hover {
@@ -72,7 +72,7 @@ a:hover {
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: #481575;
+    color: #242424;
 }
 
 #intro {
@@ -88,8 +88,9 @@ a:hover {
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    color: #481575;
+    color: #242424;
     background-color: white;
+    font-size: 18px;
     border-radius: 16px;
     box-sizing: border-box;
     padding: 24px;
@@ -114,7 +115,7 @@ a:hover {
     left: 50%;
     padding: 24px;
     transform: translateX(-50%);
-    color: #481575;
+    color: #242424;
     background-color: white;
     filter: drop-shadow(0px 40px 80px rgba(131, 0, 160, 0.2));
     border-radius: 16px;
@@ -156,27 +157,28 @@ a:hover {
     letter-spacing: 1.5px;
     text-transform: uppercase;
     border: none;
-    background-color: #fecfeb;
-    color: #3D0059;
+    background-color: #f1ecff;
+    color: black;
     border-radius: 12px;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .button:hover {
     cursor: pointer;
-    color: #fecfeb; 
-    background-color: #3D0059;
+    color: white; 
+    background-color: #880ffa;
 }
 .button:active { 
     cursor: pointer;
     color: #fecfeb; 
-    background-color: #3D0059;
+    background-color: black;
 }
 
 .modal {
     height: 100%;
     width: 100%;
     overflow-y: scroll;
-    background-color: #1e0126;
+    background-color: black;
     color: white;
     position: fixed; 
     z-index: 999; 
@@ -196,7 +198,7 @@ a:hover {
     top: 50%;
     transform: translateY(-50%);
     font-size: 64px;
-    font-weight: 600;
+    font-weight: 400;
     max-width: 800px;
     margin: auto;
 }
@@ -229,6 +231,8 @@ a:hover {
     font-weight: 700;
     line-height: 100%;
     z-index: 999;
+    font-family: 'Caudex', serif;
+    color: black;
 }
 
 .close {
@@ -236,7 +240,7 @@ a:hover {
     background-image: url("/img/icons/close.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #fecfeb;
+    background-color: #f1ecff;
     background-size: 32px;
     width: 32px;
     height: 32px;
@@ -249,7 +253,7 @@ a:hover {
 
 .close:hover {
     cursor: pointer;
-    background-color: #ff9bd7;
+    background-color: #cebffd;
 }
 
 .embed-container {
