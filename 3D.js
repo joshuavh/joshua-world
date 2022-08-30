@@ -160,7 +160,7 @@ gltfLoader.load(
 
 var car;
 gltfLoader.load(
-    '/models/car.glb', function(gltf){
+    '/models/scooter.glb', function(gltf){
         car = gltf.scene;
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
@@ -169,7 +169,7 @@ gltfLoader.load(
             }
         } );
         scene.add(car);
-        car.scale.set(.12,.18,.18);
+        car.scale.set(.32,.32,.32);
 });
 
 var mixer3;
@@ -279,7 +279,7 @@ var action2;
 gltfLoader.load(
     '/models/cyclist.glb', function(gltf){
         cyclist = gltf.scene;
-        cyclist.scale.set(.32,.32,.32);
+        cyclist.scale.set(.33,.33,.33);
 
         //Playing Animation
         mixer2 = new THREE.AnimationMixer( cyclist );
@@ -491,7 +491,7 @@ const tick = () =>
         car.position.x = -Math.sin(i * Math.PI) * 11.8;
         car.position.z = -Math.cos(i * Math.PI) * 11.8;
         car.rotation.y = i * Math.PI + Math.PI/2;
-        i -= 0.001;
+        i -= 0.0003;
     }
 
     if ( bird ) {
