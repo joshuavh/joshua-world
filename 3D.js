@@ -78,7 +78,7 @@ gltfLoader.load(
         const tempObject = new THREE.Object3D();
 
 gltfLoader.load(
-    '/models/tulip.glb', 
+    '/models/flower.glb', 
     function(gltf){
 
     var blossom = gltf.scene.getObjectByName( 'Blossom');
@@ -86,15 +86,14 @@ gltfLoader.load(
 
     let blossomMaterial = new THREE.MeshLambertMaterial();
     const color = new THREE.Color();
-    const blossomPalette = [ 0xFFC2DD, 0xFFDBE7, 0xFFFFFF ];
+    const blossomPalette = [ 0xFFCCD2, 0xFFDBDF, 0xFFFFFF  ];
 
-        for ( let i = 0; i < 600; i ++ ) {
+        for ( let i = 0; i < 1000; i ++ ) {
 
                 sampler.sample(tempPosition);
-                tempObject.position.set(tempPosition.x, tempPosition.y + 0.05, tempPosition.z);
-                tempObject.rotation.x = Math.PI/2;
-                tempObject.rotation.z = -Math.random() * Math.PI;
-                tempObject.scale.setScalar(Math.random() * 0.6 + 0.6);
+                tempObject.position.set(tempPosition.x, tempPosition.y-0.03, tempPosition.z);
+                tempObject.scale.setScalar(Math.random() * 0.03 + 0.03);
+                //tempObject.rotation.x = Math.PI;
                 tempObject.updateMatrix();
 
                 color.setHex( blossomPalette[ Math.floor( Math.random() * blossomPalette.length ) ] );
@@ -103,6 +102,7 @@ gltfLoader.load(
                 var instancedStem = new THREE.InstancedMesh( stem.geometry, stem.material, 1 );
 
                 instancedBlossom.setMatrixAt(0, tempObject.matrix);
+                instancedBlossom.position.y = instancedBlossom.position.y - 0.03;
                 instancedStem.setMatrixAt(0, tempObject.matrix);
                 instancedBlossom.setColorAt(0, color.convertSRGBToLinear());
 
@@ -133,14 +133,14 @@ gltfLoader.load(
     var tree = gltf.scene.getObjectByName( 'tree');
     let treeMaterial = new THREE.MeshLambertMaterial();
     const color = new THREE.Color();
-    const treePalette = [ 0x3E1886, 0x571DA4, 0x7523C5 ];
+    const treePalette = [ 0x23008E, 0x3818AE, 0x4E36C6 ];
 
         for ( let i = 0; i < 100; i ++ ) {
                 sampler.sample(tempPosition);
                 tempObject.position.set(tempPosition.x, tempPosition.y, tempPosition.z);
                 tempObject.rotation.x = Math.PI/2;
                 tempObject.rotation.z = Math.random() * Math.PI;
-                tempObject.scale.setScalar(Math.random() * .04 + .04);
+                tempObject.scale.setScalar(Math.random() * .05 + .04);
                 tempObject.updateMatrix();
 
                 color.setHex( treePalette[ Math.floor( Math.random() * treePalette.length ) ] );
@@ -180,7 +180,7 @@ gltfLoader.load(
 
         //Playing Animation
         mixer3 = new THREE.AnimationMixer( joshua );
-        action3 = mixer3.clipAction( gltf.animations[ 0 ] );
+        action3 = mixer3.clipAction( gltf.animations[ 1 ] );
         action3.timeScale = 1;
         action3.play();
         
@@ -214,7 +214,7 @@ gltfLoader.load(
 // });
 
 const shirtColor = new THREE.Color();
-const shirtPalette = [ 0xEB50AD, 0xffffff, 0xA02EE2 ];
+const shirtPalette = [ 0xFA6D6D, 0xffffff, 0x757BFD ];
 const skinPalette = [ 0x8d5524, 0xc68642, 0xe0ac69, 0xf1c27d, 0xffdbac ];
 
 for ( let i = 0; i < 8; i ++ ) {
@@ -491,7 +491,7 @@ const tick = () =>
         car.position.x = -Math.sin(i * Math.PI) * 11.8;
         car.position.z = -Math.cos(i * Math.PI) * 11.8;
         car.rotation.y = i * Math.PI + Math.PI/2;
-        i -= 0.0003;
+        i -= 0.001;
     }
 
     if ( bird ) {
