@@ -53,7 +53,7 @@ gltfLoader.setDRACOLoader(dracoLoader)
 
 //Water
 const waterGeometry = new THREE.PlaneBufferGeometry(1000, 1000)
-const waveGeometry = new THREE.PlaneBufferGeometry(42, 42, 100, 100);
+const waveGeometry = new THREE.PlaneBufferGeometry(42, 42, 50, 50);
 const waterMaterial = new THREE.MeshLambertMaterial ( {color: 0x757BFD})
 waterMaterial.color.convertSRGBToLinear();
 const waves = new THREE.Mesh(waveGeometry, waterMaterial);
