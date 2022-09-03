@@ -84,7 +84,7 @@ gltfLoader.load(
 
     let blossomMaterial = new THREE.MeshLambertMaterial();
     const color = new THREE.Color();
-    const blossomPalette = [ 0xFFCCD2, 0xFFDBDF, 0xFFFFFF  ];
+    const blossomPalette = [ 0xBDD1FF, 0xD5E1FF, 0xEEF2FF  ];
 
         for ( let i = 0; i < 500; i ++ ) {
 
@@ -195,7 +195,7 @@ gltfLoader.load(
 });
 
 const shirtColor = new THREE.Color();
-const shirtPalette = [ 0xFA6D6D, 0xffffff, 0x757BFD ];
+const shirtPalette = [ 0xFA6D6D, 0xffffff ];
 const skinPalette = [ 0x8d5524, 0xc68642, 0xe0ac69, 0xf1c27d, 0xffdbac ];
 
 for ( let i = 0; i < 8; i ++ ) {
@@ -516,10 +516,11 @@ const tick = () =>
     }
 
     // Robot Animation
-    if (countup) { counttx += .01; 
-        if (counttx >= 0) countup = false;}
-        else { counttx -= .01; if (counttx <= -2) countup = true; }
-        if ( robot ) robot.rotation.y = counttx;
+    // if (countup) { counttx += .01; 
+    //     if (counttx >= 0) countup = false;}
+    //     else { counttx -= .01; if (counttx <= -2) countup = true; }
+    //     if ( robot ) robot.rotation.y = counttx;
+    if ( robot ) robot.rotation.y -= .01;
 
     // Update cyclist position
     const azimuthalAngle = controls.getAzimuthalAngle();
