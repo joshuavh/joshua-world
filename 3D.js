@@ -43,9 +43,6 @@ loadingManager.onLoad = function(url, loaded, total){
     
 }
 
-// Texture loader
-const textureLoader = new THREE.TextureLoader()
-
 // Draco loader
 const dracoLoader = new DRACOLoader()
 dracoLoader.setDecoderPath('https://unpkg.com/three@0.136.0/examples/js/libs/draco/');
@@ -56,7 +53,7 @@ gltfLoader.setDRACOLoader(dracoLoader)
 
 //Water
 const waterGeometry = new THREE.PlaneBufferGeometry(1000, 1000)
-const waveGeometry = new THREE.PlaneBufferGeometry(100, 100, 200, 200);
+const waveGeometry = new THREE.PlaneBufferGeometry(42, 42, 100, 100);
 const waterMaterial = new THREE.MeshLambertMaterial ( {color: 0x757BFD})
 waterMaterial.color.convertSRGBToLinear();
 const waves = new THREE.Mesh(waveGeometry, waterMaterial);
@@ -66,7 +63,7 @@ waves.receiveShadow = true;
 waves.castShadow = true;
 waves.rotation.x = -Math.PI / 2;
 waves.position.y = -1;
-waves.scale.z = 0.03;
+waves.scale.z = 0.02;
 scene.add(waves);
 
 water.receiveShadow = true;
@@ -156,7 +153,7 @@ gltfLoader.load(
     var tree = gltf.scene.getObjectByName( 'tree');
     let treeMaterial = new THREE.MeshLambertMaterial();
     const color = new THREE.Color();
-    const treePalette = [ 0x3404AD, 0x3818AE, 0x4E36C6 ];
+    const treePalette = [ 0x320DAA, 0x411BC7, 0x5028E3 ];
 
         for ( let i = 0; i < 100; i ++ ) {
                 sampler.sample(tempPosition);
@@ -342,6 +339,41 @@ gltfLoader.load(
         robot.position.set(0,.75,-9.5);
         robot.rotation.y = -Math.PI/2;
 });
+
+const textureLoader = new THREE.TextureLoader();
+const smokeGeo = new THREE.PlaneGeometry(1, 1);
+const smokeParticles = [];
+
+// load a resource
+textureLoader.load(
+    // resource URL
+    "/img/smoke.png",
+
+    // onLoad callback
+    function (smokeTexture) {
+        // in this example we create the material when the texture is loaded
+        const smokeMaterial = new THREE.MeshBasicMaterial({
+            map: smokeTexture,
+            transparent: true
+        });
+
+        const particleCount = 8;
+        for (let p = 0; p < particleCount; p++) {
+            var particle = new THREE.Mesh(smokeGeo, smokeMaterial);
+            particle.position.set(
+                -6.5 + p * .01 - particleCount*.005,
+                1.1,
+                -8 + p * .01 - particleCount*.005,
+            );
+            particle.rotation.z = Math.random() * 360;
+            scene.add(particle);
+            smokeParticles.push(particle);
+        }
+    },
+
+);
+
+
 
 
 // Camera
@@ -626,6 +658,15 @@ const tick = () =>
     if ( mixer2 ) mixer2.update( delta );
     if ( mixer3 ) mixer3.update( delta );
     if ( mixer4 ) mixer4.update( delta );
+
+    //Smoke
+    var sp = smokeParticles.length;
+    while (sp--) {
+        smokeParticles[sp].rotation.z += delta * .5;
+        smokeParticles[sp].rotation.y = azimuthalAngle;
+    }
+
+      
 
     scrollSpeed();
 
