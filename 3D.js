@@ -11,9 +11,9 @@ import { MeshSurfaceSampler } from 'https://cdn.skypack.dev/three@0.136.0/exampl
  */
 //const gui = new dat.GUI()
 
-// const stats = new Stats()
-// stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-// document.body.appendChild(stats.dom)
+const stats = new Stats()
+stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild(stats.dom)
 
 const canvas = document.querySelector('canvas.webgl')
 
@@ -671,9 +671,9 @@ const tick = () =>
     scrollSpeed();
 
     // Render
-    //stats.begin()
+    stats.begin()
     renderer.render(scene, camera)
-    //stats.end()
+    stats.end()
  
      // Call tick again on the next frame
      window.requestAnimationFrame(tick)
