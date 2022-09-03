@@ -75,18 +75,18 @@ const count = waveGeometry.attributes.position.count;
 
 // Models
 
-gltfLoader.load(
-    '/models/island.glb', 
-    function(gltf){
-        var city = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        scene.add(city)
-});
+// gltfLoader.load(
+//     '/models/island.glb', 
+//     function(gltf){
+//         var city = gltf.scene;
+//         gltf.scene.traverse( function( node ) {
+//             if ( node.isMesh ) { 
+//                 node.castShadow = true;
+//                 node.receiveShadow = true;
+//             }
+//         } );
+//         scene.add(city)
+// });
 
 gltfLoader.load(
     '/models/treeline.glb', 
