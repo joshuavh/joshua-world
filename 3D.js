@@ -51,28 +51,6 @@ dracoLoader.setDecoderPath('https://unpkg.com/three@0.136.0/examples/js/libs/dra
 const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
 
-//Water
-const waterGeometry = new THREE.PlaneBufferGeometry(1000, 1000)
-const waveGeometry = new THREE.PlaneBufferGeometry(42, 42, 20, 20);
-const waterMaterial = new THREE.MeshLambertMaterial ( {color: 0x757BFD})
-waterMaterial.color.convertSRGBToLinear();
-const waves = new THREE.Mesh(waveGeometry, waterMaterial);
-const water = new THREE.Mesh(waterGeometry, waterMaterial);
-
-waves.receiveShadow = true;
-waves.castShadow = true;
-waves.rotation.x = -Math.PI / 2;
-waves.position.y = -1;
-waves.scale.z = 0.02;
-scene.add(waves);
-
-water.receiveShadow = true;
-water.rotation.x = -Math.PI / 2;
-water.position.y = -1;
-scene.add(water);
-
-const count = waveGeometry.attributes.position.count;
-
 // Models
 
 gltfLoader.load(
@@ -636,18 +614,6 @@ const tick = () =>
         contact.classList.add("hidden");
         contact.classList.remove("visible");
     }
-
-    //Water
-    // const now = Date.now() / 300
-    // for (let i = 0; i < count; i++){
-    //     const x = waveGeometry.attributes.position.getX(i);
-    //     const y = waveGeometry.attributes.position.getY(i);
-    //     const xsin = Math.sin(x + now)
-    //     const ycos = Math.cos(y + now)
-    //     waveGeometry.attributes.position.setZ(i, xsin + ycos)
-    // }
-    // waveGeometry.computeVertexNormals()
-    // waveGeometry.attributes.position.needsUpdate = true;
 
 
     // Animation Mixer
