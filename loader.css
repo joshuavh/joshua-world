@@ -22,7 +22,7 @@
     width: 300px;
     height: 64px;
     margin-top: 48px;
-    background-color: #757BFD;
+    background-color: #FF6464;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
@@ -31,7 +31,7 @@
 #progress-bar {
   width: 0%;
   height: 100%;
-  background: #f1ecff;
+  background: #ffffff;
 }
 
 #loading {

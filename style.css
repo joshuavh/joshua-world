@@ -59,7 +59,7 @@ p2 {
 }
 
 a{
-   color: #757BFD;
+   color: #FF6464;
    text-decoration: none;
 }
 
@@ -157,7 +157,7 @@ a:hover {
     letter-spacing: 1.5px;
     text-transform: uppercase;
     border: none;
-    background-color: #eef2ff;
+    background-color: #f1f1f1;
     color: black;
     border-radius: 12px;
 }
@@ -165,7 +165,7 @@ a:hover {
 .button:hover {
     cursor: pointer;
     color: white; 
-    background-color: #542BEC;
+    background-color: #FF6464;
 }
 .button:active { 
     cursor: pointer;
@@ -237,7 +237,7 @@ a:hover {
     background-image: url("/img/icons/close.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #f1ecff;
+    background-color: white;
     background-size: 32px;
     width: 32px;
     height: 32px;
@@ -250,7 +250,7 @@ a:hover {
 
 .close:hover {
     cursor: pointer;
-    background-color: #cebffd;
+    background-color: #FFCDD3;
 }
 
 .embed-container {
