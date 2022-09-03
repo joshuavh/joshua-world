@@ -13,7 +13,7 @@
     top: 0;
     left: 0;
     outline: none;
-    background: linear-gradient(0deg, rgba(255,209,248,1) 40%, rgba(209,214,255,1) 70%, rgba(169,170,255,1) 100%);
+    background: linear-gradient(0deg, rgba(213,225,255,1) 50%, rgba(151,180,255,1) 100%);
 
     cursor: move; /* fallback if grab cursor is unsupported */
     cursor: grab;

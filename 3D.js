@@ -3,6 +3,7 @@ import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/l
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls.js';
 import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/DRACOLoader.js';
 import Stats from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/libs/stats.module';
+import { Water } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/objects/Water.js';
 import { MeshSurfaceSampler } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/math/MeshSurfaceSampler.js';
 
 /**
@@ -52,6 +53,28 @@ dracoLoader.setDecoderPath('https://unpkg.com/three@0.136.0/examples/js/libs/dra
 // GLTF loader
 const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
+
+//Water
+const waterGeometry = new THREE.PlaneBufferGeometry(1000, 1000)
+const waveGeometry = new THREE.PlaneBufferGeometry(100, 100, 200, 200);
+const waterMaterial = new THREE.MeshLambertMaterial ( {color: 0x757BFD})
+waterMaterial.color.convertSRGBToLinear();
+const waves = new THREE.Mesh(waveGeometry, waterMaterial);
+const water = new THREE.Mesh(waterGeometry, waterMaterial);
+
+waves.receiveShadow = true;
+waves.castShadow = true;
+waves.rotation.x = -Math.PI / 2;
+waves.position.y = -1;
+waves.scale.z = 0.03;
+scene.add(waves);
+
+water.receiveShadow = true;
+water.rotation.x = -Math.PI / 2;
+water.position.y = -1;
+scene.add(water);
+
+const count = waveGeometry.attributes.position.count;
 
 // Models
 
@@ -133,7 +156,7 @@ gltfLoader.load(
     var tree = gltf.scene.getObjectByName( 'tree');
     let treeMaterial = new THREE.MeshLambertMaterial();
     const color = new THREE.Color();
-    const treePalette = [ 0x23008E, 0x3818AE, 0x4E36C6 ];
+    const treePalette = [ 0x3404AD, 0x3818AE, 0x4E36C6 ];
 
         for ( let i = 0; i < 100; i ++ ) {
                 sampler.sample(tempPosition);
@@ -196,22 +219,6 @@ gltfLoader.load(
         joshua.position.set(-3.5,0,10);
         joshua.rotation.y = 0;
 });
-
-// gltfLoader.load(
-//     '/models/stage.glb', 
-//     function(gltf){
-//         var stage = gltf.scene;
-//         gltf.scene.traverse( function( node ) {
-//             if ( node.isMesh ) { 
-//                 node.castShadow = true;
-//                 node.receiveShadow = true;
-//             }
-//         } );
-//         scene.add(stage);
-//         stage.scale.set(.40,.40,.40);
-//         stage.position.x = 7.5;
-//         stage.rotation.y = Math.PI/2;
-// });
 
 const shirtColor = new THREE.Color();
 const shirtPalette = [ 0xFA6D6D, 0xffffff, 0x757BFD ];
@@ -477,7 +484,6 @@ const project1 = document.getElementById("project1");
 const project2 = document.getElementById("project2");
 const project3 = document.getElementById("project3");
 const project4 = document.getElementById("project4");
-const project5 = document.getElementById("project5");
 let counttx = 0, countup = true;
 const clock = new THREE.Clock(); 
 
@@ -601,6 +607,18 @@ const tick = () =>
         contact.classList.remove("visible");
     }
 
+    //Water
+    const now = Date.now() / 300
+    for (let i = 0; i < count; i++){
+        const x = waveGeometry.attributes.position.getX(i);
+        const y = waveGeometry.attributes.position.getY(i);
+        const xsin = Math.sin(x + now)
+        const ycos = Math.cos(y + now)
+        waveGeometry.attributes.position.setZ(i, xsin + ycos)
+    }
+    waveGeometry.computeVertexNormals()
+    waveGeometry.attributes.position.needsUpdate = true;
+
 
     // Animation Mixer
     const delta = clock.getDelta();
@@ -608,8 +626,6 @@ const tick = () =>
     if ( mixer2 ) mixer2.update( delta );
     if ( mixer3 ) mixer3.update( delta );
     if ( mixer4 ) mixer4.update( delta );
-
-
 
     scrollSpeed();
 
