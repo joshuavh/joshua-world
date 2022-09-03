@@ -638,16 +638,16 @@ const tick = () =>
     }
 
     //Water
-    const now = Date.now() / 300
-    for (let i = 0; i < count; i++){
-        const x = waveGeometry.attributes.position.getX(i);
-        const y = waveGeometry.attributes.position.getY(i);
-        const xsin = Math.sin(x + now)
-        const ycos = Math.cos(y + now)
-        waveGeometry.attributes.position.setZ(i, xsin + ycos)
-    }
-    waveGeometry.computeVertexNormals()
-    waveGeometry.attributes.position.needsUpdate = true;
+    // const now = Date.now() / 300
+    // for (let i = 0; i < count; i++){
+    //     const x = waveGeometry.attributes.position.getX(i);
+    //     const y = waveGeometry.attributes.position.getY(i);
+    //     const xsin = Math.sin(x + now)
+    //     const ycos = Math.cos(y + now)
+    //     waveGeometry.attributes.position.setZ(i, xsin + ycos)
+    // }
+    // waveGeometry.computeVertexNormals()
+    // waveGeometry.attributes.position.needsUpdate = true;
 
 
     // Animation Mixer
