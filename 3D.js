@@ -340,38 +340,37 @@ gltfLoader.load(
         robot.rotation.y = -Math.PI/2;
 });
 
-const textureLoader = new THREE.TextureLoader();
-const smokeGeo = new THREE.PlaneGeometry(1, 1);
-const smokeParticles = [];
+// const textureLoader = new THREE.TextureLoader();
+// const smokeGeo = new THREE.PlaneGeometry(1, 1);
+// const smokeParticles = [];
+// // load a resource
+// textureLoader.load(
+//     // resource URL
+//     "/img/smoke.png",
 
-// load a resource
-textureLoader.load(
-    // resource URL
-    "/img/smoke.png",
+//     // onLoad callback
+//     function (smokeTexture) {
+//         // in this example we create the material when the texture is loaded
+//         const smokeMaterial = new THREE.MeshBasicMaterial({
+//             map: smokeTexture,
+//             transparent: true
+//         });
 
-    // onLoad callback
-    function (smokeTexture) {
-        // in this example we create the material when the texture is loaded
-        const smokeMaterial = new THREE.MeshBasicMaterial({
-            map: smokeTexture,
-            transparent: true
-        });
+//         const particleCount = 8;
+//         for (let p = 0; p < particleCount; p++) {
+//             var particle = new THREE.Mesh(smokeGeo, smokeMaterial);
+//             particle.position.set(
+//                 -6.5 + p * .01 - particleCount*.005,
+//                 1.1,
+//                 -8 + p * .01 - particleCount*.005,
+//             );
+//             particle.rotation.z = Math.random() * 360;
+//             scene.add(particle);
+//             smokeParticles.push(particle);
+//         }
+//     },
 
-        const particleCount = 8;
-        for (let p = 0; p < particleCount; p++) {
-            var particle = new THREE.Mesh(smokeGeo, smokeMaterial);
-            particle.position.set(
-                -6.5 + p * .01 - particleCount*.005,
-                1.1,
-                -8 + p * .01 - particleCount*.005,
-            );
-            particle.rotation.z = Math.random() * 360;
-            scene.add(particle);
-            smokeParticles.push(particle);
-        }
-    },
-
-);
+// );
 
 
 
@@ -660,11 +659,11 @@ const tick = () =>
     if ( mixer4 ) mixer4.update( delta );
 
     //Smoke
-    var sp = smokeParticles.length;
-    while (sp--) {
-        smokeParticles[sp].rotation.z += delta * .5;
-        smokeParticles[sp].rotation.y = azimuthalAngle;
-    }
+    // var sp = smokeParticles.length;
+    // while (sp--) {
+    //     smokeParticles[sp].rotation.z += delta * .5;
+    //     smokeParticles[sp].rotation.y = azimuthalAngle;
+    // }
 
       
 
