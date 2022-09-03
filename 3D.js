@@ -255,27 +255,27 @@ for ( let i = 0; i < 8; i ++ ) {
 var moose;
 var mixer;
 var action;
-gltfLoader.load(
-    '/models/moose.glb', function(gltf){
-        moose = gltf.scene;
-        moose.scale.set(.8,.8,.8);
-        moose.position.set(6,0,-7.5);
-        moose.rotation.y = Math.PI/2;
+// gltfLoader.load(
+//     '/models/moose.glb', function(gltf){
+//         moose = gltf.scene;
+//         moose.scale.set(.8,.8,.8);
+//         moose.position.set(6,0,-7.5);
+//         moose.rotation.y = Math.PI/2;
 
-        //Playing Animation
-        mixer = new THREE.AnimationMixer( moose );
-        action = mixer.clipAction( gltf.animations[ 20 ] );
-        action.timeScale = 1;
-        action.play();
+//         //Playing Animation
+//         mixer = new THREE.AnimationMixer( moose );
+//         action = mixer.clipAction( gltf.animations[ 20 ] );
+//         action.timeScale = 1;
+//         action.play();
         
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        scene.add(moose);
-});
+//         gltf.scene.traverse( function( node ) {
+//             if ( node.isMesh ) { 
+//                 node.castShadow = true;
+//                 node.receiveShadow = true;
+//             }
+//         } );
+//         scene.add(moose);
+// });
 
 var cyclist;
 var mixer2;
