@@ -108,12 +108,11 @@ gltfLoader.load(
     const color = new THREE.Color();
     const blossomPalette = [ 0xFFCCD2, 0xFFDBDF, 0xFFFFFF  ];
 
-        for ( let i = 0; i < 1000; i ++ ) {
+        for ( let i = 0; i < 500; i ++ ) {
 
                 sampler.sample(tempPosition);
                 tempObject.position.set(tempPosition.x, tempPosition.y-0.03, tempPosition.z);
                 tempObject.scale.setScalar(Math.random() * 0.03 + 0.03);
-                //tempObject.rotation.x = Math.PI;
                 tempObject.updateMatrix();
 
                 color.setHex( blossomPalette[ Math.floor( Math.random() * blossomPalette.length ) ] );
