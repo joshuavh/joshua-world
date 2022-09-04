@@ -11,7 +11,7 @@ fetch(URL)
   .then((res) => res.json())
   .then(({ result }) => {
 
-    console.log(result);
+    // console.log(result);
 
     let modal = document.getElementsByClassName("modal-content-wrapper"); 
     let thumbnail = document.getElementsByClassName("thumbnail");

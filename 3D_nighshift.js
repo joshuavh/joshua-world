@@ -8,11 +8,9 @@ import { MeshSurfaceSampler } from 'https://cdn.skypack.dev/three@0.136.0/exampl
 /**
  * Debug
  */
-//const gui = new dat.GUI()
-
-// const stats = new Stats()
-// stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-// document.body.appendChild(stats.dom)
+const stats = new Stats()
+stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild(stats.dom)
 
 const canvas = document.querySelector('canvas.webgl')
 
@@ -82,7 +80,10 @@ gltfLoader.load(
     var blossom = gltf.scene.getObjectByName( 'Blossom');
     var stem = gltf.scene.getObjectByName( 'Stem');
 
-    let blossomMaterial = new THREE.MeshLambertMaterial();
+    let blossomMaterial = new THREE.MeshLambertMaterial({
+        emissive: new THREE.Color(0xBDD1FF).convertSRGBToLinear(),
+        emissiveIntensity: 0.5,
+    });
     const color = new THREE.Color();
     const blossomPalette = [ 0xBDD1FF, 0xD5E1FF, 0xEEF2FF  ];
 
@@ -90,7 +91,7 @@ gltfLoader.load(
 
                 sampler.sample(tempPosition);
                 tempObject.position.set(tempPosition.x, tempPosition.y-0.03, tempPosition.z);
-                tempObject.scale.setScalar(Math.random() * 0.03 + 0.03);
+                tempObject.scale.setScalar(Math.random() * 0.03 + 0.02);
                 tempObject.updateMatrix();
 
                 color.setHex( blossomPalette[ Math.floor( Math.random() * blossomPalette.length ) ] );
@@ -317,39 +318,6 @@ gltfLoader.load(
         robot.rotation.y = -Math.PI/2;
 });
 
-const textureLoader = new THREE.TextureLoader();
-const smokeGeo = new THREE.PlaneGeometry(1, 1);
-const smokeParticles = [];
-// load a resource
-textureLoader.load(
-    // resource URL
-    "/img/smoke.png",
-
-    // onLoad callback
-    function (smokeTexture) {
-        // in this example we create the material when the texture is loaded
-        const smokeMaterial = new THREE.MeshBasicMaterial({
-            map: smokeTexture,
-            transparent: true
-        });
-
-        const particleCount = 8;
-        for (let p = 0; p < particleCount; p++) {
-            var particle = new THREE.Mesh(smokeGeo, smokeMaterial);
-            particle.position.set(
-                -6.5 + p * .01 - particleCount*.005,
-                1.1,
-                -8 + p * .01 - particleCount*.005,
-            );
-            particle.rotation.z = Math.random() * 360;
-            scene.add(particle);
-            smokeParticles.push(particle);
-        }
-    },
-
-);
-
-
 
 
 // Camera
@@ -380,9 +348,8 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 let pixelRatio = Math.min(window.devicePixelRatio, 2);
 renderer.setPixelRatio(pixelRatio);
-//renderer.setClearColor( 0xFFDBE7, 1 );
-//scene.background = null;
-renderer.setClearColor(0x000000, 0);
+renderer.setClearColor( 0xffffff, 0);
+// scene.background = new THREE.Color( 0xff0000 );
 scene.background = null;
 
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -406,24 +373,43 @@ window.addEventListener('resize', () =>
 })
 
 // Lights
-const hemiLight = new THREE.HemisphereLight( 0xffd4e5, 0xffd4e5, 0.75 );
-hemiLight.color.setHSL( 0.9, 1 , 1 );
-hemiLight.groundColor.setHSL( 0.9, 1, 0.85 );
+const hemiLight = new THREE.HemisphereLight( 0xfff, 0xfff, 1 );
+hemiLight.color.setHSL( 0.6, 1 , 0.6 );
+hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
 hemiLight.position.set( 0, 500, 0 );
 scene.add( hemiLight );
 
 
-const light = new THREE.DirectionalLight(0xffd4e5, 0.5, 100);
-light.position.set(2,6.5,2);
+const spotLight = new THREE.SpotLight("hsl(40, 100%, 90%)", 1, 10, Math.PI/4, 1);
+spotLight.position.set( 0, 4, 0 );
+spotLight.castShadow = true;
+spotLight.shadow.mapSize.width = 512;
+spotLight.shadow.mapSize.height = 512;
+spotLight.shadow.camera.near = 0.5; 
+spotLight.shadow.camera.far = 8;
+spotLight.shadow.camera.top = 8;
+spotLight.shadow.camera.bottom = -2;
+spotLight.shadow.camera.left = -10;
+spotLight.shadow.camera.right = 10;
+spotLight.shadow.normalBias = 0.02;
+scene.add( spotLight );
+scene.add( spotLight.target );
+
+// const helper2 = new THREE.CameraHelper( spotLight.shadow.camera );
+// scene.add( helper2 );
+
+let shadowMapSize = 13;
+const light = new THREE.DirectionalLight(0xffffff, 1, 100);
+light.color.setHSL( 0.1, 1, 0.95 );
 light.castShadow = true;
 light.shadow.mapSize.width = 2048;
 light.shadow.mapSize.height = 2048;
 light.shadow.camera.near = 0.5; 
-light.shadow.camera.far = 14;
-light.shadow.camera.top = 15;
-light.shadow.camera.bottom = -15;
-light.shadow.camera.left = -15;
-light.shadow.camera.right = 15;
+light.shadow.camera.far = shadowMapSize*2;
+light.shadow.camera.top = shadowMapSize;
+light.shadow.camera.bottom = -shadowMapSize;
+light.shadow.camera.left = -shadowMapSize;
+light.shadow.camera.right = shadowMapSize;
 light.shadow.normalBias = 0.02;
 scene.add(light);
 scene.add( light.target );
@@ -496,9 +482,12 @@ let scrollSpeed = (function(){
 /**
  * Animate
  */
-
+let azimuthalAngle, zoom;
 let i = 0;
 let g = 0.8;
+let t = 0;
+let hue, lightness1, lightness2;
+
 const sign1 = document.getElementById("sign1");
 const sign2 = document.getElementById("sign2");
 const sign3 = document.getElementById("sign3");
@@ -507,6 +496,7 @@ const project1 = document.getElementById("project1");
 const project2 = document.getElementById("project2");
 const project3 = document.getElementById("project3");
 const project4 = document.getElementById("project4");
+
 // let counttx = 0, countup = true;
 const clock = new THREE.Clock(); 
 
@@ -538,7 +528,26 @@ const tick = () =>
     if ( robot ) robot.rotation.y -= .01;
 
     // Update cyclist position
-    const azimuthalAngle = controls.getAzimuthalAngle();
+    azimuthalAngle = controls.getAzimuthalAngle();
+
+    t += 0.001;  
+    light.position.x = 0;
+    light.position.y = 12 * Math.cos(t) + 0;
+    light.position.z = 12 * Math.sin(t) + 0;
+
+    hemiLight.intensity = 0.5 + Math.cos(t) * .35;
+
+    lightness1 = 100 + Math.cos(t) * 75;
+    lightness2 = 40 + Math.cos(t) * 30;
+    hue = 220 - Math.cos(t) * 15;
+
+    canvas.style.background = 'linear-gradient(0deg, hsl(' + hue + ', 50%,'  +  lightness1 + '%) 50%, hsl(' + hue + ',80%,' +  lightness2 + '%) 100%)';
+
+    spotLight.position.x = Math.sin(azimuthalAngle) * 11.4;
+    spotLight.position.z = Math.cos(azimuthalAngle) * 11.4;
+    spotLight.target.position.x = Math.sin(azimuthalAngle) * 11;
+    spotLight.target.position.z = Math.cos(azimuthalAngle) * 11;
+    spotLight.intensity = 2 -Math.cos(t)*2;
 
     if ( cyclist ) {
         cyclist.position.x = Math.sin(azimuthalAngle) * 11.4;
@@ -639,21 +648,12 @@ const tick = () =>
     if ( mixer3 ) mixer3.update( delta );
     if ( mixer4 ) mixer4.update( delta );
 
-    //Smoke
-    var sp = smokeParticles.length;
-    while (sp--) {
-        smokeParticles[sp].rotation.z += delta * .5;
-        smokeParticles[sp].rotation.y = azimuthalAngle;
-    }
-
-      
-
     scrollSpeed();
 
     // Render
-    // stats.begin()
+    stats.begin()
     renderer.render(scene, camera)
-    // stats.end()
+    stats.end()
  
      // Call tick again on the next frame
      window.requestAnimationFrame(tick)
