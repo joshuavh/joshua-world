@@ -8,11 +8,9 @@ import { MeshSurfaceSampler } from 'https://cdn.skypack.dev/three@0.136.0/exampl
 /**
  * Debug
  */
-//const gui = new dat.GUI()
-
-// const stats = new Stats()
-// stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-// document.body.appendChild(stats.dom)
+const stats = new Stats()
+stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild(stats.dom)
 
 const canvas = document.querySelector('canvas.webgl')
 
@@ -406,15 +404,15 @@ window.addEventListener('resize', () =>
 })
 
 // Lights
-const hemiLight = new THREE.HemisphereLight( 0xffd4e5, 0xffd4e5, 0.75 );
-hemiLight.color.setHSL( 0.9, 1 , 1 );
-hemiLight.groundColor.setHSL( 0.9, 1, 0.85 );
+const hemiLight = new THREE.HemisphereLight( 0xfff, 0xfff, 0.5 );
+hemiLight.color.setHSL( 0.6, 1 , 0.6 );
+hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
 hemiLight.position.set( 0, 500, 0 );
 scene.add( hemiLight );
 
 
-const light = new THREE.DirectionalLight(0xffd4e5, 0.5, 100);
-light.position.set(2,6.5,2);
+const light = new THREE.DirectionalLight(0xffffff, 1, 100);
+light.color.setHSL( 0.1, 1, 0.95 );light.position.set(2,6.5,2);
 light.castShadow = true;
 light.shadow.mapSize.width = 2048;
 light.shadow.mapSize.height = 2048;
@@ -651,9 +649,9 @@ const tick = () =>
     scrollSpeed();
 
     // Render
-    // stats.begin()
+    stats.begin()
     renderer.render(scene, camera)
-    // stats.end()
+    stats.end()
  
      // Call tick again on the next frame
      window.requestAnimationFrame(tick)

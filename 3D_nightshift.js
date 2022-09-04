@@ -349,7 +349,6 @@ renderer.setSize(sizes.width, sizes.height)
 let pixelRatio = Math.min(window.devicePixelRatio, 2);
 renderer.setPixelRatio(pixelRatio);
 renderer.setClearColor( 0xffffff, 0);
-// scene.background = new THREE.Color( 0xff0000 );
 scene.background = null;
 
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -379,18 +378,13 @@ hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
 hemiLight.position.set( 0, 500, 0 );
 scene.add( hemiLight );
 
-
-const spotLight = new THREE.SpotLight("hsl(40, 100%, 90%)", 1, 10, Math.PI/4, 1);
-spotLight.position.set( 0, 4, 0 );
+const spotLight = new THREE.SpotLight("hsl(40, 100%, 90%)", 1, 4, Math.PI/4, 1, 1);
+spotLight.position.set( 0, 3, 0 );
 spotLight.castShadow = true;
-spotLight.shadow.mapSize.width = 512;
-spotLight.shadow.mapSize.height = 512;
+spotLight.shadow.mapSize.width = 128;
+spotLight.shadow.mapSize.height = 128;
 spotLight.shadow.camera.near = 0.5; 
-spotLight.shadow.camera.far = 8;
-spotLight.shadow.camera.top = 8;
-spotLight.shadow.camera.bottom = -2;
-spotLight.shadow.camera.left = -10;
-spotLight.shadow.camera.right = 10;
+spotLight.shadow.camera.far = 2;
 spotLight.shadow.normalBias = 0.02;
 scene.add( spotLight );
 scene.add( spotLight.target );
@@ -543,8 +537,8 @@ const tick = () =>
 
     canvas.style.background = 'linear-gradient(0deg, hsl(' + hue + ', 50%,'  +  lightness1 + '%) 50%, hsl(' + hue + ',80%,' +  lightness2 + '%) 100%)';
 
-    spotLight.position.x = Math.sin(azimuthalAngle) * 11.4;
-    spotLight.position.z = Math.cos(azimuthalAngle) * 11.4;
+    spotLight.position.x = Math.sin(azimuthalAngle) * 11;
+    spotLight.position.z = Math.cos(azimuthalAngle) * 11;
     spotLight.target.position.x = Math.sin(azimuthalAngle) * 11;
     spotLight.target.position.z = Math.cos(azimuthalAngle) * 11;
     spotLight.intensity = 2 -Math.cos(t)*2;
