@@ -372,29 +372,20 @@ window.addEventListener('resize', () =>
 })
 
 // Lights
-const hemiLight = new THREE.HemisphereLight( 0xfff, 0xfff, 1 );
+const hemiLight = new THREE.HemisphereLight( 0xfff, 0xfff, 0.6 );
 hemiLight.color.setHSL( 0.6, 1 , 0.6 );
 hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
 hemiLight.position.set( 0, 500, 0 );
 scene.add( hemiLight );
-
-const spotLight = new THREE.SpotLight("hsl(40, 100%, 90%)", 1, 4, Math.PI/4, 1, 1);
-spotLight.position.set( 0, 3, 0 );
-spotLight.castShadow = true;
-spotLight.shadow.mapSize.width = 128;
-spotLight.shadow.mapSize.height = 128;
-spotLight.shadow.camera.near = 0.5; 
-spotLight.shadow.camera.far = 2;
-spotLight.shadow.normalBias = 0.02;
-scene.add( spotLight );
-scene.add( spotLight.target );
 
 // const helper2 = new THREE.CameraHelper( spotLight.shadow.camera );
 // scene.add( helper2 );
 
 let shadowMapSize = 13;
 const light = new THREE.DirectionalLight(0xffffff, 1, 100);
+light.position.set(0,12,12);
 light.color.setHSL( 0.1, 1, 0.95 );
+light.visible = true;
 light.castShadow = true;
 light.shadow.mapSize.width = 2048;
 light.shadow.mapSize.height = 2048;
@@ -410,6 +401,18 @@ scene.add( light.target );
 
 // const helper = new THREE.CameraHelper( light.shadow.camera );
 // scene.add( helper );
+
+const spotLight = new THREE.SpotLight("hsl(40, 100%, 90%)", 2, 5, Math.PI/4, 1, 1);
+spotLight.position.set( 0, 3, 0 );
+spotLight.visible = false;
+spotLight.castShadow = false;
+spotLight.shadow.mapSize.width = 1024;
+spotLight.shadow.mapSize.height = 1024;
+spotLight.shadow.camera.near = 0.5; 
+spotLight.shadow.camera.far = 2;
+spotLight.shadow.normalBias = 0.02;
+scene.add( spotLight );
+scene.add( spotLight.target );
 
 // Cursor
 const cursor = {
@@ -473,14 +476,34 @@ let scrollSpeed = (function(){
 // }}
     
 
+//Darkmode
+
+const checkbox = document.getElementById('myCheckbox')
+
+checkbox.addEventListener('change', (event) => {
+  if (event.currentTarget.checked) {
+    spotLight.visible = true;
+    spotLight.castShadow = true;
+    light.visible = false;
+    light.castShadow = false;
+    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,10%) 50%, hsl(220,80%,10%) 100%)';
+    hemiLight.intensity = 0.01;
+  } else {
+    spotLight.visible = false;
+    spotLight.castShadow = false;
+    light.visible = true;
+    light.castShadow = true;
+    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,100%) 50%, hsl(220,80%,80%) 100%)';
+    hemiLight.intensity = 0.6;
+  }
+})
+
 /**
  * Animate
  */
 let azimuthalAngle, zoom;
 let i = 0;
 let g = 0.8;
-let t = 0;
-let hue, lightness1, lightness2;
 
 const sign1 = document.getElementById("sign1");
 const sign2 = document.getElementById("sign2");
@@ -524,24 +547,10 @@ const tick = () =>
     // Update cyclist position
     azimuthalAngle = controls.getAzimuthalAngle();
 
-    t += 0.001;  
-    light.position.x = 0;
-    light.position.y = 12 * Math.cos(t) + 0;
-    light.position.z = 12 * Math.sin(t) + 0;
-
-    hemiLight.intensity = 0.5 + Math.cos(t) * .35;
-
-    lightness1 = 100 + Math.cos(t) * 75;
-    lightness2 = 40 + Math.cos(t) * 30;
-    hue = 220 - Math.cos(t) * 15;
-
-    canvas.style.background = 'linear-gradient(0deg, hsl(' + hue + ', 50%,'  +  lightness1 + '%) 50%, hsl(' + hue + ',80%,' +  lightness2 + '%) 100%)';
-
-    spotLight.position.x = Math.sin(azimuthalAngle) * 11;
-    spotLight.position.z = Math.cos(azimuthalAngle) * 11;
-    spotLight.target.position.x = Math.sin(azimuthalAngle) * 11;
-    spotLight.target.position.z = Math.cos(azimuthalAngle) * 11;
-    spotLight.intensity = 2 -Math.cos(t)*2;
+    spotLight.position.x = Math.sin(azimuthalAngle) * 12;
+    spotLight.position.z = Math.cos(azimuthalAngle) * 12;
+    spotLight.target.position.x = Math.sin(azimuthalAngle) * 9;
+    spotLight.target.position.z = Math.cos(azimuthalAngle) * 9;
 
     if ( cyclist ) {
         cyclist.position.x = Math.sin(azimuthalAngle) * 11.4;
