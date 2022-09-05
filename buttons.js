@@ -1,7 +1,6 @@
 var btn = document.querySelectorAll(".primary");
 var modals = document.querySelectorAll('.modal');
 var X = document.getElementsByClassName("close");
-
 var menu = document.getElementById("menu");
 
 
