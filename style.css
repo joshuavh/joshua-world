@@ -76,28 +76,19 @@ a:hover {
     color: #242424;
 }
 
-#intro {
-    font-size: 48px;
-    font-weight: 300;
-    line-height: 120%; 
-}
-
 .sign {
     position: fixed;
     width: 90%;
     max-width: 400px;
-    top: 10%;
+    top: 15%;
     left: 50%;
     transform: translateX(-50%);
-    color: #242424;
-    background-color: white;
-    font-size: 18px;
+    color: black;
+    font-size: 20px;
     border-radius: 16px;
     box-sizing: border-box;
-    padding: 24px;
     z-index: 777;
     text-align: center;
-    filter: drop-shadow(0px 40px 80px rgba(48, 0, 160, 0.2));
 }
 
 #animation {
@@ -112,16 +103,12 @@ a:hover {
     position: fixed;
     width: 90%;
     max-width: 400px;
-    top: 10%;
+    top: 15%;
     left: 50%;
-    padding: 24px;
     transform: translateX(-50%);
-    color: #242424;
-    background-color: white;
-    filter: drop-shadow(0px 40px 80px rgba(48, 0, 160, 0.2));
+    color: black;
     border-radius: 16px;
     z-index: 777;
-
     box-sizing: border-box;
   }
 
@@ -218,6 +205,11 @@ a:hover {
     background-color: black;
   }
 
+   /* When the checkbox is checked, add a black background */
+   #myCheckbox:checked ~ .sign {
+    color: white;
+  }
+
   /* Create the checkmark/indicator (hidden when not checked) */
   .checkmark:after {
     content: "";
@@ -242,6 +234,11 @@ a:hover {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  .darkmode{
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+}
 
 .modal {
     height: 100%;
@@ -385,10 +382,6 @@ a:hover {
         font-size: 18px;
     }
 
-    #intro {
-        font-size: 24px;
-    }    
-
     .helptext span {
         display: none;
       }
@@ -398,10 +391,6 @@ a:hover {
 
     #animation{
         background-image: url(img/icons/swipe_animation.svg);
-    }
-
-    .project {
-        padding: 16px;
     }
 
     .modal-content-wrapper {

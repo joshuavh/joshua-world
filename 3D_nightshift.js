@@ -402,8 +402,8 @@ scene.add( light.target );
 // const helper = new THREE.CameraHelper( light.shadow.camera );
 // scene.add( helper );
 
-const spotLight = new THREE.SpotLight("hsl(40, 100%, 90%)", 2, 5, Math.PI/4, 1, 1);
-spotLight.position.set( 0, 3, 0 );
+const spotLight = new THREE.SpotLight("hsl(40, 100%, 90%)", 4, 6, Math.PI/4, 1, 1);
+spotLight.position.set( 0, 3.5, 0 );
 spotLight.visible = false;
 spotLight.castShadow = false;
 spotLight.shadow.mapSize.width = 1024;
@@ -478,7 +478,10 @@ let scrollSpeed = (function(){
 
 //Darkmode
 
-const checkbox = document.getElementById('myCheckbox')
+const checkbox = document.getElementById('myCheckbox');
+const signs = document.getElementsByClassName('sign');
+const projects = document.getElementsByClassName('project');
+
 
 checkbox.addEventListener('change', (event) => {
   if (event.currentTarget.checked) {
@@ -489,6 +492,14 @@ checkbox.addEventListener('change', (event) => {
     canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,10%) 50%, hsl(220,80%,10%) 100%)';
     hemiLight.intensity = 0.01;
 
+    for (const sign of signs) {
+        sign.classList.add('darkmode');
+    }
+
+    for (const project of projects) {
+        project.classList.add('darkmode');
+    }
+
   } else {
     spotLight.visible = false;
     spotLight.castShadow = false;
@@ -496,6 +507,15 @@ checkbox.addEventListener('change', (event) => {
     light.castShadow = true;
     canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,100%) 50%, hsl(220,80%,80%) 100%)';
     hemiLight.intensity = 0.6;
+
+    for (const sign of signs) {
+        sign.classList.remove('darkmode');
+    }
+
+    for (const project of projects) {
+    project.classList.remove('darkmode');
+    }
+
   }
 })
 
@@ -548,8 +568,8 @@ const tick = () =>
     // Update cyclist position
     azimuthalAngle = controls.getAzimuthalAngle();
 
-    spotLight.position.x = Math.sin(azimuthalAngle) * 12;
-    spotLight.position.z = Math.cos(azimuthalAngle) * 12;
+    spotLight.position.x = Math.sin(azimuthalAngle) * 12.4;
+    spotLight.position.z = Math.cos(azimuthalAngle) * 12.4;
     spotLight.target.position.x = Math.sin(azimuthalAngle) * 9;
     spotLight.target.position.z = Math.cos(azimuthalAngle) * 9;
 
