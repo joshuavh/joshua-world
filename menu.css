@@ -13,9 +13,7 @@
 
 #menuToggle a
 {
-  text-decoration: none;
-  color: white;
-  
+  text-decoration: none;  
   transition: color 0.3s ease;
 }
 
@@ -53,7 +51,7 @@
   margin-bottom: 6px;
   position: relative;
   
-  background: white;
+  background: black;
   border-radius: 2px;
   
   z-index: 888;
@@ -115,7 +113,7 @@
   padding: 50px;
   padding-top: 125px;
   
-  background: black;
+  background: white;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -133,7 +131,7 @@
 }
 
 .active{
-    color: #757BFD;
+    opacity: 0.5;
 }
 
 /*

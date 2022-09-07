@@ -479,28 +479,12 @@ let scrollSpeed = (function(){
 //Darkmode
 
 const checkbox = document.getElementById('myCheckbox');
-const signs = document.getElementsByClassName('sign');
-const projects = document.getElementsByClassName('project');
+const spans = document.getElementById("menuToggle").getElementsByTagName('span');
+
 
 
 checkbox.addEventListener('change', (event) => {
   if (event.currentTarget.checked) {
-    spotLight.visible = true;
-    spotLight.castShadow = true;
-    light.visible = false;
-    light.castShadow = false;
-    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,10%) 50%, hsl(220,80%,10%) 100%)';
-    hemiLight.intensity = 0.01;
-
-    for (const sign of signs) {
-        sign.classList.add('darkmode');
-    }
-
-    for (const project of projects) {
-        project.classList.add('darkmode');
-    }
-
-  } else {
     spotLight.visible = false;
     spotLight.castShadow = false;
     light.visible = true;
@@ -508,12 +492,26 @@ checkbox.addEventListener('change', (event) => {
     canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,100%) 50%, hsl(220,80%,80%) 100%)';
     hemiLight.intensity = 0.6;
 
-    for (const sign of signs) {
-        sign.classList.remove('darkmode');
+    document.body.style.color = "black";
+    document.getElementById("menu").style.background = "white";
+
+    for (const span of spans) {
+        span.style.background = "black";
     }
 
-    for (const project of projects) {
-    project.classList.remove('darkmode');
+  } else {
+    spotLight.visible = true;
+    spotLight.castShadow = true;
+    light.visible = false;
+    light.castShadow = false;
+    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,10%) 50%, hsl(220,80%,10%) 100%)';
+    hemiLight.intensity = 0.01;
+
+    document.body.style.color = "white";
+    document.getElementById("menu").style.background = "black";
+
+    for (const span of spans) {
+        span.style.background = "white";
     }
 
   }
