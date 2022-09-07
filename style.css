@@ -18,8 +18,8 @@ body{
     top: 0;
     left: 0;
     outline: none;
-    /* background: linear-gradient(0deg, rgb(253, 253, 253) 50%, rgb(151,180,255) 100%); */
-    background: linear-gradient(0deg, hsl(200, 50%,100%) 50%, hsl(210,80%, 60%) 100%);
+    background: linear-gradient(0deg, hsl(200, 50%,100%) 50%, hsl(214,80%,70%) 100%);
+
 
     cursor: move; /* fallback if grab cursor is unsupported */
     cursor: grab;

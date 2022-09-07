@@ -489,7 +489,7 @@ checkbox.addEventListener('change', (event) => {
     spotLight.castShadow = false;
     light.visible = true;
     light.castShadow = true;
-    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,100%) 50%, hsl(220,80%,80%) 100%)';
+    canvas.style.background = 'linear-gradient(0deg, hsl(200, 50%,100%) 50%, hsl(214,80%,70%) 100%)';
     hemiLight.intensity = 0.6;
 
     document.body.style.color = "black";
@@ -503,7 +503,7 @@ checkbox.addEventListener('change', (event) => {
     spotLight.castShadow = true;
     light.visible = false;
     light.castShadow = false;
-    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,10%) 50%, hsl(220,80%,10%) 100%)';
+    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,15%) 50%, hsl(220,80%,5%) 100%)';
     hemiLight.intensity = 0.01;
 
     document.body.style.color = "white";
