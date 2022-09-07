@@ -241,10 +241,10 @@ gltfLoader.load(
         moose.rotation.y = Math.PI/2;
 
         //Playing Animation
-        mixer = new THREE.AnimationMixer( moose );
-        action = mixer.clipAction( gltf.animations[ 20 ] );
-        action.timeScale = 1;
-        action.play();
+        // mixer = new THREE.AnimationMixer( moose );
+        // action = mixer.clipAction( gltf.animations[ 20 ] );
+        // action.timeScale = 1;
+        // action.play();
         
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
