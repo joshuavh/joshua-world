@@ -493,7 +493,6 @@ checkbox.addEventListener('change', (event) => {
     hemiLight.intensity = 0.6;
 
     document.body.style.color = "black";
-    document.getElementById("menu").style.background = "white";
 
     for (const span of spans) {
         span.style.background = "black";
@@ -508,7 +507,6 @@ checkbox.addEventListener('change', (event) => {
     hemiLight.intensity = 0.01;
 
     document.body.style.color = "white";
-    document.getElementById("menu").style.background = "black";
 
     for (const span of spans) {
         span.style.background = "white";

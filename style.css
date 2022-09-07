@@ -186,7 +186,7 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 32px;
+    border-radius: 2px;
     background-color: #542BEC;
     -webkit-transition: .2s;
     transition: .2s;

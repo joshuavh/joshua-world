@@ -81,6 +81,7 @@
 {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -4px);
+  background: white !important;
 }
 
 /*
@@ -113,7 +114,7 @@
   padding: 50px;
   padding-top: 125px;
   
-  background: white;
+  background: black;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
