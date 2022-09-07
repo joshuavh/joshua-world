@@ -166,10 +166,10 @@ a:hover {
 .switch {
     position: absolute;
     display: inline-block;
-    width: 55px;
-    height: 30px;
+    width: 56px;
+    height: 32px;
     z-index: 888;
-    bottom: 20px;
+    bottom: 19px;
     right: 20px;
   }
   
@@ -187,30 +187,26 @@ a:hover {
     right: 0;
     bottom: 0;
     border-radius: 32px;
-    background-color: rgb(93, 98, 148);
-    -webkit-transition: .4s;
-    transition: .4s;
+    background-color: #542BEC;
+    -webkit-transition: .2s;
+    transition: .2s;
   }
   
   .slider:before {
     position: absolute;
     content: "";
-    height: 24px;
-    width: 24px;
+    height: 22px;
+    width: 22px;
     border-radius: 50%;
-    left: 4px;
-    bottom:3px;
+    left: 5px;
+    bottom: 5px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: .2s;
+    transition: .2s;
   }
   
   input:checked + .slider {
-    background-color: #23008E;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px black;
+    background-color: #ffa200;
   }
   
   input:checked + .slider:before {
