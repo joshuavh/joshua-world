@@ -12,7 +12,7 @@
 #loader-wrapper{
     position: absolute;
     width: 90%;
-    max-width: 960px;
+    max-width: 1080px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

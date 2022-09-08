@@ -23,7 +23,7 @@ fetch(URL)
 
     for (let i = 0; i < result.length; i++) {
         thumbnail[i].src = "https://cdn.sanity.io/images/jidqpryp/production/" + result[i].thumbnail.asset._ref.substring(6, result[i].thumbnail.asset._ref.length-4) + ".jpg";
-        header[i].style.backgroundImage = 'linear-gradient(to bottom, rgba(0,0,0, 0.2), rgba(0,0,0, 0.70)), url(https://cdn.sanity.io/images/jidqpryp/production/' + result[i].herobanner.asset._ref.substring(6, result[i].herobanner.asset._ref.length-4) + '.jpg)';
+        header[i].style.backgroundImage = 'linear-gradient(to bottom, rgba(0,0,0, 0.2), rgba(0,0,0, 1)), url(https://cdn.sanity.io/images/jidqpryp/production/' + result[i].herobanner.asset._ref.substring(6, result[i].herobanner.asset._ref.length-4) + '.jpg)';
         projecttitles[i].textContent = result[i].title;
         subtitles[i].textContent = result[i].subtitle;
         headline[i].textContent = result[i].title;

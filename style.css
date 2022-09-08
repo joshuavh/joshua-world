@@ -35,7 +35,7 @@ body{
 
 
 h1{
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 400;
     line-height: 120%;
 }
@@ -91,6 +91,8 @@ a:hover {
     font-size: 20px;
     border-radius: 16px;
     box-sizing: border-box;
+    padding: 16px;
+    background: rgba(255,255,255,0.3);
     z-index: 777;
     text-align: center;
 }
@@ -111,6 +113,8 @@ a:hover {
     left: 50%;
     transform: translateX(-50%);
     border-radius: 16px;
+    padding: 16px;
+    background: rgba(255,255,255,0.3);
     z-index: 777;
     box-sizing: border-box;
   }
@@ -148,7 +152,7 @@ a:hover {
     letter-spacing: 1.5px;
     text-transform: uppercase;
     border: none;
-    background-color: #eef2ff;
+    background-color: white;
     color: black;
     border-radius: 12px;
 }
@@ -160,8 +164,8 @@ a:hover {
 }
 .button:active { 
     cursor: pointer;
-    color: black; 
-    background-color: white;
+    color: white; 
+    background-color: black;
 }
 
 #switch {
@@ -175,34 +179,31 @@ a:hover {
     display: none;
 }
 
-  .icon {
+.icon {
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-  }
+}
 
-  #moon{
+#moon{
     display: none;
-  }
+}
 
-  #sun{
+#sun{
     display: block;
-  }
+}
 
-  input:checked ~ #moon {
+input:checked ~ #moon {
     display: block;
-  }
+}
 
-  input:checked ~ #sun {
+input:checked ~ #sun {
     display: none;
-  }
+}
   
-  
-
-
 
 .modal {
     height: 100%;
@@ -217,7 +218,7 @@ a:hover {
 }
 
 .header {
-    height: 50vh;
+    height: 100vh;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -228,17 +229,16 @@ a:hover {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 64px;
-    font-weight: 500;
+    font-size: 96px;
+    font-weight: 600;
     max-width: 800px;
     margin: auto;
+    filter: drop-shadow(0 0 50px black);
 }
 
 .modal-content-wrapper {
     max-width: 800px;
-    margin: auto;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    margin: 0 auto 80px auto;
     display: flex;
     flex-direction: column;
     row-gap: 80px;
