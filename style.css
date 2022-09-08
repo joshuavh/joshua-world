@@ -163,26 +163,16 @@ a:hover {
     background-color: white;
 }
 
-.switch {
-    position: absolute;
+#switch {
+    position: fixed;
     z-index: 888;
-    bottom: 19px;
+    bottom: 20px;
     right: 20px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: white;
-    text-align: center;
-  }
-
-.switch:hover {
-    cursor: pointer;
-    background: #BDD1FF;
 }
   
-  .switch input { 
+#switch input { 
     display: none;
-  }
+}
 
   .icon {
     margin: 0;
@@ -199,7 +189,6 @@ a:hover {
 
   #sun{
     display: block;
-    color: black;
   }
 
   input:checked ~ #moon {
@@ -217,6 +206,7 @@ a:hover {
 .modal {
     height: 100%;
     width: 100%;
+    top: 0;
     overflow-y: scroll;
     background-color: black;
     color: white;
@@ -273,22 +263,26 @@ a:hover {
     z-index: 999;
 }
 
-.close {
-    position: fixed;
+.button-round{
     background-color: white;
     color: black;
-    background-size: 32px;
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    top: 24px;
-    right: 24px;
-    z-index: 999;
 }
 
-.close:hover {
+.button-round:hover {
     cursor: pointer;
-    background-color: #BDD1FF;
+    color: white; 
+    background-color: #542BEC;
+}
+
+
+.close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
 }
 
 .embed-container {

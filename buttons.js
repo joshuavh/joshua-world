@@ -1,6 +1,6 @@
 var btn = document.querySelectorAll(".primary");
 var modals = document.querySelectorAll('.modal');
-var X = document.getElementsByClassName("close");
+var X = document.getElementsByClassName("button-round close");
 var menu = document.getElementById("menu");
 
 
@@ -36,7 +36,7 @@ document.getElementById("loadingscreen").classList.add("hidden");
 
 function copy() {
   // Copy the text inside the text field
-  navigator.clipboard.writeText("joshua.vonhofen@gmail.com")  .then(() => alert("Copied"));
+  navigator.clipboard.writeText("joshua.vonhofen@gmail.com")  .then(() => alert("E-mail copied!"));
   
   // Alert the copied text
   //alert("E-mail copied!");

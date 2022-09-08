@@ -13,8 +13,7 @@
 
 #menuToggle a
 {
-  text-decoration: none;  
-  transition: color 0.3s ease;
+  color: white 
 }
 
 #menuToggle a:hover
@@ -132,7 +131,7 @@
 }
 
 .active{
-    opacity: 0.5;
+  color: #757BFD;
 }
 
 /*

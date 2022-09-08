@@ -230,21 +230,20 @@ for ( let i = 0; i < 8; i ++ ) {
     }
 
 
-var moose;
+var clapper;
 var mixer;
 var action;
 gltfLoader.load(
-    '/models/moose.glb', function(gltf){
-        moose = gltf.scene;
-        moose.scale.set(.8,.8,.8);
-        moose.position.set(6,0,-7.5);
-        moose.rotation.y = Math.PI/2;
+    '/models/clapper.glb', function(gltf){
+        clapper = gltf.scene;
+        clapper.scale.set(1.4, 1.4, 1.4);
+        clapper.position.set(9.5, 0, -1);
+        clapper.rotation.y = Math.PI/8;
 
         //Playing Animation
-        // mixer = new THREE.AnimationMixer( moose );
-        // action = mixer.clipAction( gltf.animations[ 20 ] );
-        // action.timeScale = 1;
-        // action.play();
+        mixer = new THREE.AnimationMixer( clapper );
+        action = mixer.clipAction( gltf.animations[ 0 ] );
+        action.play();
         
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
@@ -252,7 +251,7 @@ gltfLoader.load(
                 node.receiveShadow = true;
             }
         } );
-        scene.add(moose);
+        scene.add(clapper);
 });
 
 var cyclist;
@@ -303,8 +302,10 @@ gltfLoader.load(
 
 
 var robot;
+var mixer5;
+var action5;
 gltfLoader.load(
-    '/models/robot.glb', function(gltf){
+    '/models/robo.glb', function(gltf){
         robot = gltf.scene;
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
@@ -312,10 +313,16 @@ gltfLoader.load(
                 node.receiveShadow = true;
             }
         } );
-        scene.add(robot);
+
+        mixer5 = new THREE.AnimationMixer( robot );
+        action5 = mixer5.clipAction( gltf.animations[ 14 ] );
+        action5.play();
+
         robot.scale.set(.5,.5,.5);
-        robot.position.set(0,.75,-9.5);
-        robot.rotation.y = -Math.PI/2;
+        robot.position.set(0,0,-9.5);
+        robot.rotation.y = -Math.PI;
+
+        scene.add(robot);
 });
 
 
@@ -382,27 +389,27 @@ scene.add( hemiLight );
 // scene.add( helper2 );
 
 let shadowMapSize = 13;
-const light = new THREE.DirectionalLight(0xffffff, 1, 100);
-light.position.set(0,12,12);
-light.color.setHSL( 0.1, 1, 0.95 );
-light.visible = true;
-light.castShadow = true;
-light.shadow.mapSize.width = 2048;
-light.shadow.mapSize.height = 2048;
-light.shadow.camera.near = 0.5; 
-light.shadow.camera.far = shadowMapSize*2;
-light.shadow.camera.top = shadowMapSize;
-light.shadow.camera.bottom = -shadowMapSize;
-light.shadow.camera.left = -shadowMapSize;
-light.shadow.camera.right = shadowMapSize;
-light.shadow.normalBias = 0.02;
-scene.add(light);
-scene.add( light.target );
+const sunLight = new THREE.DirectionalLight(0xffffff, 1, 100);
+sunLight.position.set(0,12,12);
+sunLight.color.setHSL( 0.1, 1, 0.95 );
+sunLight.visible = true;
+sunLight.castShadow = true;
+sunLight.shadow.mapSize.width = 2048;
+sunLight.shadow.mapSize.height = 2048;
+sunLight.shadow.camera.near = 0.5; 
+sunLight.shadow.camera.far = shadowMapSize*2;
+sunLight.shadow.camera.top = shadowMapSize;
+sunLight.shadow.camera.bottom = -shadowMapSize;
+sunLight.shadow.camera.left = -shadowMapSize;
+sunLight.shadow.camera.right = shadowMapSize;
+sunLight.shadow.normalBias = 0.02;
+scene.add(sunLight);
+scene.add( sunLight.target );
 
-// const helper = new THREE.CameraHelper( light.shadow.camera );
+// const helper = new THREE.CameraHelper( sunLight.shadow.camera );
 // scene.add( helper );
 
-const spotLight = new THREE.SpotLight("hsl(40, 100%, 90%)", 4, 6, Math.PI/4, 1, 1);
+const spotLight = new THREE.SpotLight(0xffffff, 4, 6, Math.PI/4, 1, 1);
 spotLight.position.set( 0, 3.5, 0 );
 spotLight.visible = false;
 spotLight.castShadow = false;
@@ -450,7 +457,7 @@ let scrollSpeed = (function(){
           delta = -delta; 
         }
       //else if (delta > 1) cyclist.rotation.z = 0;
-      if ( action2 )  action2.timeScale = delta*200;
+      if ( action2 )  action2.timeScale = delta*160;
 
       lastPos = newPos;
       return delta;
@@ -487,8 +494,8 @@ checkbox.addEventListener('change', (event) => {
   if (event.currentTarget.checked) {
     spotLight.visible = false;
     spotLight.castShadow = false;
-    light.visible = true;
-    light.castShadow = true;
+    sunLight.visible = true;
+    sunLight.castShadow = true;
     canvas.style.background = 'linear-gradient(0deg, hsl(200, 50%,100%) 50%, hsl(214,80%,70%) 100%)';
     hemiLight.intensity = 0.6;
 
@@ -501,8 +508,8 @@ checkbox.addEventListener('change', (event) => {
   } else {
     spotLight.visible = true;
     spotLight.castShadow = true;
-    light.visible = false;
-    light.castShadow = false;
+    sunLight.visible = false;
+    sunLight.castShadow = false;
     canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,15%) 50%, hsl(220,80%,5%) 100%)';
     hemiLight.intensity = 0.01;
 
@@ -518,7 +525,7 @@ checkbox.addEventListener('change', (event) => {
 /**
  * Animate
  */
-let azimuthalAngle, zoom;
+let azimuthalAngle;
 let i = 0;
 let g = 0.8;
 
@@ -533,7 +540,6 @@ const project4 = document.getElementById("project4");
 
 // let counttx = 0, countup = true;
 const clock = new THREE.Clock(); 
-
 
 const tick = () =>
  {
@@ -553,13 +559,6 @@ const tick = () =>
         bird.rotation.y = g * Math.PI - Math.PI/2;
         g -= 0.001;
     }
-
-    // Robot Animation
-    // if (countup) { counttx += .01; 
-    //     if (counttx >= 0) countup = false;}
-    //     else { counttx -= .01; if (counttx <= -2) countup = true; }
-    //     if ( robot ) robot.rotation.y = counttx;
-    if ( robot ) robot.rotation.y -= .01;
 
     // Update cyclist position
     azimuthalAngle = controls.getAzimuthalAngle();
@@ -667,6 +666,7 @@ const tick = () =>
     if ( mixer2 ) mixer2.update( delta );
     if ( mixer3 ) mixer3.update( delta );
     if ( mixer4 ) mixer4.update( delta );
+    if ( mixer5 ) mixer5.update( delta );
 
     scrollSpeed();
 
