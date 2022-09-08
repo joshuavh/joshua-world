@@ -228,7 +228,7 @@ for ( let i = 0; i < 8; i ++ ) {
         scene.add(man);
     });
     }
-
+    
 
 var clapper;
 var mixer;
