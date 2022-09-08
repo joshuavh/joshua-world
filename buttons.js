@@ -33,3 +33,11 @@ for (var index in modals) {
 document.getElementById("start-button").onclick = function() {
 document.getElementById("loadingscreen").classList.add("hidden");
 }
+
+function copy() {
+  // Copy the text inside the text field
+  navigator.clipboard.writeText("joshua.vonhofen@gmail.com")  .then(() => alert("Copied"));
+  
+  // Alert the copied text
+  //alert("E-mail copied!");
+}

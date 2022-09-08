@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" href="img/favicon.png" sizes="16x16">
 </head>
 <body>
@@ -32,7 +33,7 @@
         </div>
     </div>
 
-    <div id="logo">JOSHUAs<br>WORLD</a></div>
+    <div id="logo">JOSHUAs<br>WORLD</div>
 
     <nav role="navigation">
         <div id="menuToggle">
@@ -51,7 +52,8 @@
 
     <label class="switch">
         <input id="myCheckbox" type="checkbox" checked>
-        <span class="slider"></span>
+        <i id="moon"class="icon fa fa-moon fa-xl"></i>
+        <i id="sun" class="icon fa fa-lightbulb fa-xl"></i>
     </label>
       
 
@@ -128,7 +130,7 @@
 <div class="modal" id="myModal1">
     <div class="header">
         <div class="header-wrapper projectheadline"></div>
-        <div class ="close"></div>
+        <div class ="close"><i class="icon fa-solid fa-xmark fa-xl"></i></div>
     </div>
     <div class="modal-content-wrapper">
         <h1 class="modal-subtitle"></h1>
@@ -141,7 +143,7 @@
 <div class="modal" id="myModal2">
     <div class="header">
         <div class="header-wrapper projectheadline"></div>
-        <div class ="close"></div>
+        <div class ="close"><i class="icon fa-solid fa-xmark fa-xl"></i></div>
     </div>
     <div class="modal-content-wrapper">
         <h1 class="modal-subtitle"></h1>
@@ -152,7 +154,7 @@
 <div class="modal" id="myModal3">
     <div class="header">
         <div class="header-wrapper projectheadline"></div>
-        <div class ="close"></div>
+        <div class ="close"><i class="icon fa-solid fa-xmark fa-xl"></i></div>
     </div>
     <div class="modal-content-wrapper">
         <h1 class="modal-subtitle"></h1>
@@ -162,7 +164,7 @@
 <div class="modal" id="myModal4">
     <div class="header">
         <div class="header-wrapper projectheadline"></div>
-        <div class ="close"></div>
+        <div class ="close"><i class="icon fa-solid fa-xmark fa-xl"></i></div>
     </div>
     <div class="modal-content-wrapper">
         <h1 class="modal-subtitle"></h1>
@@ -171,7 +173,8 @@
 
 <div class="sign hidden" id="contact">
     Want to get in contact?
-    <a href="mailto:joshua.vonhofen@gmail.com">joshua.vonhofen@gmail.com</a>
+    <br>
+    <a onclick="copy()" style="cursor: pointer;"><i class="fa-regular fa-copy"></i> joshua.vonhofen@gmail.com</a>
 </div>
 
 <script src="buttons.js"></script>

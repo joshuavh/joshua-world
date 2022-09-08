@@ -70,7 +70,7 @@ a{
 }
 
 a:hover {
-    font-style: italic;
+    font-weight: 700;
 }
 
 .helptext{
@@ -165,55 +165,52 @@ a:hover {
 
 .switch {
     position: absolute;
-    display: inline-block;
-    width: 56px;
-    height: 32px;
     z-index: 888;
     bottom: 19px;
     right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    text-align: center;
   }
+
+.switch:hover {
+    cursor: pointer;
+    background: #BDD1FF;
+}
   
   .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
+    display: none;
   }
-  
-  .slider {
+
+  .icon {
+    margin: 0;
     position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 2px;
-    background-color: #542BEC;
-    -webkit-transition: .2s;
-    transition: .2s;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  #moon{
+    display: none;
+  }
+
+  #sun{
+    display: block;
+    color: black;
+  }
+
+  input:checked ~ #moon {
+    display: block;
+  }
+
+  input:checked ~ #sun {
+    display: none;
   }
   
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    border-radius: 50%;
-    left: 5px;
-    bottom: 5px;
-    background-color: white;
-    -webkit-transition: .2s;
-    transition: .2s;
-  }
   
-  input:checked + .slider {
-    background-color: #ffa200;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(24x);
-    -ms-transform: translateX(24px);
-    transform: translateX(24px);
-  }
 
 
 
@@ -278,14 +275,11 @@ a:hover {
 
 .close {
     position: fixed;
-    background-image: url("/img/icons/close.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #f1ecff;
+    background-color: white;
+    color: black;
     background-size: 32px;
-    width: 32px;
-    height: 32px;
-    padding: 8px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     top: 24px;
     right: 24px;
@@ -294,7 +288,7 @@ a:hover {
 
 .close:hover {
     cursor: pointer;
-    background-color: #cebffd;
+    background-color: #BDD1FF;
 }
 
 .embed-container {
