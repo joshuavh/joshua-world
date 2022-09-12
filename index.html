@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joshua's World</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="loader.css">
-    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,14 +17,10 @@
 
     <div id="loadingscreen">  
         <div id="loader-wrapper">
-            <p2>
-                <a href="index.html">Joshua's World</a> / Welcome</a>
-            </p2>  
-            <br><br><br> 
-            <h1>Hallo, hello, hei 👋
+            <h1 style="color:#757BFD;">Hallo, hello, hei!</h1>
             <br>
-            I'm Joshua, a designer who is enthusiastic about creating engaging and delightful digital experiences.</h1>
-            <br>
+            <h1 style="text-align: right;"><span>I'm Joshua, a designer who is enthusiastic about creating engaging and delightful digital experiences.</span></h1>
+            <br><br>
             <div id="progress">
                 <span id="loading">Loading...</span>
                 <div id="progress-bar"></div>
@@ -65,7 +61,7 @@
     </div>
 
     <div class="sign hidden" id="sign1">
-        My journey as a designer started in Germany, where I studied Communication Design.
+        <p2>My journey as a designer started in Germany, where I studied Communication Design.</p2>
     </div> 
 
     <div class="project hidden" id="project1">
@@ -80,11 +76,11 @@
     </div>
 
     <div class="sign hidden" id="sign2">
-        After graduating, I started working as a motion designer.
+        <p2>After graduating, I started working as a motion designer.</p2>
     </div>
     
     <div class="sign hidden" id="sign3">
-        I moved to Norway for my Master studies.
+        <p2>I moved to Norway for my Master studies.</p2>
     </div> 
 
     <div class="project hidden" id="project2">
@@ -100,7 +96,7 @@
     </div>
 
     <div class="sign hidden" id="sign4">
-        Today, I am working as a Interaction Designer in Oslo. Following are two of my recent projects.
+        <p2>Today, I am working as a Interaction Designer in Oslo. Following are two of my recent projects.</p2>
     </div> 
 
     <div class="project hidden" id="project3">
@@ -172,14 +168,15 @@
 </div>
 
 <div class="sign hidden" id="contact">
-    Want to get in contact?
+    <p2>Want to get in contact?
     <br>
     <a onclick="copy()" style="color: #5c30fd;">joshua.vonhofen@gmail.com</a>
+    </p2>
 </div>
 
-<script src="buttons.js"></script>
-<script type="module" src="sanity.js"></script>
-<script type="module" src="3D_nightshift.js"></script>
+<script src="js/buttons.js"></script>
+<script type="module" src="js/sanity.js"></script>
+<script type="module" src="js/3D_nightshift.js"></script>
 
 </body>
 </html>

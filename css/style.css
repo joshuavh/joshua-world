@@ -2,13 +2,13 @@
 {
     margin: 0;
     padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
 }
 
 body{
-    font-family: 'Space Grotesk', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     color: black;
 }
 
@@ -41,7 +41,7 @@ h1{
 }
 
 h2{
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
     line-height: 120%;
 }
@@ -52,16 +52,16 @@ h3{
     line-height: 140%;
 }
 
-p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 140%;
-}
-
 p2 {
     font-size: 22px;
-    line-height: 140%;
+    line-height: 150%;
     font-weight: 400;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%;
 }
 
 a{
@@ -77,22 +77,20 @@ a:hover {
 .helptext{
     font-size: 16px;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: .5px;
     text-transform: uppercase;
 }
 
 .sign {
     position: fixed;
-    width: 90%;
-    max-width: 400px;
+    padding: 0 20px 0 20px;
+    width: 100%;
+    max-width: 560px;
     top: 15%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 20px;
     border-radius: 16px;
     box-sizing: border-box;
-    padding: 16px;
-    background: rgba(255,255,255,0.3);
     z-index: 777;
     text-align: center;
 }
@@ -102,7 +100,7 @@ a:hover {
     height: 48px;
     margin: auto;
     margin-bottom: 12px;
-    background-image: url(img/icons/drag_animation.svg);
+    background-image: url(../img/drag_animation.svg);
 }
 
 .project {
@@ -113,8 +111,7 @@ a:hover {
     left: 50%;
     transform: translateX(-50%);
     border-radius: 16px;
-    padding: 16px;
-    background: rgba(255,255,255,0.3);
+    padding: 0px;
     z-index: 777;
     box-sizing: border-box;
   }
@@ -147,14 +144,14 @@ a:hover {
 .button{
     width: 100%;
     padding: 16px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: .5px;
     text-transform: uppercase;
     border: none;
     background-color: white;
     color: black;
-    border-radius: 12px;
+    border-radius: 99px;
 }
 
 .button:hover {
@@ -348,6 +345,10 @@ input:checked ~ #sun {
         font-size: 18px;
     }
 
+    p {
+        font-size: 16px;
+    }
+
     .helptext span {
         display: none;
       }
@@ -356,7 +357,7 @@ input:checked ~ #sun {
     }
 
     #animation{
-        background-image: url(img/icons/swipe_animation.svg);
+        background-image: url(../img/swipe_animation.svg);
     }
 
     .modal-content-wrapper {
