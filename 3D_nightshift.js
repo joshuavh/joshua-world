@@ -510,7 +510,7 @@ checkbox.addEventListener('change', (event) => {
     spotLight.castShadow = true;
     sunLight.visible = false;
     sunLight.castShadow = false;
-    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,15%) 50%, hsl(220,80%,5%) 100%)';
+    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,20%) 50%, hsl(220,80%,5%) 100%)';
     hemiLight.intensity = 0.01;
 
     document.body.style.color = "white";

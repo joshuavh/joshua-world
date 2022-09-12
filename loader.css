@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: black;
+    background: linear-gradient(0deg, hsl(220, 50%,20%) 0%, hsl(220,80%,5%) 100%);
     z-index: 1000;
     color: white;
 }
