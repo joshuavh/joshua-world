@@ -16,6 +16,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    justify-content: space-between;
 }
 
 #progress {
@@ -50,7 +54,13 @@
   width: 320px;
   height: 64px;
   font-size: 20px;
-  cursor: pointer;
+  background: #542BEC;
+  color: white;
+}
+
+.cta:hover{
+  background: white;
+  color: black;
 }
 
 @media only screen and (max-width: 600px) {
