@@ -4,13 +4,14 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/js
 import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/DRACOLoader.js';
 import Stats from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/libs/stats.module';
 import { MeshSurfaceSampler } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/math/MeshSurfaceSampler.js';
+import { TWEEN } from 'https://unpkg.com/three@0.139.0/examples/jsm/libs/tween.module.min.js';
 
 /**
  * Debug
  */
-// const stats = new Stats()
-// stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-// document.body.appendChild(stats.dom)
+const stats = new Stats()
+stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild(stats.dom)
 
 const canvas = document.querySelector('canvas.webgl')
 
@@ -329,7 +330,7 @@ gltfLoader.load(
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
-camera.position.set(0,3,16);
+camera.position.set(0,24,16);
 scene.add(camera);
 
 // Controls
@@ -377,6 +378,17 @@ window.addEventListener('resize', () =>
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 })
+
+
+document.getElementById("start-button").onclick = function() {
+    document.getElementById("loadingscreen").classList.add("hidden");
+
+    new TWEEN.Tween(camera.position)
+    .to( { x: 0, y:3, z:16 }, 1200)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .start()
+  ;
+}
 
 // Lights
 const hemiLight = new THREE.HemisphereLight( 0xfff, 0xfff, 0.6 );
@@ -668,12 +680,14 @@ const tick = () =>
     if ( mixer4 ) mixer4.update( delta );
     if ( mixer5 ) mixer5.update( delta );
 
+    TWEEN.update();
     scrollSpeed();
 
     // Render
-    // stats.begin()
+    stats.begin()
     renderer.render(scene, camera)
-    // stats.end()
+    stats.end()
+
  
      // Call tick again on the next frame
      window.requestAnimationFrame(tick)

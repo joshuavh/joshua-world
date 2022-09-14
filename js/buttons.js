@@ -30,9 +30,10 @@ for (var index in modals) {
 //     }
 // }
 
-document.getElementById("start-button").onclick = function() {
-document.getElementById("loadingscreen").classList.add("hidden");
-}
+
+// document.getElementById("start-button").onclick = function() {
+// document.getElementById("loadingscreen").classList.add("hidden");
+// }
 
 function copy() {
   // Copy the text inside the text field
