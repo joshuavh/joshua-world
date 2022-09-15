@@ -194,7 +194,7 @@ gltfLoader.load(
 
         //Playing Animation
         mixer3 = new THREE.AnimationMixer( joshua );
-        action3 = mixer3.clipAction( gltf.animations[ 1 ] );
+        action3 = mixer3.clipAction( gltf.animations[ 0 ] );
         action3.timeScale = 1;
         action3.play();
         
@@ -206,7 +206,7 @@ gltfLoader.load(
             }
         } );
         scene.add(joshua);
-        joshua.scale.set(.48,.48,.48);
+        joshua.scale.set(1,1,1);
         joshua.position.set(-3.5,0,10);
         joshua.rotation.y = 0;
 });
@@ -220,7 +220,7 @@ for ( let i = 0; i < 8; i ++ ) {
     '/models/man.glb', function(gltf){
         var man = gltf.scene;
         man.scale.set(.49,.49,.49);
-        man.position.set(-8.5+ Math.random()*2-1, 0, 4.5 + Math.random()*2-1);
+        man.position.set(-8.5+ Math.random()*2-1, -0.01, 4.5 + Math.random()*2-1);
         man.rotation.y = Math.random()*36;
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
@@ -293,18 +293,19 @@ gltfLoader.load(
         scene.add(cyclist);
 });
 
-var bird;
 var mixer4;
 var action4;
 gltfLoader.load(
-    '/models/seagull.glb', function(gltf){
-        bird = gltf.scene;
-        bird.scale.set(8,8,8);
-        bird.position.y = 4;
+    '/models/stag.glb', function(gltf){
+        var stag = gltf.scene;
 
-        mixer4 = new THREE.AnimationMixer( bird );
+        stag.scale.set(.2,.2,.2);
+        stag.rotation.y = Math.PI/2;
+        stag.position.set(6,0,-7);
+
+        mixer4 = new THREE.AnimationMixer( stag );
         action4 = mixer4.clipAction( gltf.animations[ 0 ] );
-        action4.timeScale = 6;
+        action4.timeScale = 1;
         action4.play();
 
         gltf.scene.traverse( function( node ) {
@@ -313,7 +314,7 @@ gltfLoader.load(
                 node.receiveShadow = true;
             }
         } );
-        scene.add(bird);
+        scene.add(stag);
 });
 
 
@@ -344,7 +345,7 @@ gltfLoader.load(
 
 
 // Camera
-const camera = new THREE.PerspectiveCamera(64, sizes.width / sizes.height);
+const camera = new THREE.PerspectiveCamera(64, sizes.width / sizes.height, 1, 90);
 camera.position.set(0,30,30);
 scene.add(camera);
 
@@ -362,8 +363,13 @@ controls.rotateSpeed = 0.25;
 // Renderer
 THREE.Cache.enabled = true;
 
+let AA = true
+if (window.devicePixelRatio > 1) {
+  AA = false
+}
+
 const renderer = new THREE.WebGLRenderer({
-    antialias: false,
+    antialias: AA,
     alpha: true,
     powerPreference: "high-performance",
     canvas: canvas
@@ -510,10 +516,8 @@ let scrollSpeed = (function(){
     
 
 //Darkmode
-
 const checkbox = document.getElementById('myCheckbox');
 const spans = document.getElementById("menuToggle").getElementsByTagName('span');
-
 
 
 checkbox.addEventListener('change', (event) => {
@@ -559,6 +563,8 @@ let g = 0.8;
 const popups = document.getElementsByClassName("popup");
 const clock = new THREE.Clock(); 
 
+
+
 const tick = () =>
  {
     // Update controls
@@ -569,13 +575,6 @@ const tick = () =>
         car.position.z = -Math.cos(i * Math.PI) * 11.8;
         car.rotation.y = i * Math.PI + Math.PI/2;
         i -= 0.001;
-    }
-
-    if ( bird ) {
-        bird.position.x = Math.sin(g * Math.PI) * 8;
-        bird.position.z = Math.cos(g * Math.PI) * 8;
-        bird.rotation.y = g * Math.PI - Math.PI/2;
-        g -= 0.001;
     }
 
     // Update cyclist position
@@ -619,6 +618,10 @@ const tick = () =>
     if ( mixer3 ) mixer3.update( delta );
     if ( mixer4 ) mixer4.update( delta );
     if ( mixer5 ) mixer5.update( delta );
+
+    if (mug) {
+        mug.rotation.y -= 0.01;
+    }
 
 
     scrollSpeed();
