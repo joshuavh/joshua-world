@@ -344,7 +344,7 @@ gltfLoader.load(
 
 
 // Camera
-const camera = new THREE.PerspectiveCamera(60, sizes.width / sizes.height);
+const camera = new THREE.PerspectiveCamera(62, sizes.width / sizes.height);
 camera.position.set(0,30,30);
 scene.add(camera);
 
