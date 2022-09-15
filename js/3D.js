@@ -363,13 +363,13 @@ controls.rotateSpeed = 0.25;
 // Renderer
 THREE.Cache.enabled = true;
 
-let AA = true
-if (window.devicePixelRatio > 1) {
-  AA = false
-}
+// let AA = true
+// if (window.devicePixelRatio > 1) {
+//   AA = false
+// }
 
 const renderer = new THREE.WebGLRenderer({
-    antialias: AA,
+    antialias: true,
     alpha: true,
     powerPreference: "high-performance",
     canvas: canvas
