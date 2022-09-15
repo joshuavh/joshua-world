@@ -344,8 +344,8 @@ gltfLoader.load(
 
 
 // Camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
-camera.position.set(0,24,16);
+const camera = new THREE.PerspectiveCamera(60, sizes.width / sizes.height);
+camera.position.set(0,30,30);
 scene.add(camera);
 
 // Controls
@@ -354,8 +354,8 @@ controls.target.set(0,0,0);
 controls.enablePan = false;
 controls.minPolarAngle = Math.PI/2.4;
 controls.maxPolarAngle = Math.PI/2.15;
-controls.minDistance = 15;
-controls.maxDistance = 24;
+controls.minDistance = 16.5;
+controls.maxDistance = 30;
 controls.enableDamping = true;
 controls.rotateSpeed = 0.25;
 
@@ -399,7 +399,7 @@ document.getElementById("start-button").onclick = function() {
     document.getElementById("loadingscreen").classList.add("hidden");
 
     new TWEEN.Tween(camera.position)
-    .to( { x: 0, y:3, z:16 }, 1000)
+    .to( { x: 0, y:3, z:17 }, 1000)
     .easing(TWEEN.Easing.Cubic.Out)
     .start()
   ;
