@@ -354,7 +354,7 @@ controls.target.set(0,0,0);
 controls.enablePan = false;
 controls.minPolarAngle = Math.PI/2.4;
 controls.maxPolarAngle = Math.PI/2.15;
-controls.minDistance = 16.5;
+controls.minDistance = 16;
 controls.maxDistance = 30;
 controls.enableDamping = true;
 controls.rotateSpeed = 0.25;
@@ -363,14 +363,13 @@ controls.rotateSpeed = 0.25;
 THREE.Cache.enabled = true;
 
 const renderer = new THREE.WebGLRenderer({
-    antialias: true,
+    antialias: false,
     alpha: true,
     powerPreference: "high-performance",
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
-let pixelRatio = Math.min(window.devicePixelRatio, 2);
-renderer.setPixelRatio(pixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setClearColor( 0xffffff, 0);
 scene.background = null;
 
