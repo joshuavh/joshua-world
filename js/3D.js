@@ -412,7 +412,7 @@ document.getElementById("start-button").onclick = function() {
 
 // Lights
 const hemiLight = new THREE.HemisphereLight( 0xfff, 0xfff, 0.6 );
-hemiLight.color.setHSL( 0.6, 1 , 0.6 );
+hemiLight.color.setHSL( 0.6, 1, 0.6 );
 hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
 hemiLight.position.set( 0, 500, 0 );
 scene.add( hemiLight );
