@@ -404,7 +404,7 @@ document.getElementById("start-button").onclick = function() {
     document.getElementById("loadingscreen").classList.add("hidden");
 
     new TWEEN.Tween(camera.position)
-    .to( { x: 0, y:3, z:17 }, 1000)
+    .to( { x: 0, y:3, z:16 }, 1000)
     .easing(TWEEN.Easing.Cubic.Out)
     .start()
   ;
@@ -416,9 +416,6 @@ hemiLight.color.setHSL( 0.6, 1, 0.6 );
 hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
 hemiLight.position.set( 0, 500, 0 );
 scene.add( hemiLight );
-
-// const helper2 = new THREE.CameraHelper( spotLight.shadow.camera );
-// scene.add( helper2 );
 
 let shadowMapSize = 13;
 const sunLight = new THREE.DirectionalLight(0xffffff, 1, 100);
@@ -452,6 +449,9 @@ spotLight.shadow.camera.far = 2;
 spotLight.shadow.normalBias = 0.02;
 scene.add( spotLight );
 scene.add( spotLight.target );
+
+// const helper2 = new THREE.CameraHelper( spotLight.shadow.camera );
+// scene.add( helper2 );
 
 // Cursor
 const cursor = {
@@ -519,37 +519,47 @@ let scrollSpeed = (function(){
 const checkbox = document.getElementById('myCheckbox');
 const spans = document.getElementById("menuToggle").getElementsByTagName('span');
 
+function checkCheckbox() {
+    if (checkbox.checked) {
+        spotLight.visible = false;
+        spotLight.castShadow = false;
+        sunLight.visible = true;
+        sunLight.castShadow = true;
+        canvas.style.background = 'linear-gradient(0deg, hsl(200, 50%,100%) 50%, hsl(214,80%,70%) 100%)';
+        hemiLight.intensity = 0.6;
+        document.body.style.color = "black";
+        for (const span of spans) {
+            span.style.background = "black";
+        }
+    
+      } else {
+        spotLight.visible = true;
+        spotLight.castShadow = true;
+        sunLight.visible = false;
+        sunLight.castShadow = false;
+        canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,20%) 50%, hsl(220,80%,5%) 100%)';
+        hemiLight.intensity = 0.01;
+        document.body.style.color = "white";
+        for (const span of spans) {
+            span.style.background = "white";
+        }
+      }
+}
+
+var today = new Date();
+var time = today.getHours();
+
+if (time < 6 || time > 21) {
+    checkbox.checked = false;
+    checkCheckbox();
+}
+else {
+    checkbox.checked = true;
+    checkCheckbox();
+}
 
 checkbox.addEventListener('change', (event) => {
-  if (event.currentTarget.checked) {
-    spotLight.visible = false;
-    spotLight.castShadow = false;
-    sunLight.visible = true;
-    sunLight.castShadow = true;
-    canvas.style.background = 'linear-gradient(0deg, hsl(200, 50%,100%) 50%, hsl(214,80%,70%) 100%)';
-    hemiLight.intensity = 0.6;
-
-    document.body.style.color = "black";
-
-    for (const span of spans) {
-        span.style.background = "black";
-    }
-
-  } else {
-    spotLight.visible = true;
-    spotLight.castShadow = true;
-    sunLight.visible = false;
-    sunLight.castShadow = false;
-    canvas.style.background = 'linear-gradient(0deg, hsl(220, 50%,20%) 50%, hsl(220,80%,5%) 100%)';
-    hemiLight.intensity = 0.01;
-
-    document.body.style.color = "white";
-
-    for (const span of spans) {
-        span.style.background = "white";
-    }
-
-  }
+    checkCheckbox();
 })
 
 /**
