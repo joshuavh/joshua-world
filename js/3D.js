@@ -342,8 +342,6 @@ gltfLoader.load(
         scene.add(robot);
 });
 
-
-
 // Camera
 const camera = new THREE.PerspectiveCamera(64, sizes.width / sizes.height, 1, 90);
 camera.position.set(0,30,30);
@@ -485,7 +483,6 @@ let scrollSpeed = (function(){
       }
       if (delta == 1 || delta == -1 ) delta = 0;
       if (delta < -1) { 
-          //if ( cyclist ) cyclist.rotation.z = -Math.PI/1;
           delta = -delta; 
         }
       //else if (delta > 1) cyclist.rotation.z = 0;
