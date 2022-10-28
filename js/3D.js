@@ -1,10 +1,10 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.136.0';
-import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls.js';
-import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/DRACOLoader.js';
-import Stats from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/libs/stats.module';
-import { MeshSurfaceSampler } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/math/MeshSurfaceSampler.js';
-import { TWEEN } from 'https://unpkg.com/three@0.139.0/examples/jsm/libs/tween.module.min.js';
+import * as THREE from '/js/three.js';
+import { GLTFLoader } from '/js/GLTFLoader.js';
+import { OrbitControls } from '/js/OrbitControls.js';
+import { DRACOLoader } from '/js/DRACOLoader.js';
+import Stats from '/js/stats.module.js';
+import { MeshSurfaceSampler } from '/js/MeshSurfaceSampler.js';
+import { TWEEN } from '/js/tween.module.min.js';
 
 /**
  * Debug
@@ -43,7 +43,7 @@ loadingManager.onLoad = function(url, loaded, total){
 
 // Draco loader
 const dracoLoader = new DRACOLoader()
-dracoLoader.setDecoderPath('https://unpkg.com/three@0.136.0/examples/js/libs/draco/');
+dracoLoader.setDecoderPath('/js/draco/');
 
 // GLTF loader
 const gltfLoader = new GLTFLoader(loadingManager)
